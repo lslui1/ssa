@@ -54,68 +54,68 @@ create table saved_classed (
 INSERT university(name) VALUES('Hillman College');
 
 -- Professor: Sample data
-INSERT professor VALUES ('Joe','Downey',1);
-INSERT professor VALUES ('Jane','Jones',1);
-INSERT professor VALUES ('Bill','Tensi',1);
-INSERT professor VALUES ('Sherry','Nagy',1);
-INSERT professor VALUES ('Frank','Schell',1);
-INSERT professor VALUES ('Michelle','Bellman',1);
-INSERT professor VALUES ('George','Hunt',1);
-INSERT professor VALUES ('Amy','Brock',1);
-INSERT professor VALUES ('Larry','Seger',1);
-INSERT professor VALUES ('Kathy','Miller',1);
-INSERT professor VALUES ('John','Mills',1);
-INSERT professor VALUES ('Lance','Cole',1);
-INSERT professor VALUES ('Justin','Bishop',1);
-INSERT professor VALUES ('Mark','Brenner',1);
-INSERT professor VALUES ('Alison','Helms',1);
-INSERT professor VALUES ('Janice','Mims',1);
-INSERT professor VALUES ('Alice','Williams',1);
-INSERT professor VALUES ('Karen','Smith',1);
-INSERT professor VALUES ('Shana','Lane',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Joe','Downey',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Jane','Jones',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Bill','Tensi',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Sherry','Nagy',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Frank','Schell',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Michelle','Bellman',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('George','Hunt',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Amy','Brock',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Larry','Seger',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Kathy','Miller',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('John','Mills',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Lance','Cole',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Justin','Bishop',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Mark','Brenner',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Alison','Helms',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Janice','Mims',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Alice','Williams',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Karen','Smith',1);
+INSERT professor(first_name,last_name,university_id) VALUES ('Shana','Lane',1);
 
 -- CLASS: Sample data
 -- English
-INSERT class  VALUES(1,1,'English',101);
-INSERT class  VALUES(1,1,'English',102);
-INSERT class  VALUES(1,1,'English',103);
-INSERT class  VALUES(1,2,'English',201);
-INSERT class  VALUES(1,2,'English',202);
-INSERT class  VALUES(1,2,'English',203);
-INSERT class  VALUES(1,3,'English',301);
-INSERT class  VALUES(1,3,'English',302);
-INSERT class  VALUES(1,3,'English',303);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',101);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',102);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',103);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,2,'English',201);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,2,'English',202);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,2,'English',203);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,3,'English',301);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,3,'English',302);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,3,'English',303);
 -- Math
-INSERT class  VALUES(1,4,'Math',201,50);
-INSERT class  VALUES(1,4,'Math',202,NULL);
-INSERT class  VALUES(1,4,'Math',203,NULL);
-INSERT class  VALUES(1,5,'Math',204,NULL);
-INSERT class  VALUES(1,5,'Math',401,50);
-INSERT class  VALUES(1,5,'Math',402,NULL);
-INSERT class  VALUES(1,6,'Math',403,NULL);
-INSERT class  VALUES(1,6,'Math',404,NULL);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,4,'Math',201);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,4,'Math',202);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,4,'Math',203);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,5,'Math',204);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,5,'Math',401);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,5,'Math',402);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,6,'Math',403);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,6,'Math',404);
 -- History
-INSERT class  VALUES(1,7,'History',101,80);
-INSERT class  VALUES(1,7,'History',201,80);
-INSERT class  VALUES(1,7,'History',301,80);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,7,'History',101);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,7,'History',201);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,7,'History',301);
 -- Computer Science
-INSERT class  VALUES(1,8,'Computer Science',311,40);
-INSERT class  VALUES(1,8,'Computer Science',312,40);
-INSERT class  VALUES(1,8,'Computer Science',313,40);
-INSERT class  VALUES(1,9,'Computer Science',441,40);
-INSERT class  VALUES(1,9,'Computer Science',442,40);
-INSERT class  VALUES(1,9,'Computer Science',443,40);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,8,'Computer Science',311);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,8,'Computer Science',312);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,8,'Computer Science',313);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,9,'Computer Science',441);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,9,'Computer Science',442);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,9,'Computer Science',443);
 -- Psychology
-INSERT class  VALUES(1,10,'Psychology',101,20);
-INSERT class  VALUES(1,10,'Psychology',102,20);
-INSERT class  VALUES(1,11,'Psychology',231,20);
-INSERT class  VALUES(1,11,'Psychology',232,20);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,10,'Psychology',101);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,10,'Psychology',102);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,11,'Psychology',231);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,11,'Psychology',232);
 -- Education
-INSERT class  VALUES(1,12,'Education',221,60);
-INSERT class  VALUES(1,12,'Education',222,60);
-INSERT class  VALUES(1,13,'Education',223,60);
-INSERT class  VALUES(1,13,'Education',351,70);
-INSERT class  VALUES(1,14,'Education',352,70);
-INSERT class  VALUES(1,14,'Education',353,70);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,12,'Education',221);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,12,'Education',222);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,13,'Education',223);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,13,'Education',351);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,14,'Education',352);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,14,'Education',353);
 
 
