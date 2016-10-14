@@ -12,5 +12,6 @@ public interface IClassService {
 	List<Class> getAllClassesByProf(Integer instructorId);
 	List<Class> getAllClassesBySubject(String name);
 	List<Class> getAllClassesBySubjectSection(String name, Integer section);
+	List<Class> getAllClasses();
 
 }

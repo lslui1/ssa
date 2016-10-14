@@ -19,6 +19,13 @@ public class ClassDAO implements IClassDAO{
 	
 	@SuppressWarnings("unchecked")
 	@Override
+	public List<Class> getAllClasses() {
+	    String hql = "FROM Class as c ORDER BY c.id";
+	    return (List<Class>) hibernateTemplate.find(hql);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<Class> getAllClassesByProf(Integer instructorId) {
 	    String hql = "FROM Class as c where c.professor_id = " + instructorId + " ORDER BY c.id";
 	    return (List<Class>) hibernateTemplate.find(hql);

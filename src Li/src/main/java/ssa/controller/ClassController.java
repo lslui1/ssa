@@ -23,6 +23,12 @@ public class ClassController {
 	@Autowired
 	private IClassService classService;
 	
+	@RequestMapping(value= "/classes", method = RequestMethod.GET)
+    public ResponseEntity<List<Class>> getAllClasses() {
+        List<Class> classes = classService.getAllClasses();
+        return new ResponseEntity<List<Class>>(classes, HttpStatus.OK);
+    }
+	
 	@RequestMapping(value= "/classesbyprof/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Class>> getAllClassesByProf(@PathVariable("id") Integer instructorId) {
         List<Class> aClass = classService.getAllClassesByProf(instructorId);

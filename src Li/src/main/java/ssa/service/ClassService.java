@@ -15,6 +15,10 @@ public class ClassService implements IClassService{
 	@Autowired
 	private IClassDAO ClassDAO;
 
+	@Override
+	public List<Class> getAllClasses() {
+		return ClassDAO.getAllClasses();
+	}
 	
 	@Override
 	public List<Class> getAllClassesByProf(Integer instructorId) {
