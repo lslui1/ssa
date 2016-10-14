@@ -1,5 +1,7 @@
 package ssa.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,11 @@ public class UniversityController {
 	@Autowired
 	private IUniversityService universityService;
 	
+	@RequestMapping(value= "/universities", method = RequestMethod.GET)
+    public ResponseEntity<List<University>> getAllUniversities() {
+        List<University> universities = universityService.getAllUniversities();
+        return new ResponseEntity<List<University>>(universities, HttpStatus.OK);
+    }
 	
 	@RequestMapping(value= "/university/{id}", method = RequestMethod.GET)
     public ResponseEntity<University> getUniversityById(@PathVariable("id") Integer id) {
