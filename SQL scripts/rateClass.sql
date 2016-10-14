@@ -1,6 +1,10 @@
 
--- drop all tables
+-- drop database
 
+	drop database if exists   collegedb;
+    create database collegedb;
+    use collegedb;
+    
 -- create the tables
 create table university (
 	id int primary key auto_increment,
@@ -42,7 +46,7 @@ create table review (
 	foreign key (login_id) references login(id),
 	foreign key (class_id) references class(id)
 );
-create table saved_classed (
+create table saved_classes (
 	id int primary key auto_increment,
     login_id int,
     class_id int,
@@ -117,5 +121,30 @@ INSERT class(university_id, professor_id, name, section)  VALUES(1,13,'Education
 INSERT class(university_id, professor_id, name, section)  VALUES(1,13,'Education',351);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,14,'Education',352);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,14,'Education',353);
+-- Education
+INSERT class(university_id, professor_id, name, section)  VALUES(1,14,'Philosophy',500);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,15,'Philosophy',501);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,15,'Philosophy',502);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,16,'Philosophy',503);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,16,'Philosophy',504);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,16,'Philosophy',505);
+-- sample data: login
+INSERT login(password, user_name) VALUES('password', 'user');
+INSERT login(password, user_name) VALUES('password1', 'user1');
+INSERT login(password, user_name) VALUES('password2', 'user2');
 
+-- sample data: saved classes
+INSERT saved_classes(login_id, class_id) VALUES(1,1);
+INSERT saved_classes(login_id, class_id) VALUES(1,10);
+INSERT saved_classes(login_id, class_id) VALUES(1,18);
+INSERT saved_classes(login_id, class_id) VALUES(2,1);
+INSERT saved_classes(login_id, class_id) VALUES(2,27);
+INSERT saved_classes(login_id, class_id) VALUES(2,31);
+INSERT saved_classes(login_id, class_id) VALUES(3,37);
+INSERT saved_classes(login_id, class_id) VALUES(3,2);
+INSERT saved_classes(login_id, class_id) VALUES(3,28);
 
+-- sample data: review
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Very knowledgeable but also very, very long winded.','good class learned alot', 1, 18, '2016-10-05', 2016, 1, 3, 4);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('assigns to much work', "the subject wasn't really interesting.", 2, 10, '2016-9-27', 2016, 1, 2, 1);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Great professor!', 'My favorite class!', 3, 37, '2016-10-14', 2016, 1, 5, 5);class_reviewclass_reviewlogin_id
