@@ -8,13 +8,22 @@ angular
 
 		$routeProvider
 		.when('/', {
-			templateUrl: 'views/login.view.html'
+			templateUrl: 'views/login.view.html',
+      controller: 'LoginCtrl'
 		}).when('/home', {
 			templateUrl: 'views/home.view.html'
 		}).when('/classes', {
-			templateUrl: 'views/classes.view.html'
+			templateUrl: 'views/classes.view.html',
+      controller: 'ClassCtrl'
+		}).when('/addclass', {
+			templateUrl: 'views/addclass.view.html',
+      controller: 'ClassCtrl'
 		}).when('/professors', {
-			templateUrl: 'views/professors.view.html'
+			templateUrl: 'views/professors.view.html',
+      controller: 'ProfessorCtrl'
+		}).when('/addprofessor', {
+			templateUrl: 'views/addprofessor.view.html',
+      controller: 'ProfessorCtrl'
 		}).when('/myreviews', {
 			templateUrl: 'views/myreviews.view.html'
 		}).when('/myclasses', {

@@ -1,0 +1,44 @@
+<div id="menu">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+			</ul>
+</div>
+
+<div style="width:50%;margin:10px auto;" ng-controller="ClassCtrl as class">
+	<h1>List of Classes (Click on ID for details)</h1>
+	<a href="#/addclass/">Can't find your class? Click Here!</a>
+	<table class="table">
+		<thead>
+			<tr>
+        <td>
+					<button>ID</button>
+				</td>
+				<td>
+					<button>Class Name</button>
+				</td>
+				<td>
+        <button>Section</button>
+				</td>
+				<td>
+				<button>Prof First-Name</button>
+				</td>
+				<td>
+				<button>Prof Last-Name</button>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="object in class.combinedclasses">
+			<td><a href="#/classes/{{object.id}}">{{object.id}}</a></td>
+			<td ng-bind="object.name"></td>
+			<td ng-bind="object.section"></td>
+			<td ng-bind="object.professor_fname"></td>
+			<td ng-bind="object.professor_lname"></td>
+		</tr>
+		</tbody>
+	</table>
+</div>

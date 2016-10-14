@@ -1,0 +1,36 @@
+<div id="menu">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+			</ul>
+</div>
+
+<div style="width:50%;margin:10px auto;" ng-controller="ProfessorCtrl as professor">
+	<h1>List of Professors (Click on ID for details)</h1>
+	<a href="#/addprofessor/">Can't find your professor? Click Here!</a>
+	<table class="table">
+		<thead>
+			<tr>
+        <td>
+					<button>ID</button>
+				</td>
+				<td>
+					<button>First Name</button>
+				</td>
+				<td>
+        <button>Last Name</button>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="person in professor.professors">
+			<td><a href="#/professors/{{person.id}}">{{person.id}}</a></td>
+			<td ng-bind="person.first_name"></td>
+			<td ng-bind="person.last_name"></td>
+		</tr>
+		</tbody>
+	</table>
+</div>

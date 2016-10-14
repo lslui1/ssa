@@ -1,7 +1,9 @@
-<form class="form-signin">
+<div ng-controller="LoginCtrl as login">
+  <form class="form-signin">
     <h2 class="form-signin-heading">Please sign in</h2>
-      <input class="form-control" type="text" class="input-block-level" placeholder="Email address">
-      <input class="form-control" type="password" class="input-block-level" placeholder="Password">
-      <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-      <button class="btn btn-large btn-primary" type="submit">Register</button>
-</form>
+      <input class="form-control" type="text" class="input-block-level" placeholder="Username" ng-model="username">
+      <input class="form-control" type="password" class="input-block-level" placeholder="Password" ng-model="pass">
+      <button class="btn btn-large btn-primary" type="submit" ng-click="login.getLogin(username, pass)">Sign in</button>
+      <button class="btn btn-large btn-primary" type="submit" ng-click="">Register</button>
+    </form>
+</div>
