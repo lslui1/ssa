@@ -9,11 +9,12 @@ public class CombinedClass {
 	private int section;
 	private String professor_fname;
 	private String professor_lname;
+	private String university_name;
 	
 	public CombinedClass() {}
 	
 	public CombinedClass(int id, int university_id, int professor_id, String name, int section, String professor_fname,
-			String professor_lname) {
+			String professor_lname, String university_name) {
 		super();
 		this.id = id;
 		this.university_id = university_id;
@@ -22,11 +23,12 @@ public class CombinedClass {
 		this.section = section;
 		this.professor_fname = professor_fname;
 		this.professor_lname = professor_lname;
+		this.university_name = university_name;
 	}
 
 	@Override
 	public String toString() {
-		return (String.format("%4d %4d %4d %-20s %4d %-20s %-20s", this.id, this.university_id, this.professor_id, this.name, this.section, this.professor_fname, this.professor_lname));
+		return (String.format("%4d %4d %4d %-20s %4d %-20s %-20s %-20s", this.id, this.university_id, this.professor_id, this.name, this.section, this.professor_fname, this.professor_lname, this.university_name));
 	}
 	
 	public int getId() {
@@ -83,6 +85,14 @@ public class CombinedClass {
 
 	public void setProfessor_lname(String professor_lname) {
 		this.professor_lname = professor_lname;
+	}
+
+	public String getUniversity_name() {
+		return university_name;
+	}
+
+	public void setUniversity_name(String university_name) {
+		this.university_name = university_name;
 	}
 	
 }

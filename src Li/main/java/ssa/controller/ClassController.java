@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ssa.entity.Class;
 import ssa.service.IClassService;
 import ssa.entity.Professor;
+import ssa.entity.University;
+import ssa.service.IUniversityService;
 import ssa.entity.CombinedClass;
 import ssa.service.IProfessorService;
 
@@ -31,31 +33,28 @@ public class ClassController {
 	@Autowired
 	private IProfessorService professorService;
 	
+	@Autowired
+	private IUniversityService universityService;
+	
 	@RequestMapping(value= "/combinedclasses", method = RequestMethod.GET)
     public ResponseEntity<ArrayList<CombinedClass>> getAllCombinedClasses() {
-		
-		System.out.println("Before loop");
 		ArrayList<CombinedClass> combinedclasses = new ArrayList<CombinedClass>();
 
 		List<Class> classes = classService.getAllClasses();
 		
 		for (Class aClass : classes) {
-			
-			System.out.println(aClass);
 			Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());
+			University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
 			CombinedClass aCombinedClass = new CombinedClass();
 			aCombinedClass.setId(aClass.getId());
 			aCombinedClass.setName(aClass.getName());
 			aCombinedClass.setUniversity_id(aClass.getUniversity_id());
 			aCombinedClass.setSection(aClass.getSection());
-			aCombinedClass.setProfessor_id(aClass.getProfessor_id());
-			
+			aCombinedClass.setProfessor_id(aClass.getProfessor_id());			
 			aCombinedClass.setProfessor_fname(aProfessor.getFirst_name());
 			aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
-			
-			System.out.println("Combined Class: " + aCombinedClass);
+			aCombinedClass.setUniversity_name(aUniversity.getName());		
 			combinedclasses.add(aCombinedClass);		
-
 		}
         return new ResponseEntity<ArrayList<CombinedClass>>(combinedclasses, HttpStatus.OK);
 	}
