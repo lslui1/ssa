@@ -9,5 +9,5 @@ public interface IProfessorService {
 	Professor getProfessorById(int professorId);
 	List<Professor> getAllProfessors();
 	List<Professor> getProfessorByFnameLname(String fname, String lname);
-
+	boolean addProfessor(Professor professor);
 }
