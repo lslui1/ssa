@@ -20,6 +20,10 @@ angular
               myProfessor.last_name = lastname;
               myProfessor.university_id = uid;
 
+              sessionStorage.setItem("firstname", firstname);
+              sessionStorage.setItem("lastname", lastname);
+              sessionStorage.setItem("uid", uid);
+
               $http({
                 method: 'POST',
                 url: 'http://localhost:8080/addprofessor',
@@ -27,7 +31,7 @@ angular
               })
                 .then(function(resp) {
                   console.log("SUCCESS: " + resp)
-                  $window.location.href = '/#/home';
+                  $window.location.href = '/#/submittedprofessor';
                 }, function(err) {
                   console.log("FAILURE: " + resp)
                 });

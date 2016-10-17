@@ -18,6 +18,10 @@ angular
 		}).when('/addclass', {
 			templateUrl: 'views/addclass.view.html',
       controller: 'ClassCtrl'
+		}).when('/submitted', {
+			templateUrl: 'views/submittedclass.view.html',
+		}).when('/submittedprofessor', {
+			templateUrl: 'views/submittedprofessor.view.html',
 		}).when('/professors', {
 			templateUrl: 'views/professors.view.html',
       controller: 'ProfessorCtrl'

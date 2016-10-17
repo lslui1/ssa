@@ -2,9 +2,10 @@ angular
   .module("myApp")
   .controller("ClassCtrl", ClassCtrl)
 
-  ClassCtrl.$inject = ['$http', '$window']
-  function ClassCtrl($http, $window) {
+  ClassCtrl.$inject = ['$http', '$window','$scope']
+  function ClassCtrl($http, $window, $scope) {
   var self = this
+
 
 
   $http.get('http://localhost:8080/professors')
@@ -42,6 +43,15 @@ angular
     myClass.professor_id = pid;
     myClass.university_id = uid;
 
+
+
+    sessionStorage.setItem("name", subject);
+    sessionStorage.setItem("section", section);
+    sessionStorage.setItem("professor_id", pid);
+    sessionStorage.setItem("university_id", uid);
+
+
+
     $http({
       method: 'POST',
       url: 'http://localhost:8080/addclass',
@@ -49,7 +59,7 @@ angular
     })
       .then(function(resp) {
         console.log("SUCCESS: " + resp)
-        $window.location.href = '/#/home';
+        $window.location.href = '/#/submitted';
       }, function(err) {
         console.log("FAILURE: " + resp)
       });

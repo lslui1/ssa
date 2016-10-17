@@ -2,9 +2,9 @@ angular
   .module("myApp")
   .controller("LoginCtrl", LoginCtrl)
 
-  LoginCtrl.$inject = ["$http"]
+  LoginCtrl.$inject = ["$http", "$window"]
 
-  function LoginCtrl($http) {
+  function LoginCtrl($http, $window) {
 
     var self = this;
 
@@ -23,10 +23,13 @@ angular
       })
   			.then(function(resp) {
   				console.log("SUCCESS: " + resp)
-          $window.open("http://localhost:8080/")
-
-  			},function(err) {
-          console.log("FAILURE: " + resp)
+          if(resp.data > 3) {
+            sessionStorage.setItem("globaluserid", resp.data);
+            console.log(sessionStorage.getItem("globaluserid"));
+            $window.location.href = '/#/home';
+          } else {
+            
+          }
   			});
 }
 }
