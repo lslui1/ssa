@@ -28,6 +28,9 @@ angular
 		}).when('/addprofessor', {
 			templateUrl: 'views/addprofessor.view.html',
       controller: 'ProfessorCtrl'
+		}).when('/review/:reviewClassId', {
+			templateUrl: 'views/review.view.html',
+      controller: 'ReviewCtrl'
 		}).when('/myreviews', {
 			templateUrl: 'views/myreviews.view.html'
 		}).when('/myclasses', {

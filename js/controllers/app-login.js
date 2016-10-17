@@ -28,7 +28,7 @@ angular
             console.log(sessionStorage.getItem("globaluserid"));
             $window.location.href = '/#/home';
           } else {
-            
+            $window.alert("Incorrect Login/Password");
           }
   			});
 }

@@ -1,0 +1,47 @@
+<div id="menu">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+			</ul>
+</div>
+
+<div style="width:50%;margin:10px auto;" ng-controller="ReviewCtrl as ctrl">
+	<h1>List of Reviews</h1>
+	<table class="table">
+		<thead>
+			<tr>
+        <td>
+					<button>Class Review</button>
+				</td>
+				<td>
+					<button>Prof Review</button>
+				</td>
+				<td>
+					<button>Class Name</button>
+				</td>
+				<td>
+					<button>Class Section</button>
+				</td>
+				<td>
+					<button>Prof FName</button>
+				</td>
+				<td>
+					<button>Prof LName</button>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="object in ctrl.reviews">
+			<td ng-bind="object.class_review"></td>
+			<td ng-bind="object.professor_review"></td>
+			<td ng-bind="ctrl.showClassName"></td>
+			<td ng-bind="ctrl.showClassSection"></td>
+			<td ng-bind="ctrl.showClassFname"></td>
+			<td ng-bind="ctrl.showClassLname"></td>
+		</tr>
+		</tbody>
+	</table>
+</div>

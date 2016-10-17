@@ -35,6 +35,14 @@ angular
               		});
 
 
+self.saveClassId = function(classId, className, classSection, classFname, classLname) {
+  sessionStorage.setItem("reviewClassId", classId)
+  sessionStorage.setItem("reviewClassName", className)
+  sessionStorage.setItem("reviewClassSection", classSection)
+  sessionStorage.setItem("reviewClassFname", classFname)
+  sessionStorage.setItem("reviewClassLname", classLname)
+}
+
 
   self.addClass = function(subject, section, pid, uid) {
     var myClass = {};
