@@ -1,7 +1,7 @@
 
 -- drop database
 
-	drop database if exists   collegedb;
+	drop database if exists collegedb;
     create database collegedb;
     use collegedb;
     
@@ -146,5 +146,9 @@ INSERT saved_classes(login_id, class_id) VALUES(3,28);
 
 -- sample data: review
 INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Very knowledgeable but also very, very long winded.','good class learned alot', 1, 18, '2016-10-05', 2016, 1, 3, 4);
-INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('assigns to much work', "the subject wasn't really interesting.", 2, 10, '2016-9-27', 2016, 1, 2, 1);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('assigns to much work', "the subject wasn't really interesting.", 2, 27, '2016-9-27', 2016, 1, 2, 1);
 INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Great professor!', 'My favorite class!', 3, 37, '2016-10-14', 2016, 1, 5, 5);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('The professor was O.K.', 'BORING but I learned there are 137 tiles on the ceiling.', 1, 10, '2016-2-14', 2016, 2, 1, 3);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Good Teacher made a boring subject interesting', "didn't like the class boring subject", 2, 31, '2016-3-14', 2016, 1, 4, 3);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Helpful professor answered any questions I had', 'good class learned alot', 3, 2, '2016-1-14', 2016, 1, 3, 5);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Really arrogant teacher not helpful', 'avoid this class it ruined my gpa', 1, 18, '2016-5-14', 2016, 1, 1, 2);

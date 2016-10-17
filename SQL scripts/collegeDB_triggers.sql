@@ -14,7 +14,7 @@ begin
 end $$
 DELIMITER ;
 
--- trigger to throw error if the review.semester being assigned is not valid
+-- Insert trigger to throw error if the review.semester being assigned is not valid
 DROP TRIGGER IF EXISTS trg_valid_semester;
 DELIMITER $$
 create trigger trg_valid_semester 
