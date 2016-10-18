@@ -10,7 +10,7 @@ create table university (
 	id int primary key auto_increment,
     name varchar(30)    
 );
-create table professor (
+create table  professor(
 	id int primary key auto_increment,
     first_name varchar(30) not null,
 	last_name varchar(30) not null,
@@ -77,6 +77,107 @@ INSERT professor(first_name,last_name,university_id) VALUES ('Janice','Mims',1);
 INSERT professor(first_name,last_name,university_id) VALUES ('Alice','Williams',1);
 INSERT professor(first_name,last_name,university_id) VALUES ('Karen','Smith',1);
 INSERT professor(first_name,last_name,university_id) VALUES ('Shana','Lane',1);
+insert professor(first_name, last_name, university_id) values ('Billy', 'Jackson', 1);
+insert professor(first_name, last_name, university_id) values ('Phyllis', 'Turner', 1);
+insert professor(first_name, last_name, university_id) values ('Susan', 'Cole', 1);
+insert professor(first_name, last_name, university_id) values ('Wanda', 'Brooks', 1);
+insert professor(first_name, last_name, university_id) values ('Johnny', 'Cooper', 1);
+insert professor(first_name, last_name, university_id) values ('Roger', 'Howell', 1);
+insert professor(first_name, last_name, university_id) values ('Marilyn', 'Reynolds', 1);
+insert professor(first_name, last_name, university_id) values ('Anne', 'Fernandez', 1);
+insert professor(first_name, last_name, university_id) values ('Nicholas', 'Lane', 1);
+insert professor(first_name, last_name, university_id) values ('Todd', 'Washington', 1);
+insert professor(first_name, last_name, university_id) values ('Brian', 'Hanson', 1);
+insert professor(first_name, last_name, university_id) values ('Gregory', 'Palmer', 1);
+insert professor(first_name, last_name, university_id) values ('Jeffrey', 'Meyer', 1);
+insert professor(first_name, last_name, university_id) values ('Marie', 'Williamson', 1);
+insert professor(first_name, last_name, university_id) values ('Theresa', 'Garcia', 1);
+insert professor(first_name, last_name, university_id) values ('Russell', 'Thompson', 1);
+insert professor(first_name, last_name, university_id) values ('Benjamin', 'Hansen', 1);
+insert professor(first_name, last_name, university_id) values ('Deborah', 'Miller', 1);
+insert professor(first_name, last_name, university_id) values ('Linda', 'Dixon', 1);
+insert professor(first_name, last_name, university_id) values ('Ruby', 'Diaz', 1);
+insert professor(first_name, last_name, university_id) values ('Donna', 'Reed', 1);
+insert professor(first_name, last_name, university_id) values ('Terry', 'Tucker', 1);
+insert professor(first_name, last_name, university_id) values ('Andrea', 'Carpenter', 1);
+insert professor(first_name, last_name, university_id) values ('James', 'Nichols', 1);
+insert professor(first_name, last_name, university_id) values ('Craig', 'Henderson', 1);
+insert professor(first_name, last_name, university_id) values ('Jeffrey', 'Perez', 1);
+insert professor(first_name, last_name, university_id) values ('Jennifer', 'Arnold', 1);
+insert professor(first_name, last_name, university_id) values ('Russell', 'Weaver', 1);
+insert professor(first_name, last_name, university_id) values ('Bobby', 'Long', 1);
+insert professor(first_name, last_name, university_id) values ('Betty', 'Lawrence', 1);
+insert professor(first_name, last_name, university_id) values ('David', 'Martin', 1);
+insert professor(first_name, last_name, university_id) values ('Terry', 'Peters', 1);
+insert professor(first_name, last_name, university_id) values ('Ann', 'Richardson', 1);
+insert professor(first_name, last_name, university_id) values ('Ryan', 'Pierce', 1);
+insert professor(first_name, last_name, university_id) values ('Albert', 'Meyer', 1);
+insert professor(first_name, last_name, university_id) values ('Kenneth', 'Cole', 1);
+insert professor(first_name, last_name, university_id) values ('Beverly', 'Diaz', 1);
+insert professor(first_name, last_name, university_id) values ('Martin', 'Ford', 1);
+insert professor(first_name, last_name, university_id) values ('Harry', 'Lane', 1);
+insert professor(first_name, last_name, university_id) values ('Dorothy', 'Williamson', 1);
+insert professor(first_name, last_name, university_id) values ('Julie', 'Grant', 1);
+insert professor(first_name, last_name, university_id) values ('Rose', 'Meyer', 1);
+insert professor(first_name, last_name, university_id) values ('Jonathan', 'West', 1);
+insert professor(first_name, last_name, university_id) values ('Bonnie', 'Warren', 1);
+insert professor(first_name, last_name, university_id) values ('Shirley', 'Ward', 1);
+insert professor(first_name, last_name, university_id) values ('Amy', 'Ramirez', 1);
+insert professor(first_name, last_name, university_id) values ('Steven', 'Garrett', 1);
+insert professor(first_name, last_name, university_id) values ('Christopher', 'Fields', 1);
+insert professor(first_name, last_name, university_id) values ('Rebecca', 'Burton', 1);
+insert professor(first_name, last_name, university_id) values ('George', 'Owens', 1);
+insert professor(first_name, last_name, university_id) values ('Irene', 'Little', 1);
+insert professor(first_name, last_name, university_id) values ('Elizabeth', 'Diaz', 1);
+insert professor(first_name, last_name, university_id) values ('Marie', 'Burns', 1);
+insert professor(first_name, last_name, university_id) values ('Clarence', 'Roberts', 1);
+insert professor(first_name, last_name, university_id) values ('Julie', 'Ruiz', 1);
+insert professor(first_name, last_name, university_id) values ('Nancy', 'Moreno', 1);
+insert professor(first_name, last_name, university_id) values ('Emily', 'Coleman', 1);
+insert professor(first_name, last_name, university_id) values ('Benjamin', 'Reid', 1);
+insert professor(first_name, last_name, university_id) values ('Steve', 'Hill', 1);
+insert professor(first_name, last_name, university_id) values ('Joyce', 'Gonzalez', 1);
+insert professor(first_name, last_name, university_id) values ('John', 'Morrison', 1);
+insert professor(first_name, last_name, university_id) values ('Thomas', 'Reid', 1);
+insert professor(first_name, last_name, university_id) values ('Judy', 'Harvey', 1);
+insert professor(first_name, last_name, university_id) values ('Melissa', 'Howell', 1);
+insert professor(first_name, last_name, university_id) values ('Philip', 'Cox', 1);
+insert professor(first_name, last_name, university_id) values ('Bonnie', 'Chavez', 1);
+insert professor(first_name, last_name, university_id) values ('Diana', 'Snyder', 1);
+insert professor(first_name, last_name, university_id) values ('Amanda', 'Mccoy', 1);
+insert professor(first_name, last_name, university_id) values ('Craig', 'Dixon', 1);
+insert professor(first_name, last_name, university_id) values ('Adam', 'Bell', 1);
+insert professor(first_name, last_name, university_id) values ('Paul', 'Thomas', 1);
+insert professor(first_name, last_name, university_id) values ('Carol', 'Scott', 1);
+insert professor(first_name, last_name, university_id) values ('Susan', 'Harris', 1);
+insert professor(first_name, last_name, university_id) values ('Brandon', 'Gutierrez', 1);
+insert professor(first_name, last_name, university_id) values ('Jimmy', 'Perkins', 1);
+insert professor(first_name, last_name, university_id) values ('Nicholas', 'Harrison', 1);
+insert professor(first_name, last_name, university_id) values ('Cheryl', 'Andrews', 1);
+insert professor(first_name, last_name, university_id) values ('Douglas', 'Garrett', 1);
+insert professor(first_name, last_name, university_id) values ('Melissa', 'Richardson', 1);
+insert professor(first_name, last_name, university_id) values ('Phyllis', 'Lee', 1);
+insert professor(first_name, last_name, university_id) values ('Douglas', 'Cook', 1);
+insert professor(first_name, last_name, university_id) values ('Patrick', 'Chavez', 1);
+insert professor(first_name, last_name, university_id) values ('Roy', 'Jones', 1);
+insert professor(first_name, last_name, university_id) values ('Joyce', 'Murray', 1);
+insert professor(first_name, last_name, university_id) values ('Jean', 'Kennedy', 1);
+insert professor(first_name, last_name, university_id) values ('Willie', 'Hunter', 1);
+insert professor(first_name, last_name, university_id) values ('Catherine', 'Butler', 1);
+insert professor(first_name, last_name, university_id) values ('Kelly', 'Bradley', 1);
+insert professor(first_name, last_name, university_id) values ('Frank', 'Cook', 1);
+insert professor(first_name, last_name, university_id) values ('Jacqueline', 'Collins', 1);
+insert professor(first_name, last_name, university_id) values ('Virginia', 'Wood', 1);
+insert professor(first_name, last_name, university_id) values ('Catherine', 'Wilson', 1);
+insert professor(first_name, last_name, university_id) values ('Tina', 'Price', 1);
+insert professor(first_name, last_name, university_id) values ('Irene', 'Hunt', 1);
+insert professor(first_name, last_name, university_id) values ('Andrea', 'Banks', 1);
+insert professor(first_name, last_name, university_id) values ('Shirley', 'Johnston', 1);
+insert professor(first_name, last_name, university_id) values ('Stephanie', 'Shaw', 1);
+insert professor(first_name, last_name, university_id) values ('Catherine', 'Phillips', 1);
+insert professor(first_name, last_name, university_id) values ('Antonio', 'Fox', 1);
+insert professor(first_name, last_name, university_id) values ('Sean', 'Howard', 1);
+
 
 -- CLASS: Sample data
 -- English
