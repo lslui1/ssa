@@ -151,7 +151,11 @@ INSERT saved_classes(login_id, class_id) VALUES(3,2);
 INSERT saved_classes(login_id, class_id) VALUES(3,28);
 
 -- sample data: review
-INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Very knowledgeable but also very, very long winded.','good class learned alot', 3, 18, '2016-10-05', 2016, 1, 3, 4);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Very knowledgeable but also very, very long winded.','good class learned alot', 3, 18, '2016-10-05', 2016, 1, 4, 3);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('Lectures are long you may get lost if you have a hard time concentrating.','Interesting class', 4, 18, '2016-10-03', 2016, 1, 3, 2);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('lectures the entire time, barely gives any notes, and his syllabus is useless','Wish I never took this class', 5, 18, '2016-10-22', 2016, 1, 2, 1);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ("he's boring and he cant help it, he runs off on tangents with that reminds me of the time", 'learned alot in this class', 6, 18, '2016-10-13', 2016, 1, 3, 2);
+INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('boring but fair grader.','decent class', 7, 18, '2016-10-09', 2016, 1, 3, 4);
 INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('assigns to much work', "the subject wasn't really interesting.", 4, 27, '2016-9-27', 2016, 1, 2, 1);
 INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('sometimes does not know how to explain very clearly', "the subject wasn't really interesting.", 5, 27, '2016-9-27', 2016, 1, 3, 2);
 INSERT review(professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) VALUES ('very boring and is always sweating', "alright class.", 6, 27, '2016-9-27', 2016, 1, 2, 3);
