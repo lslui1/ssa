@@ -18,7 +18,7 @@ angular
     // console.log(login)
     $http({
         method: "POST",
-        url: 'http://localhost:8080/login/',
+        url: 'http://localhost:8080/login',
         data: login
       })
   			.then(function(resp) {

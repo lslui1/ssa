@@ -15,7 +15,16 @@ angular
     self.Professorlastname = sessionStorage.lastname
     self.Professoruid = sessionStorage.uid
 
+    self.Reviewclassreview = sessionStorage.Reviewclassreview
+    self.Reviewprofessorreview = sessionStorage.Reviewprofreview
+    self.ReviewloginId = sessionStorage.globaluserid
+    self.Reviewingclassid = sessionStorage.reviewClassId
+    self.Reviewreviewdate = sessionStorage.Reviewreviewdate
+    self.Reviewyear = sessionStorage.Reviewyear
+    self.Reviewsemester = sessionStorage.Reviewsemester
+    self.Reviewclassrating = sessionStorage.Reviewclassrating
+    self.Reviewprofessorrating = sessionStorage.Reviewprofrating
 
-
+$scope.date = new Date();
 
 }

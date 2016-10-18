@@ -9,6 +9,10 @@
 </div>
 
 <div style="width:50%;margin:10px auto;" ng-controller="ProfessorCtrl as professor">
+	<div>
+		<input ng-model="search" class="form-control" type="text" placeholder="Search by Last Name">
+		<p ng-show="search">Filtering by {{search}}</p>
+	</div>
 	<h1>List of Professors (Click on ID for details)</h1>
 	<a href="#/addprofessor/">Can't find your professor? Click Here!</a>
 	<table class="table">
@@ -26,8 +30,8 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="person in professor.professors">
-			<td><a href="#/professors/{{person.id}}">{{person.id}}</a></td>
+		<tr ng-repeat="person in professor.professors | filter:{last_name: search}">
+			<td><a href="#/professorclasses/{{person.id}}">{{person.id}}</a></td>
 			<td ng-bind="person.first_name"></td>
 			<td ng-bind="person.last_name"></td>
 		</tr>

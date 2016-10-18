@@ -1,0 +1,61 @@
+<div id="menu">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+			</ul>
+</div>
+<div ng-controller="SubmittedCtrl as ctrl">
+<div style="width:50%;margin:10px auto;">
+<h1>Submitted Page</h1>
+<p>This is the submitted class page</p>
+<table class="table">
+	<thead>
+		<tr>
+			<td>
+			<p>Class Review</p>
+			</td>
+			<td>
+			<p>Professor Review</p>
+			</td>
+			<td>
+			<p>User Id</p>
+			</td>
+			<td>
+			<p>Class Id</p>
+			</td>
+			<td>
+			<p>Review Date</p>
+			</td>
+			<td>
+			<p>Year</p>
+			</td>
+			<td>
+			<p>Semester</p>
+			</td>
+			<td>
+			<p>Class Rating</p>
+			</td>
+			<td>
+			<p>Professor Rating</p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td ng-bind="ctrl.Reviewclassreview"></td>
+		<td ng-bind="ctrl.Reviewprofessorreview"></td>
+		<td ng-bind="ctrl.ReviewloginId"></td>
+		<td ng-bind="ctrl.Reviewingclassid"></td>
+		<td>{{date | date:'yyyy-MM-dd'}}</td>
+		<td ng-bind="ctrl.Reviewyear"></td>
+		<td ng-bind="ctrl.Reviewsemester"></td>
+		<td ng-bind="ctrl.Reviewclassrating"></td>
+		<td ng-bind="ctrl.Reviewprofessorrating"></td>
+	</tr>
+	</tbody>
+</table>
+</div>
+</div>

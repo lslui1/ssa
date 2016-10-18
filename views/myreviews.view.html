@@ -9,11 +9,16 @@
 </div>
 
 <div style="width:50%;margin:10px auto;" ng-controller="ReviewCtrl as ctrl">
-	<h1>List of Reviews</h1>
-	<a href="#/addreview/">Did you take this course/professor? Add a review and Click Here!</a>
+	<h1>My Reviews</h1>
 	<table class="table">
 		<thead>
 			<tr>
+				<td>
+					<p>Review ID</p>
+				</td>
+				<td>
+					<p>Login ID</p>
+				</td>
         <td>
 					<p>Class Review</p>
 				</td>
@@ -21,16 +26,13 @@
 					<p>Prof Review</p>
 				</td>
 				<td>
-					<p>Class Name</p>
+					<p>Prof First Name</p>
 				</td>
 				<td>
-					<p>Class Section</p>
+					<p>Prof Last Name</p>
 				</td>
 				<td>
-					<p>Prof FName</p>
-				</td>
-				<td>
-					<p>Prof LName</p>
+					<p>Class ID</p>
 				</td>
 				<td>
 					<p>Review Date</p>
@@ -50,13 +52,14 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in ctrl.reviews">
+		<tr ng-repeat="object in ctrl.mysavedreviews">
+			<td ng-bind="object.review_id"></td>
+			<td ng-bind="object.login_id"></td>
 			<td ng-bind="object.class_review"></td>
 			<td ng-bind="object.professor_review"></td>
-			<td ng-bind="ctrl.showClassName"></td>
-			<td ng-bind="ctrl.showClassSection"></td>
-			<td ng-bind="ctrl.showClassFname"></td>
-			<td ng-bind="ctrl.showClassLname"></td>
+			<td ng-bind="object.professor_fname"></td>
+			<td ng-bind="object.professor_lname"></td>
+			<td ng-bind="object.class_id"></td>
 			<td ng-bind="object.review_date"></td>
 			<td ng-bind="object.year"></td>
 			<td ng-bind="object.semester"></td>

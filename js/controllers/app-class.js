@@ -2,11 +2,15 @@ angular
   .module("myApp")
   .controller("ClassCtrl", ClassCtrl)
 
-  ClassCtrl.$inject = ['$http', '$window','$scope']
-  function ClassCtrl($http, $window, $scope) {
+  ClassCtrl.$inject = ['$http', '$window','$scope','$routeParams']
+  function ClassCtrl($http, $window, $scope, $routeParams) {
   var self = this
 
+  self.pathprofid = $routeParams.pathingprofId;
 
+  self.reverseList = function() {
+    self.combinedclasses.reverse()
+  }
 
   $http.get('http://localhost:8080/professors')
       			.then(function(resp){
@@ -16,13 +20,21 @@ angular
         		});
 
 
+            $http.get('http://localhost:8080/classesbyprof/' + self.pathprofid)
+                      .then(function(resp){
+                        self.profclasses = resp.data;
+                      },function(err) {
+
+                      });
+
+
   $http.get('http://localhost:8080/classes')
   			.then(function(resp){
   				self.classes = resp.data;
-          angular.forEach(self.classes, function(key, value) {
-            self.classes.prof = self.professors;
-          })
-          console.log(self.classes)
+          // angular.forEach(self.classes, function(key, value) {
+          //   self.classes.prof = self.professors;
+          // })
+          // console.log(self.classes)
   			},function(err) {
 
   			});
@@ -67,7 +79,7 @@ self.saveClassId = function(classId, className, classSection, classFname, classL
     })
       .then(function(resp) {
         console.log("SUCCESS: " + resp)
-        $window.location.href = '/#/submitted';
+        $window.location.href = '/#/submittedclass';
       }, function(err) {
         console.log("FAILURE: " + resp)
       });
