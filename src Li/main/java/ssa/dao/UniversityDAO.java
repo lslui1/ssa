@@ -21,6 +21,13 @@ public class UniversityDAO implements IUniversityDAO{
 	    return (List<University>) hibernateTemplate.find(hql);
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<University> getUniversityByName(String name) {
+		 String hql = "FROM University as u where u.name = '" + name + "' ORDER BY u.id";
+	    return (List<University>) hibernateTemplate.find(hql);
+	}
+	
 	@Override
 	public University getUniversityById(int universityId) {
 	    return (University) hibernateTemplate.get(University.class, universityId);

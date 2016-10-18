@@ -10,6 +10,8 @@ public class CombinedClass {
 	private String professor_fname;
 	private String professor_lname;
 	private String university_name;
+	private double aggregateClassScore;
+	private double aggregateProfessorScore;
 	
 	public CombinedClass() {}
 	
@@ -94,5 +96,22 @@ public class CombinedClass {
 	public void setUniversity_name(String university_name) {
 		this.university_name = university_name;
 	}
+
+	public double getAggregateClassScore() {
+		return aggregateClassScore;
+	}
+
+	public void setAggregateClassScore(double aggregateClassScore) {
+		this.aggregateClassScore = aggregateClassScore;
+	}
+
+	public double getAggregateProfessorScore() {
+		return aggregateProfessorScore;
+	}
+
+	public void setAggregateProfessorScore(double aggregateProfessorScore) {
+		this.aggregateProfessorScore = aggregateProfessorScore;
+	}
+	
 	
 }

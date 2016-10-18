@@ -1,6 +1,7 @@
 package ssa.config;
 
 import javax.sql.DataSource;
+
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import ssa.entity.Class;
 import ssa.entity.Professor;
+import ssa.entity.Review;
 import ssa.entity.University;
 
 @Configuration
@@ -39,6 +41,7 @@ public class DbConfiguration {
 	        		.addAnnotatedClass(Class.class)
 	        		.addAnnotatedClass(University.class)
 	        		.addAnnotatedClass(Professor.class)
+	        		.addAnnotatedClass(Review.class)
 	                .buildSessionFactory();
 	    }
 

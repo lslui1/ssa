@@ -1,7 +1,6 @@
 package ssa.controller;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 
@@ -42,6 +41,49 @@ public class ClassController {
 	
 	@Autowired
 	private IReviewService reviewService;
+	
+	
+	@RequestMapping(value= "/alternativeclassesbyclassid/{classid}", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<CombinedClass>> getAlternativeClassesByClassId(@PathVariable("classid") Integer classId) {
+		
+		Class primaryClass = classService.getClassById(classId);
+		double aggregateClassScore = reviewService.getAggregateClassRatingByClassId(classId);
+		double aggregateProfessorScore = reviewService.getAggregateProfessorRatingByClassId(classId);
+		double totalAggregateScore = (aggregateClassScore + aggregateProfessorScore) / 2;
+		
+		ArrayList<CombinedClass> alternativeclasses = new ArrayList<>();
+		List<Class> comparisonClasses = classService.getAllClassesBySubjectSection(primaryClass.getName(), primaryClass.getSection());
+		for (Class aClass : comparisonClasses) {
+			double comparisonaggregateClassScore = reviewService.getAggregateClassRatingByClassId(aClass.getId());
+			double comparisonaggregateProfessorScore = reviewService.getAggregateProfessorRatingByClassId(aClass.getId());
+			double comptotalAggregateScore = (comparisonaggregateClassScore + comparisonaggregateProfessorScore) / 2;
+		
+			if ( comptotalAggregateScore > totalAggregateScore) {
+				Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());
+				University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
+				CombinedClass aCombinedClass = new CombinedClass();
+				aCombinedClass.setId(aClass.getId());
+				aCombinedClass.setName(aClass.getName());
+				aCombinedClass.setUniversity_id(aClass.getUniversity_id());
+				aCombinedClass.setSection(aClass.getSection());
+				aCombinedClass.setProfessor_id(aClass.getProfessor_id());			
+				aCombinedClass.setProfessor_fname(aProfessor.getFirst_name());
+				aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
+				aCombinedClass.setUniversity_name(aUniversity.getName());
+				
+				aCombinedClass.setAggregateClassScore(comparisonaggregateClassScore);
+				aCombinedClass.setAggregateProfessorScore(comparisonaggregateProfessorScore);
+
+				alternativeclasses.add(aCombinedClass);
+			}
+		}
+        return new ResponseEntity<ArrayList<CombinedClass>>(alternativeclasses, HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value= "/combinedreviewsbyloginid/{loginid}", method = RequestMethod.GET)
     public ResponseEntity<ArrayList<CombinedReview>> getCombinedReviewsById(@PathVariable("loginid") Integer loginId) {
@@ -97,6 +139,10 @@ public class ClassController {
 			aCombinedClass.setProfessor_fname(aProfessor.getFirst_name());
 			aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
 			aCombinedClass.setUniversity_name(aUniversity.getName());		
+			
+			aCombinedClass.setAggregateClassScore(reviewService.getAggregateClassRatingByClassId(aClass.getId()));
+			aCombinedClass.setAggregateProfessorScore(reviewService.getAggregateProfessorRatingByClassId(aClass.getId()));
+			
 			combinedclasses.add(aCombinedClass);		
 		}
         return new ResponseEntity<ArrayList<CombinedClass>>(combinedclasses, HttpStatus.OK);

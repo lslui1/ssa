@@ -19,6 +19,11 @@ public class UniversityService implements IUniversityService{
 	}
 
 	@Override
+	public List<University> getUniversityByName(String name) {
+		return UniversityDAO.getUniversityByName(name);
+	}
+	
+	@Override
 	public List<University> getAllUniversities() {
 		return UniversityDAO.getAllUniversities();
 	}
