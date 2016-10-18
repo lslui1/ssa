@@ -48,22 +48,22 @@ public class ReviewService implements IReviewService {
 	}
 	
 	@Override
-	public Double getAggregateClassRatingByProfessorId(int professor_id) {
+	public double getAggregateClassRatingByProfessorId(int professor_id) {
 		return reviewDAO.getAggregateClassRatingByProfessorId(professor_id);
 	}
 	
 	@Override
-	public Double getAggregateProfessorRatingByClassId(int class_id) {
+	public double getAggregateProfessorRatingByClassId(int class_id) {
 		return reviewDAO.getAggregateProfessorRatingByClassId(class_id);
 	}
 	
 	@Override
-	public Double getAggregateProfessorRatingByProfessorId(int professor_id) {
+	public double getAggregateProfessorRatingByProfessorId(int professor_id) {
 		return reviewDAO.getAggregateProfessorRatingByProfessorId(professor_id);
 	}
 	
 	@Override
-	public Double getAggregateClassRatingByClassId(int class_id) {
+	public double getAggregateClassRatingByClassId(int class_id) {
 		return reviewDAO.getAggregateClassRatingByClassId(class_id);
 	}
 

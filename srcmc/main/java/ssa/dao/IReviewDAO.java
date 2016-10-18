@@ -12,9 +12,9 @@ public interface IReviewDAO {
 	void insertReview(Review Review);
 	void deleteReview(Integer id);
 	void updateReview(Review Review);
-	Double getAggregateClassRatingByProfessorId(int professor_id);
-	Double getAggregateProfessorRatingByClassId(int class_id);
-	Double getAggregateProfessorRatingByProfessorId(int professor_id); 
-	Double getAggregateClassRatingByClassId(int class_id);
+	double getAggregateClassRatingByProfessorId(int professor_id);
+	double getAggregateProfessorRatingByClassId(int class_id);
+	double getAggregateProfessorRatingByProfessorId(int professor_id); 
+	double getAggregateClassRatingByClassId(int class_id);
 
 }

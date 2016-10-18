@@ -34,44 +34,50 @@ public class ReviewDAO implements IReviewDAO {
 	
 	
 	
-	public Double getAggregateClassRatingByClassId(int class_id) {
+	public double getAggregateClassRatingByClassId(int class_id) {
 		String hql = "FROM Review where class_id = '" + class_id + "'";
 		List<Review> reviews = (List<Review>) hibernateTemplate.find(hql);
 		List<Integer> ratings = new ArrayList<Integer>();
-		Double total = 0.0;
+		double total = 0.0;
 		for (int i=0; i<reviews.size(); i++) {
 			Review tempReview = reviews.get(i);
 			ratings.add(tempReview.getClass_rating());
 			total += tempReview.getClass_rating();
 			}
 		total = total/reviews.size();
+		total = total * 100;
+		total = Math.round(total);
+		total = total/100;
 		return total;
 	}
 	
 	
-	public Double getAggregateProfessorRatingByClassId(int class_id) {
+	public double getAggregateProfessorRatingByClassId(int class_id) {
 		String hql = "FROM Review where class_id = '" + class_id + "'";
 		List<Review> reviews = (List<Review>) hibernateTemplate.find(hql);
 		List<Integer> ratings = new ArrayList<Integer>();
-		Double total = 0.0;
+		double total = 0.0;
 		for (int i=0; i<reviews.size(); i++) {
 			Review tempReview = reviews.get(i);
 			ratings.add(tempReview.getProfessor_rating());
 			total += tempReview.getProfessor_rating();
 			}
 		total = total/reviews.size();
+		total = total * 100;
+		total = Math.round(total);
+		total = total/100;
 		return total;
 	}
 	
 	
-	public Double getAggregateClassRatingByProfessorId(int professor_id) {
+	public double getAggregateClassRatingByProfessorId(int professor_id) {
 		 String hql = "FROM Class where professor_id = '" + professor_id + "'";
 		 List<Class> classList = new ArrayList<Class>();
 	     classList = (List<Class>) hibernateTemplate.find(hql);
 	     System.out.println(classList);
 	     List<Review> reviewList = new ArrayList<Review>();
 	     List<Integer> ratingsList = new ArrayList<Integer>();
-	     Double total = 0.0;
+	     double total = 0.0;
 	     for (int i=0; i<classList.size(); i++) {
 	    	 Class tempClass = classList.get(i);
 	    	 int classId = tempClass.getId();
@@ -88,16 +94,19 @@ public class ReviewDAO implements IReviewDAO {
 	     System.out.println(reviewList.size());
     	 total = total/reviewList.size();
     	 total = total/classList.size();
+ 		total = total * 100;
+ 		total = Math.round(total);
+ 		total = total/100;
 	     return total;
 	}
 	
-	public Double getAggregateProfessorRatingByProfessorId(int professor_id) {
+	public double getAggregateProfessorRatingByProfessorId(int professor_id) {
 		 String hql = "FROM Class where professor_id = '" + professor_id + "'";
 		 List<Class> classList = new ArrayList<Class>();
 	     classList = (List<Class>) hibernateTemplate.find(hql);
 	     System.out.println(classList);
 	     List<Review> reviewList = new ArrayList<Review>();
-	     Double total = 0.0;
+	     double total = 0.0;
 	     for (int i=0; i<classList.size(); i++) {
 	    	 Class tempClass = classList.get(i);
 	    	 int classId = tempClass.getId();
@@ -114,6 +123,9 @@ public class ReviewDAO implements IReviewDAO {
 	     System.out.println(total);
 	     System.out.println(reviewList.size());
 	     total = total/reviewList.size();
+			total = total * 100;
+			total = Math.round(total);
+			total = total/100;
 	     return total;
 	}
 	
