@@ -44,16 +44,28 @@ public class ReviewController {
         return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
     }
 	
-	@RequestMapping(value= "/AggregateProfessorScore/{professor_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Integer>> getAggregateProfessorScore(@PathVariable("professor_id") int professor_id) {
-        List<Integer> professorAggregate = ReviewService.getAggregateProfessorScore(professor_id);
-        return new ResponseEntity<List<Integer>>(professorAggregate, HttpStatus.OK);
+	@RequestMapping(value= "/AggregateClassRatingByProfessorId/{professor_id}", method = RequestMethod.GET)
+    public ResponseEntity<Double> getAggregateClassRatingByProfessorId(@PathVariable("professor_id") int professor_id) {
+		Double professorAggregate = ReviewService.getAggregateClassRatingByProfessorId(professor_id);
+        return new ResponseEntity<Double>(professorAggregate, HttpStatus.OK);
     }
 	
-	@RequestMapping(value= "/AggregateProfessorScoreByClassId/{class_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Integer>> getAggregateProfessorScoreByClassId(@PathVariable("class_id") int class_id) {
-        List<Integer> professorAggregate = ReviewService.getAggregateProfessorScoreByClassId(class_id);
-        return new ResponseEntity<List<Integer>>(professorAggregate, HttpStatus.OK);
+	@RequestMapping(value= "/AggregateProfessorRatingByClassId/{class_id}", method = RequestMethod.GET)
+    public ResponseEntity<Double> getAggregateProfessorRatingByClassId(@PathVariable("class_id") int class_id) {
+        Double professorAggregate = ReviewService.getAggregateProfessorRatingByClassId(class_id);
+        return new ResponseEntity<Double>(professorAggregate, HttpStatus.OK);
+    }
+	
+	@RequestMapping(value= "/AggregateProfessorRatingByProfessorId/{professor_id}", method = RequestMethod.GET)
+    public ResponseEntity<Double> getAggregateProfessorRatingByProfessorId(@PathVariable("professor_id") int professor_id) {
+		Double professorAggregate = ReviewService.getAggregateProfessorRatingByProfessorId(professor_id);
+        return new ResponseEntity<Double>(professorAggregate, HttpStatus.OK);
+    }
+	
+	@RequestMapping(value= "/AggregateClassRatingByClassId/{class_id}", method = RequestMethod.GET)
+    public ResponseEntity<Double> getAggregateClassRatingByClassId(@PathVariable("class_id") int class_id) {
+		Double classAggregate = ReviewService.getAggregateClassRatingByClassId(class_id);
+        return new ResponseEntity<Double>(classAggregate, HttpStatus.OK);
     }
 	
 //	@RequestMapping(value= "/ReviewsBySubject/{class_id}", method = RequestMethod.GET)
