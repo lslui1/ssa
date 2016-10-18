@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ssa.entity.Login;
 import ssa.entity.Review;
 import ssa.entity.SavedClasses;
+import ssa.entity.Class;
 
 @Configuration
 @EnableTransactionManagement
@@ -41,6 +42,7 @@ public class DbConfiguration {
 	        		.addAnnotatedClass(Login.class)
 	        		.addAnnotatedClass(Review.class)
 	        		.addAnnotatedClass(SavedClasses.class)
+	        		.addAnnotatedClass(Class.class)
 	                .buildSessionFactory();
 	    }
 

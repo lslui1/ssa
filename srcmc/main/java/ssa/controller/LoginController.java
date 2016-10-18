@@ -32,7 +32,7 @@ public class LoginController {
 	private ILoginService loginService;
 	
 	@ResponseBody
-	@RequestMapping(value= "/login/", method = RequestMethod.POST)
+	@RequestMapping(value= "/login", method = RequestMethod.POST)
     public String loginCheck(@RequestBody Login loginData) {
 			String user_name = loginData.getUser_name();
 			System.out.println(loginData);
@@ -70,14 +70,14 @@ public class LoginController {
         return new ResponseEntity<Review>(HttpStatus.OK);
     }
 	
-	@RequestMapping(value= "/insertlogin/", method = RequestMethod.POST)
+	@RequestMapping(value= "/insertlogin", method = RequestMethod.POST)
 	public ResponseEntity<Void> insertLogin(@RequestBody Login login) {
 		loginService.insertLogin(login);
 	    return new ResponseEntity<Void>(HttpStatus.OK);    
     }
 	
 	
-	@RequestMapping(value= "/changepassword/", method = RequestMethod.PUT)
+	@RequestMapping(value= "/changepassword", method = RequestMethod.PUT)
 	public ResponseEntity<Void> changePassword(@RequestBody Login login) {
 		loginService.changePassword(login);
 		return new ResponseEntity<Void>(HttpStatus.OK);

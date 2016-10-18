@@ -1,6 +1,7 @@
 package ssa.entity;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +47,9 @@ public class Review {
 		this.class_review = class_review;
 		this.login_id = login_id;
 		this.class_id = class_id;
-		this.review_date = review_date;
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date currentDate = new java.sql.Date(calendar.getTime().getTime());
+		this.review_date = currentDate;
 		this.year = year;
 		this.semester = semester;
 		this.class_rating = class_rating;
@@ -60,7 +63,9 @@ public class Review {
 		this.class_review = class_review;
 		this.login_id = login_id;
 		this.class_id = class_id;
-		this.review_date = review_date;
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date currentDate = new java.sql.Date(calendar.getTime().getTime());
+		this.review_date = currentDate;
 		this.year = year;
 		this.semester = semester;
 		this.class_rating = class_rating;

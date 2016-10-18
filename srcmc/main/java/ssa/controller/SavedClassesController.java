@@ -43,7 +43,7 @@ public class SavedClassesController {
     }
 	
 
-	@RequestMapping(value= "/insertsavedclass/", method = RequestMethod.POST)
+	@RequestMapping(value= "/insertsavedclass", method = RequestMethod.POST)
 	public ResponseEntity<Void> insertSavedClass(@RequestBody SavedClasses savedClass) {
 		SavedClassesService.insertSavedClass(savedClass);
 	    return new ResponseEntity<Void>(HttpStatus.OK);    

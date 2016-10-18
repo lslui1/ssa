@@ -12,5 +12,7 @@ public interface IReviewDAO {
 	void insertReview(Review Review);
 	void deleteReview(Integer id);
 	void updateReview(Review Review);
+	List<Integer> getAggregateProfessorScore(int professor_id);
+	List<Integer> getAggregateProfessorScoreByClassId(int class_id);
 
 }

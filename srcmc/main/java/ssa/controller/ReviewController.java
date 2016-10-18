@@ -1,5 +1,6 @@
 package ssa.controller;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,6 +44,25 @@ public class ReviewController {
         return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
     }
 	
+	@RequestMapping(value= "/AggregateProfessorScore/{professor_id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Integer>> getAggregateProfessorScore(@PathVariable("professor_id") int professor_id) {
+        List<Integer> professorAggregate = ReviewService.getAggregateProfessorScore(professor_id);
+        return new ResponseEntity<List<Integer>>(professorAggregate, HttpStatus.OK);
+    }
+	
+	@RequestMapping(value= "/AggregateProfessorScoreByClassId/{class_id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Integer>> getAggregateProfessorScoreByClassId(@PathVariable("class_id") int class_id) {
+        List<Integer> professorAggregate = ReviewService.getAggregateProfessorScoreByClassId(class_id);
+        return new ResponseEntity<List<Integer>>(professorAggregate, HttpStatus.OK);
+    }
+	
+//	@RequestMapping(value= "/ReviewsBySubject/{class_id}", method = RequestMethod.GET)
+//    public ResponseEntity<List<Review>> getReviewsByClassId(@PathVariable("class_id") int class_id) {
+//        List<Review> review = ReviewService.getReviewsByClassId(class_id);
+//        return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
+//    }
+	
+	
 	@RequestMapping(value= "/SingleReview/{id}", method = RequestMethod.GET)
     public ResponseEntity<Review> getReviewById(@PathVariable("id") int id) {
         Review review = ReviewService.getReviewById(id);
@@ -56,16 +76,22 @@ public class ReviewController {
     }
 	
 
-	@RequestMapping(value= "/insertreview/", method = RequestMethod.POST)
+	@RequestMapping(value= "/insertreview", method = RequestMethod.POST)
 	public ResponseEntity<Void> insertReview(@RequestBody Review ReviewData) {
 		System.out.println(ReviewData);
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date currentDate = new java.sql.Date(calendar.getTime().getTime());
+		ReviewData.setReview_date(currentDate);
 		ReviewService.insertReview(ReviewData);
 	    return new ResponseEntity<Void>(HttpStatus.OK);    
     }
 	
 	
-	@RequestMapping(value= "/updatereview/", method = RequestMethod.PUT)
+	@RequestMapping(value= "/updatereview", method = RequestMethod.PUT)
 	public ResponseEntity<Void> updateReview(@RequestBody Review ReviewData) {
+		Calendar calendar = Calendar.getInstance();
+		java.sql.Date currentDate = new java.sql.Date(calendar.getTime().getTime());
+		ReviewData.setReview_date(currentDate);
 		ReviewService.updateReview(ReviewData);
 		return new ResponseEntity<Void>(HttpStatus.OK);
     }

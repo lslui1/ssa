@@ -12,4 +12,7 @@ public interface IReviewService {
 	void deleteReview(Integer id);
 	void insertReview(Review Review);
 	void updateReview(Review Review);
+	List<Integer> getAggregateProfessorScore(int professor_id);
+	List<Integer> getAggregateProfessorScoreByClassId(int class_id);
+
 }
