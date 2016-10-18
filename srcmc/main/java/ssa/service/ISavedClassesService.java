@@ -8,6 +8,7 @@ public interface ISavedClassesService {
 
 	List<SavedClasses> getSavedClassesById(int login_id);
 	SavedClasses getSavedClassById(int login_id, int class_id);
-	void deleteSavedClasses(SavedClasses savedClasses);
-	void insertSavedClasses(SavedClasses savedClasses);
+	SavedClasses getSavedClassByDatabaseId(int id);
+	void deleteSavedClass(int id);
+	void insertSavedClass(SavedClasses savedClass);
 }

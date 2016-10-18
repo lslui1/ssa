@@ -20,10 +20,16 @@ public class ReviewDAO implements IReviewDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-	public List<Review> getReviewsById(int class_id) {
+	public List<Review> getReviewsByClassId(int class_id) {
 		 String hql = "FROM Review where class_id = '" + class_id + "'";
 	     return (List<Review>) hibernateTemplate.find(hql);
 	}
+    
+	public List<Review> getReviewsByLoginId(int login_id) {
+		 String hql = "FROM Review where login_id = '" + login_id + "'";
+	     return (List<Review>) hibernateTemplate.find(hql);
+	}
+    
     
     
     public Review getReviewById(int id) {
@@ -38,8 +44,9 @@ public class ReviewDAO implements IReviewDAO {
 //	}
 	
 	@Override
-	public void deleteReview(int id) {
-	    Review review = getReviewById(id);
+	public void deleteReview(Integer id) {
+		Review review = getReviewById(id);
+		System.out.println(review);
 	    hibernateTemplate.delete(review);
 	}
 

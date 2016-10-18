@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
-import ssa.entity.Login;
 import ssa.entity.Review;
 import ssa.service.IReviewService;
 
@@ -32,9 +31,15 @@ public class ReviewController {
 	@Autowired
 	private IReviewService ReviewService;
 	
-	@RequestMapping(value= "/Review/{class_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Review>> getReviewsById(@PathVariable("class_id") int class_id) {
-        List<Review> review = ReviewService.getReviewsById(class_id);
+	@RequestMapping(value= "/ReviewsByClass/{class_id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Review>> getReviewsByClassId(@PathVariable("class_id") int class_id) {
+        List<Review> review = ReviewService.getReviewsByClassId(class_id);
+        return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
+    }
+	
+	@RequestMapping(value= "/ReviewsByLogin/{login_id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Review>> getReviewsByLoginId(@PathVariable("login_id") int login_id) {
+        List<Review> review = ReviewService.getReviewsByLoginId(login_id);
         return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
     }
 	
@@ -44,9 +49,10 @@ public class ReviewController {
         return new ResponseEntity<Review>(review, HttpStatus.OK);
     }
 	
-	@RequestMapping(value= "/deletereview/{id}", method = RequestMethod.DELETE)
-    public void deleteReview(@PathVariable("id") int id) {
+	@RequestMapping(value= "/deletereview/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Review> deleteReview(@PathVariable("id") Integer id) {
         ReviewService.deleteReview(id);
+        return new ResponseEntity<Review>(HttpStatus.OK);
     }
 	
 

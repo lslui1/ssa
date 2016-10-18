@@ -21,13 +21,18 @@ public class LoginService implements ILoginService {
 		}
 	
 	@Override
+	public Login getLoginByDatabaseId(Integer id) {
+		return loginDAO.getLoginByDatabaseId(id);
+	}
+	
+	@Override
 	public boolean doesLoginExist(String user_name) {
 		return loginDAO.doesLoginExist(user_name);
 	}
 	
 	@Override
-	public void deleteLogin(Login login) {
-		loginDAO.deleteLogin(login);
+	public void deleteLogin(Integer id) {
+		loginDAO.deleteLogin(id);
 	}
 	
 	@Override

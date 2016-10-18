@@ -32,9 +32,16 @@ public class LoginDAO implements ILoginDAO {
 		 String hql = "FROM Login where user_name = '" + user_name + "'";
 	     return (Login) hibernateTemplate.find(hql).get(0);
 	}
+    
+    @Override
+ 	public Login getLoginByDatabaseId(Integer id) {
+ 		 String hql = "FROM Login where id = '" + id+ "'";
+ 	     return (Login) hibernateTemplate.find(hql).get(0);
+ 	}
 	
 	@Override
-	public void deleteLogin(Login login) {
+	public void deleteLogin(Integer id) {
+		Login login = getLoginByDatabaseId(id);
 	    hibernateTemplate.delete(login);
 	}
 	

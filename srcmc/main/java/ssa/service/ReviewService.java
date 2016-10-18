@@ -16,9 +16,15 @@ public class ReviewService implements IReviewService {
 
 
 	@Override
-	public List<Review> getReviewsById(int class_id) {
-		return reviewDAO.getReviewsById(class_id);
+	public List<Review> getReviewsByClassId(int class_id) {
+		return reviewDAO.getReviewsByClassId(class_id);
 		}
+	
+	@Override
+	public List<Review> getReviewsByLoginId(int login_id) {
+		return reviewDAO.getReviewsByLoginId(login_id);
+	}
+	
 	
 	@Override
 	public Review getReviewById(int id) {
@@ -26,7 +32,7 @@ public class ReviewService implements IReviewService {
 		}
 	
 	@Override
-	public void deleteReview(int id) {
+	public void deleteReview(Integer id) {
 		reviewDAO.deleteReview(id);
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import ssa.entity.Review;
 import ssa.entity.SavedClasses;
 
 @Transactional
@@ -29,16 +30,23 @@ public class SavedClassesDAO implements ISavedClassesDAO {
 		 String hql = "FROM SavedClasses where login_id = '" + login_id + "' and class_id = '" + class_id + '"';
 	     return (SavedClasses) hibernateTemplate.find(hql).get(0);
 	}
+    
+    @Override
+    public SavedClasses getSavedClassByDatabaseId(int id) {
+		 String hql = "FROM SavedClasses where id = '" + id + "'";
+	     return (SavedClasses) hibernateTemplate.find(hql).get(0);
+	}
    
 
 	@Override
-	public void deleteSavedClasses(SavedClasses savedClasses) {
-	    hibernateTemplate.delete(savedClasses);
+	public void deleteSavedClass(int id) {
+		SavedClasses savedClass = getSavedClassByDatabaseId(id);
+	    hibernateTemplate.delete(savedClass);
 	}
 	
 	@Override
-	public void insertSavedClasses(SavedClasses savedClasses) {
-	    hibernateTemplate.save(savedClasses);
+	public void insertSavedClass(SavedClasses savedClass) {
+	    hibernateTemplate.save(savedClass);
 	}
 }
 

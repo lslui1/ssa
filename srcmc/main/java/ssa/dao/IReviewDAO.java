@@ -6,10 +6,11 @@ import ssa.entity.Review;
 
 public interface IReviewDAO {
 	
-	List<Review> getReviewsById(int class_id);
+	List<Review> getReviewsByClassId(int class_id);
+	List<Review> getReviewsByLoginId(int login_id);
 	Review getReviewById(int id);
 	void insertReview(Review Review);
-	void deleteReview(int id);
+	void deleteReview(Integer id);
 	void updateReview(Review Review);
 
 }

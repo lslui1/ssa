@@ -26,12 +26,17 @@ public class SavedClassesService implements ISavedClassesService {
 		}
 	
 	@Override
-	public void deleteSavedClasses(SavedClasses savedClasses) {
-		savedClassesDAO.deleteSavedClasses(savedClasses);
+	public SavedClasses getSavedClassByDatabaseId(int id) {
+		return savedClassesDAO.getSavedClassByDatabaseId(id);
+		}
+	
+	@Override
+	public void deleteSavedClass(int id) {
+		savedClassesDAO.deleteSavedClass(id);
 	}
 	
 	@Override
-	public void insertSavedClasses(SavedClasses savedClasses) {
-		savedClassesDAO.insertSavedClasses(savedClasses);
+	public void insertSavedClass(SavedClasses savedClass) {
+		savedClassesDAO.insertSavedClass(savedClass);
 	}
 }
