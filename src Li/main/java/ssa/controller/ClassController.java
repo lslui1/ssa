@@ -1,6 +1,7 @@
 package ssa.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -19,7 +20,10 @@ import ssa.entity.Professor;
 import ssa.entity.University;
 import ssa.service.IUniversityService;
 import ssa.entity.CombinedClass;
+import ssa.entity.CombinedReview;
 import ssa.service.IProfessorService;
+import ssa.service.IReviewService;
+import ssa.entity.Review;
 
 @CrossOrigin
 @RestController
@@ -35,6 +39,45 @@ public class ClassController {
 	
 	@Autowired
 	private IUniversityService universityService;
+	
+	@Autowired
+	private IReviewService reviewService;
+	
+	@RequestMapping(value= "/combinedreviewsbyloginid/{loginid}", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<CombinedReview>> getCombinedReviewsById(@PathVariable("loginid") Integer loginId) {
+		ArrayList<CombinedReview> combinedreviews = new ArrayList<CombinedReview>();
+
+		List<Review> reviews = reviewService.getReviewsByLoginId(loginId);
+		
+		for (Review aReview : reviews) {
+			Class aClass = classService.getClassById(aReview.getClass_id());
+			Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());			
+			University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
+			
+			CombinedReview aCombinedReview = new CombinedReview();
+			aCombinedReview.setReview_id(aReview.getId());
+			aCombinedReview.setLogin_id(aReview.getLogin_id());
+			aCombinedReview.setReview_date(aReview.getReview_date());
+			aCombinedReview.setProfessor_review(aReview.getProfessor_review());
+			aCombinedReview.setClass_review(aReview.getClass_review());
+			aCombinedReview.setClass_rating(aReview.getClass_rating());
+			aCombinedReview.setProfessor_rating(aReview.getProfessor_rating());
+			aCombinedReview.setClass_id(aClass.getId());
+			aCombinedReview.setName(aClass.getName());
+			aCombinedReview.setSection(aClass.getSection());
+			aCombinedReview.setUniversity_id(aUniversity.getId());
+			aCombinedReview.setUniversity_name(aUniversity.getName());
+			aCombinedReview.setSemester(aReview.getSemester());
+			aCombinedReview.setYear(aReview.getYear());
+			aCombinedReview.setProfessor_id(aProfessor.getId());
+			aCombinedReview.setProfessor_fname(aProfessor.getFirst_name());
+			aCombinedReview.setProfessor_lname(aProfessor.getLast_name());			
+			combinedreviews.add(aCombinedReview);
+		}
+        return new ResponseEntity<ArrayList<CombinedReview>>(combinedreviews, HttpStatus.OK);
+	}
+
+	
 	
 	@RequestMapping(value= "/combinedclasses", method = RequestMethod.GET)
     public ResponseEntity<ArrayList<CombinedClass>> getAllCombinedClasses() {
