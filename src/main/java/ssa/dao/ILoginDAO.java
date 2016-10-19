@@ -8,7 +8,8 @@ public interface ILoginDAO {
 	
 	boolean doesLoginExist(String user_name);
 	Login getLoginById(String user_name);
-	void deleteLogin(Login login);
+	Login getLoginByDatabaseId(Integer id);
+	void deleteLogin(Integer id);
 	void insertLogin(Login login);
 	void changePassword(Login login);
 

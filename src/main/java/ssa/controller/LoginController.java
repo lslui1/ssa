@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ssa.entity.Login;
+import ssa.entity.Review;
 import ssa.service.ILoginService;
 
 @CrossOrigin
@@ -26,22 +27,29 @@ import ssa.service.ILoginService;
 @RequestMapping("/")
 public class LoginController {
 	
+	
 	@Autowired
 	private ILoginService loginService;
 	
-	@RequestMapping(value= "/login/", method = RequestMethod.POST)
-    public ResponseEntity<Integer> loginCheck(Login loginData) {
+	@ResponseBody
+	@RequestMapping(value= "/login", method = RequestMethod.POST)
+    public String loginCheck(@RequestBody Login loginData) {
 			String user_name = loginData.getUser_name();
+			System.out.println(loginData);
+			
 			String password = loginData.getPassword();
 			System.out.println(user_name + " " + password);
     		Integer loginCode = 3;
 			boolean loginCheck = false;
 			loginCheck = loginService.doesLoginExist(user_name);
+			System.out.println(loginService.doesLoginExist(user_name));
 			if (loginCheck == true) {
 				Login login = loginService.getLoginById(user_name);
+				System.out.println(loginService.getLoginById(user_name));
 					if (login.getPassword().equals(password)) {
 							//Successfully logs in and passes user's ID
 							loginCode = login.getId();
+							System.out.println(loginCode + "working id");
 					}
 					else {
 						//Wrong password code
@@ -52,28 +60,27 @@ public class LoginController {
 				//Invalid User ID code
 				loginCode = 3;
 			}
-	       	return new ResponseEntity<Integer>(loginCode, HttpStatus.OK);
+	       	return loginCode.toString();
 	}
 	
 	
+	@RequestMapping(value= "/deletelogin/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Review> deleteLogin(@PathVariable("id") Integer id) {
+        loginService.deleteLogin(id);
+        return new ResponseEntity<Review>(HttpStatus.OK);
+    }
 	
-	@RequestMapping(value= "/deletelogin/{user_name}", method = RequestMethod.DELETE)
-    public ResponseEntity<Login> deleteStudent(@PathVariable("user_name") String user_name) {
-		Login login = loginService.getLoginById(user_name);
-        loginService.deleteLogin(login);
-        return new ResponseEntity<Login>(HttpStatus.OK);
+	@RequestMapping(value= "/insertlogin", method = RequestMethod.POST)
+	public ResponseEntity<Void> insertLogin(@RequestBody Login login) {
+		loginService.insertLogin(login);
+	    return new ResponseEntity<Void>(HttpStatus.OK);    
     }
 	
 	
-	@RequestMapping(value= "/login/insert/", method = RequestMethod.POST)
-	public void insertLogin(Login loginData)  {
-				Login login = new Login(loginData.getPassword(), loginData.getUser_name());
-	       		loginService.insertLogin(login);
-    }
-	
-	@RequestMapping(value= "/login/changepassword/", method = RequestMethod.PUT)
-	public void changePassword(Login loginData)  {
-	       		loginService.changePassword(loginData);
+	@RequestMapping(value= "/changepassword", method = RequestMethod.PUT)
+	public ResponseEntity<Void> changePassword(@RequestBody Login login) {
+		loginService.changePassword(login);
+		return new ResponseEntity<Void>(HttpStatus.OK);
     }
 	
 }

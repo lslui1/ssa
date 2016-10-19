@@ -23,6 +23,12 @@ public class Login {
 	
 	public Login(){}
 	
+	public Login(int id, String password, String user_name) {
+		this.id = id;
+		this.password = password;
+		this.user_name = user_name;
+	}
+	
 	public Login(String password, String user_name) {
 		this.password = password;
 		this.user_name = user_name;

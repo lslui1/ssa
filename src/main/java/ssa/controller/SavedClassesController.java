@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import ssa.entity.Review;
 import ssa.entity.SavedClasses;
+import ssa.entity.CombinedClass;
 import ssa.service.ISavedClassesService;
 
 @CrossOrigin
@@ -30,22 +32,22 @@ public class SavedClassesController {
 	private ISavedClassesService SavedClassesService;
 	
 	@RequestMapping(value= "/savedclasses/{login_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<SavedClasses>> getSavedClassesById(@PathVariable("login_id") int login_id) {
-        List<SavedClasses> savedClasses = SavedClassesService.getSavedClassesById(login_id);
-        return new ResponseEntity<List<SavedClasses>>(savedClasses, HttpStatus.OK);
+    public ResponseEntity<List<CombinedClass>> getSavedClassesById(@PathVariable("login_id") int login_id) {
+        List<CombinedClass> combinedClasses = SavedClassesService.getSavedClassesById(login_id);
+        return new ResponseEntity<List<CombinedClass>>(combinedClasses, HttpStatus.OK);
     }
 	
-	@RequestMapping(value= "/deleteSavedClasses/", method = RequestMethod.DELETE)
-    public ResponseEntity<SavedClasses> deleteStudent(SavedClasses SavedClassesData) {
-		SavedClasses SavedClasses = SavedClassesService.getSavedClassById(SavedClassesData.getLogin_id(), SavedClassesData.getClass_id());
-        SavedClassesService.deleteSavedClasses(SavedClasses);
+	@RequestMapping(value= "/deletesavedclass/{id}", method = RequestMethod.GET)
+    public ResponseEntity<SavedClasses> deleteReview(@PathVariable("id") int id) {
+        SavedClassesService.deleteSavedClass(id);
         return new ResponseEntity<SavedClasses>(HttpStatus.OK);
     }
 	
-	@RequestMapping(value= "/SavedClasses/insert/", method = RequestMethod.POST)
-	public void insertSavedClasses(SavedClasses SavedClassesData)  {
-				SavedClasses SavedClasses = new SavedClasses(SavedClassesData.getLogin_id(), SavedClassesData.getClass_id());
-	       		SavedClassesService.insertSavedClasses(SavedClasses);
+
+	@RequestMapping(value= "/insertsavedclass", method = RequestMethod.POST)
+	public ResponseEntity<Void> insertSavedClass(@RequestBody SavedClasses savedClass) {
+		SavedClassesService.insertSavedClass(savedClass);
+	    return new ResponseEntity<Void>(HttpStatus.OK);    
     }
 	
 }
