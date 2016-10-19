@@ -340,8 +340,10 @@ INSERT login(password, user_name) VALUES('password', 'user49');
 
 -- sample data: saved classes
 INSERT saved_classes(login_id, class_id) VALUES(1,1);
-INSERT saved_classes(login_id, class_id) VALUES(1,10);
 INSERT saved_classes(login_id, class_id) VALUES(1,18);
+INSERT saved_classes(login_id, class_id) VALUES(1,27);
+INSERT saved_classes(login_id, class_id) VALUES(1,10);
+INSERT saved_classes(login_id, class_id) VALUES(1,37);
 INSERT saved_classes(login_id, class_id) VALUES(2,1);
 INSERT saved_classes(login_id, class_id) VALUES(2,27);
 INSERT saved_classes(login_id, class_id) VALUES(2,31);
