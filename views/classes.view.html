@@ -39,6 +39,15 @@
 				<td>
 				<button>Actions</button>
 				</td>
+				<td>
+				<button>Class Rating</button>
+				</td>
+				<td>
+				<button>Professor Rating</button>
+				</td>
+				<td>
+				<button># of Reviews</button>
+				</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -49,6 +58,9 @@
 			<td ng-bind="object.professor_fname"></td>
 			<td ng-bind="object.professor_lname"></td>
 			<td ng-click="class.addToMySavedClasses(class.loginid, object.id)"><button>Add This Class!</button></td>
+			<td ng-bind="object.aggregateClassRating"></td>
+			<td ng-bind="object.aggregateProfessorRating"></td>
+			<td ng-bind="object.aggregateCount"></td>
 		</tr>
 		</tbody>
 	</table>
