@@ -6,15 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ssa.dao.IReviewDAO;
+import ssa.dao.IProfessorDAO;
 import ssa.entity.Review;
 import ssa.entity.Class;
 import ssa.entity.RatingData;
+import ssa.entity.Professor;
 
 @Service
 public class ReviewService implements IReviewService {
 	
 	@Autowired
 	private IReviewDAO reviewDAO;
+	private IProfessorDAO professorDAO;
 
 
 	@Override
@@ -94,5 +97,10 @@ public class ReviewService implements IReviewService {
 	@Override
 	public RatingData getProfessorRatingDataByClassId(int class_id) {
 		return reviewDAO.getProfessorRatingDataByClassId(class_id);
+	}
+	
+	@Override
+	public Professor getProfessorByProfessorLastName(String last_name) {
+		return reviewDAO.getProfessorByProfessorLastName(last_name);
 	}
 }

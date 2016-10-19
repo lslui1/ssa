@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ssa.dao.ISavedClassesDAO;
 import ssa.entity.SavedClasses;
-
+import ssa.entity.CombinedClass;
 @Service
 public class SavedClassesService implements ISavedClassesService {
 	
@@ -16,7 +16,7 @@ public class SavedClassesService implements ISavedClassesService {
 
 
 	@Override
-	public List<SavedClasses> getSavedClassesById(int login_id) {
+	public List<CombinedClass> getSavedClassesById(int login_id) {
 		return savedClassesDAO.getSavedClassesById(login_id);
 		}
 	

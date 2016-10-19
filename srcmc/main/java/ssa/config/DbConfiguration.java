@@ -16,6 +16,8 @@ import ssa.entity.Login;
 import ssa.entity.Review;
 import ssa.entity.SavedClasses;
 import ssa.entity.Class;
+import ssa.entity.Professor;
+import ssa.entity.University;
 
 @Configuration
 @EnableTransactionManagement
@@ -43,6 +45,8 @@ public class DbConfiguration {
 	        		.addAnnotatedClass(Review.class)
 	        		.addAnnotatedClass(SavedClasses.class)
 	        		.addAnnotatedClass(Class.class)
+	        		.addAnnotatedClass(Professor.class)
+	        		.addAnnotatedClass(University.class)
 	                .buildSessionFactory();
 	    }
 

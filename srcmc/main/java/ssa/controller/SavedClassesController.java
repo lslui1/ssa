@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ssa.entity.Review;
 import ssa.entity.SavedClasses;
+import ssa.entity.CombinedClass;
 import ssa.service.ISavedClassesService;
 
 @CrossOrigin
@@ -31,9 +32,9 @@ public class SavedClassesController {
 	private ISavedClassesService SavedClassesService;
 	
 	@RequestMapping(value= "/savedclasses/{login_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<SavedClasses>> getSavedClassesById(@PathVariable("login_id") int login_id) {
-        List<SavedClasses> savedClasses = SavedClassesService.getSavedClassesById(login_id);
-        return new ResponseEntity<List<SavedClasses>>(savedClasses, HttpStatus.OK);
+    public ResponseEntity<List<CombinedClass>> getSavedClassesById(@PathVariable("login_id") int login_id) {
+        List<CombinedClass> combinedClasses = SavedClassesService.getSavedClassesById(login_id);
+        return new ResponseEntity<List<CombinedClass>>(combinedClasses, HttpStatus.OK);
     }
 	
 	@RequestMapping(value= "/deletesavedclass/{id}", method = RequestMethod.GET)

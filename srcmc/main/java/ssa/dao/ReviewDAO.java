@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ssa.entity.Review;
 import ssa.entity.Class;
 import ssa.entity.RatingData;
+import ssa.entity.Professor;
 
 @Transactional
 @Repository
@@ -32,6 +33,20 @@ public class ReviewDAO implements IReviewDAO {
 		 String hql = "FROM Review where login_id = '" + login_id + "'";
 	     return (List<Review>) hibernateTemplate.find(hql);
 	}
+	
+	
+	
+	// PROFESSOR SEARCH METHOD, MOVE TO PROFESSOR DAO EVENTUALLY //
+	
+	
+	public Professor getProfessorByProfessorLastName(String last_name) {
+		 String hql = "FROM Professor where last_name = '" + last_name + "'";
+	     return (Professor) hibernateTemplate.find(hql).get(0);
+	}
+	
+	
+	
+	
 	
 	
 	public double getAggregateClassRatingByClassId(int class_id) {
@@ -189,12 +204,7 @@ public class ReviewDAO implements IReviewDAO {
 		 String hql = "FROM Review where id = '" + id + "'";
 	     return (Review) hibernateTemplate.find(hql).get(0);
 	}
-    
-//    @Override
-//	public List<Review> getReviewsByProfessor(int class_id) {
-//		 String hql = "FROM Review where class_id = '" + class_id + "'";
-//	     return (List<Review>) hibernateTemplate.find(hql);
-//	}
+
 	
 	@Override
 	public void deleteReview(Integer id) {

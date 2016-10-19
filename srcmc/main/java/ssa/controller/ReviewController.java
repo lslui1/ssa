@@ -1,5 +1,6 @@
 package ssa.controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ssa.entity.RatingData;
 import ssa.entity.Review;
+import ssa.entity.Class;
+import ssa.entity.CombinedClass;
+import ssa.entity.Professor;
 import ssa.service.IReviewService;
 
 @CrossOrigin
@@ -112,6 +116,11 @@ public class ReviewController {
 //        return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
 //    }
 	
+	@RequestMapping(value="/SearchProfessorByLastName/{last_name}", method = RequestMethod.GET)
+	public ResponseEntity<Professor> getProfessorByProfessorLastName(@PathVariable("last_name") String last_name) {
+		Professor professor = ReviewService.getProfessorByProfessorLastName(last_name);
+		return new ResponseEntity<Professor>(professor, HttpStatus.OK);
+	}
 	
 	@RequestMapping(value= "/SingleReview/{id}", method = RequestMethod.GET)
     public ResponseEntity<Review> getReviewById(@PathVariable("id") int id) {
@@ -145,6 +154,8 @@ public class ReviewController {
 		ReviewService.updateReview(ReviewData);
 		return new ResponseEntity<Void>(HttpStatus.OK);
     }
+	
+
 
 	
 }
