@@ -14,14 +14,14 @@ self.loginid = sessionStorage.globaluserid;
 self.PROFfname = sessionStorage.PROFESSORfname
 self.PROFlname = sessionStorage.PROFESSORlname
 
-
+if(self.loginid != undefined) {
 $http.get('http://localhost:8080/savedclasses/' + self.loginid)
       .then(function(resp){
         self.myclasses = resp.data;
-        
+
       },function(err) {
 
-      });
+      })};
 
 
 
@@ -37,12 +37,13 @@ $http.get('http://localhost:8080/savedclasses/' + self.loginid)
         		});
 
 
+if(self.pathprofid != undefined) {
             $http.get('http://localhost:8080/classesbyprof/' + self.pathprofid)
                       .then(function(resp){
                         self.profclasses = resp.data;
                       },function(err) {
 
-                      });
+                      })};
 
 
   $http.get('http://localhost:8080/classes')
@@ -72,6 +73,35 @@ self.saveClassId = function(classId, className, classSection, classFname, classL
   sessionStorage.setItem("reviewClassLname", classLname)
 }
 
+self.addToMySavedClasses = function(loginId, classId) {
+  var addtheseclasses = {};
+  addtheseclasses.login_id = loginId;
+  addtheseclasses.class_id = classId;
+  console.log(addtheseclasses.login_id)
+  console.log(addtheseclasses.class_id)
+
+  $http({
+    method: 'POST',
+    url: 'http://localhost:8080/insertsavedclass',
+    data: addtheseclasses
+  })
+    .then(function(resp) {
+      console.log("SUCCESS: " + resp)
+    }, function(err) {
+      console.log("FAILURE: " + resp)
+    });
+
+}
+
+
+self.deletesavedclass = function(savedclassid) {
+  $http.get('http://localhost:8080/deletesavedclass/' + savedclassid)
+        .then(function(resp){
+          $window.location.reload();
+        },function(err) {
+
+        })
+}
 
   self.addClass = function(subject, section, pid, uid) {
     var myClass = {};

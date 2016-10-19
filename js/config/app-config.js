@@ -25,8 +25,8 @@ angular
 			templateUrl: 'views/submittedprofessor.view.html',
 		}).when('/submittedreview', {
 			templateUrl: 'views/submittedreview.view.html',
-		}).when('/professors', {
-			templateUrl: 'views/professors.view.html',
+		}).when('/addprofessor', {
+			templateUrl: 'views/addprofessor.view.html',
       controller: 'ProfessorCtrl'
 		}).when('/professors', {
 			templateUrl: 'views/professors.view.html',
@@ -45,6 +45,9 @@ angular
       controller: 'ReviewCtrl'
 		}).when('/editingmyreview', {
 			templateUrl: 'views/editingmyreview.view.html',
+      controller: 'ReviewCtrl'
+		}).when('/editsuccessful', {
+			templateUrl: 'views/submittededitreview.view.html',
       controller: 'ReviewCtrl'
 		}).when('/myclasses', {
 			templateUrl: 'views/myclasses.view.html',

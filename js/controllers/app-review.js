@@ -15,30 +15,33 @@ angular
   self.showClassFname = sessionStorage.reviewClassFname
   self.showClassLname = sessionStorage.reviewClassLname
 
+if(self.currentClassId != undefined) {
   $http.get('http://localhost:8080/ReviewsByClass/' + self.currentClassId)
       			.then(function(resp){
         			self.reviews = resp.data;
         		},function(err) {
 
-        		});
+        		})};
 
 
+if(self.loginId != undefined) {
             $http.get('http://localhost:8080/combinedreviewsbyloginid/' + self.loginId)
                 			.then(function(resp){
                   			self.mysavedreviews = resp.data;
                   		},function(err) {
 
-                  		});
+                  		})};
 
 
 
+if(self.myReviewId != undefined) {
                       $http.get('http://localhost:8080/SingleReview/' + self.myReviewId)
                           			.then(function(resp){
                             			self.singlereview = resp.data;
                                   console.log(self.singlereview)
                             		},function(err) {
 
-                            		});
+                            		})};
 
 self.saveReviewId = function(reviewid) {
   sessionStorage.setItem("myreviewid", reviewid)
@@ -69,7 +72,7 @@ self.editMyReview = function(loginid, id, classid, classReview, profReview, year
   })
     .then(function(resp) {
       console.log("SUCCESS: " + resp)
-      //$window.location.href = '/#/submittedclass';
+      $window.location.href = '/#/editsuccessful';
     }, function(err) {
       console.log("FAILURE: " + err)
     });

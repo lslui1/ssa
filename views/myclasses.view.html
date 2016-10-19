@@ -35,6 +35,9 @@
 				<td>
 				<button ng-click="class.reverseList()">Prof Last-Name</button>
 				</td>
+				<td>
+				<button>Actions</button>
+				</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -44,6 +47,7 @@
 			<td ng-bind="object.section"></td>
 			<td ng-bind="object.professor_fname"></td>
 			<td ng-bind="object.professor_lname"></td>
+			<td ng-click="class.deletesavedclass(object.id)"><button>Delete</button></td>
 		</tr>
 		</tbody>
 	</table>
