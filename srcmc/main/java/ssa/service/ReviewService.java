@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ssa.dao.IReviewDAO;
 import ssa.entity.Review;
 import ssa.entity.Class;
+import ssa.entity.RatingData;
 
 @Service
 public class ReviewService implements IReviewService {
@@ -67,5 +68,31 @@ public class ReviewService implements IReviewService {
 		return reviewDAO.getAggregateClassRatingByClassId(class_id);
 	}
 
-
+	@Override
+	public int getRatingCountByClassId(int class_id) {
+		return reviewDAO.getRatingCountByClassId(class_id);
+	}
+	@Override
+	public int getRatingCountByProfessorId(int professor_id) {
+		return reviewDAO.getRatingCountByProfessorId(professor_id);
+	}
+	
+	
+	
+	@Override
+	public RatingData getClassRatingDataByProfessorId(int professor_id) {
+		return reviewDAO.getClassRatingDataByProfessorId(professor_id);
+	}
+	@Override
+	public RatingData getProfessorRatingDataByProfessorId(int professor_id) {
+		return reviewDAO.getProfessorRatingDataByProfessorId(professor_id);
+	}
+	@Override
+	public RatingData getClassRatingDataByClassId(int class_id) {
+		return reviewDAO.getClassRatingDataByClassId(class_id);
+	}
+	@Override
+	public RatingData getProfessorRatingDataByClassId(int class_id) {
+		return reviewDAO.getProfessorRatingDataByClassId(class_id);
+	}
 }

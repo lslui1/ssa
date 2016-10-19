@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ssa.entity.Review;
 import ssa.entity.Class;
+import ssa.entity.RatingData;
 
 @Transactional
 @Repository
@@ -33,7 +34,6 @@ public class ReviewDAO implements IReviewDAO {
 	}
 	
 	
-	
 	public double getAggregateClassRatingByClassId(int class_id) {
 		String hql = "FROM Review where class_id = '" + class_id + "'";
 		List<Review> reviews = (List<Review>) hibernateTemplate.find(hql);
@@ -45,12 +45,11 @@ public class ReviewDAO implements IReviewDAO {
 			total += tempReview.getClass_rating();
 			}
 		total = total/reviews.size();
-		total = total * 100;
-		total = Math.round(total);
-		total = total/100;
-		return total;
+   	 	total = total*100;
+   	 	total = Math.round(total);
+   	 	total = total/100;
+   	 	return total;
 	}
-	
 	
 	public double getAggregateProfessorRatingByClassId(int class_id) {
 		String hql = "FROM Review where class_id = '" + class_id + "'";
@@ -63,71 +62,126 @@ public class ReviewDAO implements IReviewDAO {
 			total += tempReview.getProfessor_rating();
 			}
 		total = total/reviews.size();
-		total = total * 100;
-		total = Math.round(total);
-		total = total/100;
-		return total;
+   	 	total = total*100;
+   	 	total = Math.round(total);
+   	 	total = total/100;
+   	 	return total;
 	}
 	
+	public int getRatingCountByClassId(int class_id) {
+		String hql = "FROM Review where class_id = '" + class_id + "'";
+		List<Review> reviews = (List<Review>) hibernateTemplate.find(hql);
+		int count = reviews.size();
+		return count;
+	}
 	
 	public double getAggregateClassRatingByProfessorId(int professor_id) {
 		 String hql = "FROM Class where professor_id = '" + professor_id + "'";
 		 List<Class> classList = new ArrayList<Class>();
 	     classList = (List<Class>) hibernateTemplate.find(hql);
-	     System.out.println(classList);
 	     List<Review> reviewList = new ArrayList<Review>();
 	     List<Integer> ratingsList = new ArrayList<Integer>();
+	     int reviewListSize = 0;
 	     double total = 0.0;
 	     for (int i=0; i<classList.size(); i++) {
 	    	 Class tempClass = classList.get(i);
 	    	 int classId = tempClass.getId();
-	    	 System.out.println(classId);
 	    	 String hql2 = "FROM Review where class_id = '" + classId + "'";
 	    	 reviewList = (List<Review>) hibernateTemplate.find(hql2);
+	    	 reviewListSize += reviewList.size();
 	    	 for (int j=0; j<reviewList.size(); j++) {
 	    		 Review tempReview = reviewList.get(j);
 	    		 int classRating = tempReview.getClass_rating();
 	    		 total += classRating;
 	    	 }
 	     }
-	     System.out.println(total);
-	     System.out.println(reviewList.size());
-    	 total = total/reviewList.size();
+    	 total = total/reviewListSize;
     	 total = total/classList.size();
- 		total = total * 100;
- 		total = Math.round(total);
- 		total = total/100;
-	     return total;
+    	 total = total*100;
+    	 total = Math.round(total);
+    	 total = total/100;
+    	 return total;
 	}
 	
 	public double getAggregateProfessorRatingByProfessorId(int professor_id) {
 		 String hql = "FROM Class where professor_id = '" + professor_id + "'";
 		 List<Class> classList = new ArrayList<Class>();
 	     classList = (List<Class>) hibernateTemplate.find(hql);
-	     System.out.println(classList);
 	     List<Review> reviewList = new ArrayList<Review>();
 	     double total = 0.0;
+	     int reviewListSize=0;
 	     for (int i=0; i<classList.size(); i++) {
 	    	 Class tempClass = classList.get(i);
 	    	 int classId = tempClass.getId();
-	    	 System.out.println(classId);
 	    	 String hql2 = "FROM Review where class_id = '" + classId + "'";
 	    	 reviewList = (List<Review>) hibernateTemplate.find(hql2);
+	    	 reviewListSize += reviewList.size();
 	    	 for (int j=0; j<reviewList.size(); j++) {
 	    		 Review tempReview = reviewList.get(j);
 	    		 int professorRating = tempReview.getProfessor_rating();
-	    		 System.out.println(professorRating);
 	    		 total += professorRating;
 	    	 }
 	     }
-	     System.out.println(total);
-	     System.out.println(reviewList.size());
-	     total = total/reviewList.size();
-			total = total * 100;
-			total = Math.round(total);
-			total = total/100;
-	     return total;
+	     total = total/reviewListSize;
+    	 total = total*100;
+    	 total = Math.round(total);
+    	 total = total/100;
+    	 return total;
 	}
+	
+	
+	public int getRatingCountByProfessorId(int professor_id) {
+		 String hql = "FROM Class where professor_id = '" + professor_id + "'";
+		 List<Class> classList = new ArrayList<Class>();
+	     classList = (List<Class>) hibernateTemplate.find(hql);
+	     List<Review> reviewList = new ArrayList<Review>();
+	     int count = 0;
+	     for (int i=0; i<classList.size(); i++) {
+	    	 Class tempClass = classList.get(i);
+	    	 int classId = tempClass.getId();
+	    	 String hql2 = "FROM Review where class_id = '" + classId + "'";
+	    	 reviewList = (List<Review>) hibernateTemplate.find(hql2);
+	    	 count += reviewList.size();
+	     }
+	     return count;
+	}
+	
+	
+	
+	
+	
+	public RatingData getClassRatingDataByProfessorId(int professor_id) {
+		RatingData ratingData = new RatingData();
+		ratingData.setAverage(getAggregateClassRatingByProfessorId(professor_id));
+		ratingData.setCount(getRatingCountByProfessorId(professor_id));
+		return ratingData;
+	}
+	
+	public RatingData getProfessorRatingDataByProfessorId(int professor_id) {
+		RatingData ratingData = new RatingData();
+		ratingData.setAverage(getAggregateProfessorRatingByProfessorId(professor_id));
+		ratingData.setCount(getRatingCountByProfessorId(professor_id));
+		return ratingData;
+	}
+	
+	public RatingData getClassRatingDataByClassId(int class_id) {
+		RatingData ratingData = new RatingData();
+		ratingData.setAverage(getAggregateClassRatingByClassId(class_id));
+		ratingData.setCount(getRatingCountByClassId(class_id));
+		return ratingData;
+	}
+	
+	public RatingData getProfessorRatingDataByClassId(int class_id) {
+		RatingData ratingData = new RatingData();
+		ratingData.setAverage(getAggregateProfessorRatingByClassId(class_id));
+		ratingData.setCount(getRatingCountByClassId(class_id));
+		return ratingData;
+	}
+	
+	
+	
+	
+	
 	
     
     

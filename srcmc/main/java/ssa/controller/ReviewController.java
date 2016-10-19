@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
+import ssa.entity.RatingData;
 import ssa.entity.Review;
 import ssa.service.IReviewService;
 
@@ -67,6 +66,45 @@ public class ReviewController {
 		Double classAggregate = ReviewService.getAggregateClassRatingByClassId(class_id);
         return new ResponseEntity<Double>(classAggregate, HttpStatus.OK);
     }
+	
+	@RequestMapping(value= "/RatingCountByClassId/{class_id}", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getRatingCountByClassId(@PathVariable("class_id") int class_id) {
+		int ratingCount = ReviewService.getRatingCountByClassId(class_id);
+        return new ResponseEntity<Integer>(ratingCount, HttpStatus.OK);
+    }
+    
+	@RequestMapping(value= "/RatingCountByProfessorId/{professor_id}", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getRatingCountByProfessorId(@PathVariable("professor_id") int professor_id) {
+		Integer ratingCount = ReviewService.getRatingCountByProfessorId(professor_id);
+        return new ResponseEntity<Integer>(ratingCount, HttpStatus.OK);
+    }
+	
+	
+	
+	
+	
+	@RequestMapping(value= "/ClassRatingDataByProfessorId/{professor_id}", method = RequestMethod.GET)
+	public ResponseEntity<RatingData> getClassRatingDataByProfessorId(@PathVariable("professor_id") int professor_id) {
+		RatingData ratingData = ReviewService.getClassRatingDataByProfessorId(professor_id);
+		return new ResponseEntity<RatingData>(ratingData, HttpStatus.OK);
+	}   
+	@RequestMapping(value= "/ProfessorRatingDataByProfessorId/{professor_id}", method = RequestMethod.GET)
+	public ResponseEntity<RatingData> getProfessorRatingDataByProfessorId(@PathVariable("professor_id") int professor_id) {
+		RatingData ratingData = ReviewService.getProfessorRatingDataByProfessorId(professor_id);
+		return new ResponseEntity<RatingData>(ratingData, HttpStatus.OK);
+  	}          
+	@RequestMapping(value= "/ProfessorRatingDataByClassId/{class_id}", method = RequestMethod.GET)
+	public ResponseEntity<RatingData> getClassRatingDataByClassId(@PathVariable("class_id") int class_id) {
+		RatingData ratingData = ReviewService.getClassRatingDataByClassId(class_id);
+		return new ResponseEntity<RatingData>(ratingData, HttpStatus.OK);
+	} 
+	@RequestMapping(value= "/ClassRatingDataByClassId/{class_id}", method = RequestMethod.GET)
+	public ResponseEntity<RatingData> getProfessorRatingDataByClassId(@PathVariable("class_id") int class_id) {
+		RatingData ratingData = ReviewService.getProfessorRatingDataByClassId(class_id);
+		return new ResponseEntity<RatingData>(ratingData, HttpStatus.OK);
+	} 
+       
+   
 	
 //	@RequestMapping(value= "/ReviewsBySubject/{class_id}", method = RequestMethod.GET)
 //    public ResponseEntity<List<Review>> getReviewsByClassId(@PathVariable("class_id") int class_id) {
