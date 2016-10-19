@@ -10,8 +10,9 @@ public class CombinedClass {
 	private String professor_fname;
 	private String professor_lname;
 	private String university_name;
-	private double aggregateClassScore;
-	private double aggregateProfessorScore;
+	private double aggregateClassRating;
+	private double aggregateProfessorRating;
+	private int aggregateCount;
 	
 	public CombinedClass() {}
 	
@@ -30,7 +31,9 @@ public class CombinedClass {
 
 	@Override
 	public String toString() {
-		return (String.format("%4d %4d %4d %-20s %4d %-20s %-20s %-20s", this.id, this.university_id, this.professor_id, this.name, this.section, this.professor_fname, this.professor_lname, this.university_name));
+		return (String.format("%4d %4d %4d %-20s %4d %-20s %-20s %-20s %4.2f %4.2f %4d", this.id, this.university_id,
+				this.professor_id, this.name, this.section, this.professor_fname, this.professor_lname,
+				this.university_name, this.aggregateClassRating, this.aggregateProfessorRating, this.aggregateCount));
 	}
 	
 	public int getId() {
@@ -97,21 +100,30 @@ public class CombinedClass {
 		this.university_name = university_name;
 	}
 
-	public double getAggregateClassScore() {
-		return aggregateClassScore;
+	public double getAggregateClassRating() {
+		return aggregateClassRating;
 	}
 
-	public void setAggregateClassScore(double aggregateClassScore) {
-		this.aggregateClassScore = aggregateClassScore;
+	public void setAggregateClassRating(double aggregateClassRating) {
+		this.aggregateClassRating = aggregateClassRating;
 	}
 
-	public double getAggregateProfessorScore() {
-		return aggregateProfessorScore;
+	public double getAggregateProfessorRating() {
+		return aggregateProfessorRating;
 	}
 
-	public void setAggregateProfessorScore(double aggregateProfessorScore) {
-		this.aggregateProfessorScore = aggregateProfessorScore;
+	public void setAggregateProfessorRating(double aggregateProfessorRating) {
+		this.aggregateProfessorRating = aggregateProfessorRating;
 	}
+
+	public int getAggregateCount() {
+		return aggregateCount;
+	}
+
+	public void setAggregateCount(int aggregateCount) {
+		this.aggregateCount = aggregateCount;
+	}
+	
 	
 	
 }

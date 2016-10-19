@@ -47,18 +47,17 @@ public class ClassController {
     public ResponseEntity<ArrayList<CombinedClass>> getAlternativeClassesByClassId(@PathVariable("classid") Integer classId) {
 		
 		Class primaryClass = classService.getClassById(classId);
-		double aggregateClassScore = reviewService.getAggregateClassRatingByClassId(classId);
-		double aggregateProfessorScore = reviewService.getAggregateProfessorRatingByClassId(classId);
-		double totalAggregateScore = (aggregateClassScore + aggregateProfessorScore) / 2;
-		
+		double aggregateClassRating = reviewService.getAggregateClassRatingByClassId(classId);
+		double aggregateProfessorRating = reviewService.getAggregateProfessorRatingByClassId(classId);
+		double totalAggregateRating = (aggregateClassRating + aggregateProfessorRating) / 2;
 		ArrayList<CombinedClass> alternativeclasses = new ArrayList<>();
 		List<Class> comparisonClasses = classService.getAllClassesBySubjectSection(primaryClass.getName(), primaryClass.getSection());
 		for (Class aClass : comparisonClasses) {
-			double comparisonaggregateClassScore = reviewService.getAggregateClassRatingByClassId(aClass.getId());
-			double comparisonaggregateProfessorScore = reviewService.getAggregateProfessorRatingByClassId(aClass.getId());
-			double comptotalAggregateScore = (comparisonaggregateClassScore + comparisonaggregateProfessorScore) / 2;
-		
-			if ( comptotalAggregateScore > totalAggregateScore) {
+			double comparisonaggregateClassRating = reviewService.getAggregateClassRatingByClassId(aClass.getId());
+			double comparisonaggregateProfessorRating = reviewService.getAggregateProfessorRatingByClassId(aClass.getId());
+			double comptotalAggregateRating = (comparisonaggregateClassRating + comparisonaggregateProfessorRating) / 2;
+			int comptotalAggregateCount = reviewService.getRatingCountByClassId(aClass.getId());
+			if ( comptotalAggregateRating > totalAggregateRating) {
 				Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());
 				University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
 				CombinedClass aCombinedClass = new CombinedClass();
@@ -70,10 +69,9 @@ public class ClassController {
 				aCombinedClass.setProfessor_fname(aProfessor.getFirst_name());
 				aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
 				aCombinedClass.setUniversity_name(aUniversity.getName());
-				
-				aCombinedClass.setAggregateClassScore(comparisonaggregateClassScore);
-				aCombinedClass.setAggregateProfessorScore(comparisonaggregateProfessorScore);
-
+				aCombinedClass.setAggregateClassRating(comparisonaggregateClassRating);
+				aCombinedClass.setAggregateProfessorRating(comparisonaggregateProfessorRating);
+				aCombinedClass.setAggregateCount(comptotalAggregateCount);
 				alternativeclasses.add(aCombinedClass);
 			}
 		}
@@ -140,8 +138,9 @@ public class ClassController {
 			aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
 			aCombinedClass.setUniversity_name(aUniversity.getName());		
 			
-			aCombinedClass.setAggregateClassScore(reviewService.getAggregateClassRatingByClassId(aClass.getId()));
-			aCombinedClass.setAggregateProfessorScore(reviewService.getAggregateProfessorRatingByClassId(aClass.getId()));
+			aCombinedClass.setAggregateClassRating(reviewService.getAggregateClassRatingByClassId(aClass.getId()));
+			aCombinedClass.setAggregateProfessorRating(reviewService.getAggregateProfessorRatingByClassId(aClass.getId()));
+			aCombinedClass.setAggregateCount(reviewService.getRatingCountByClassId(aClass.getId()));
 			
 			combinedclasses.add(aCombinedClass);		
 		}
