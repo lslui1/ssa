@@ -43,8 +43,12 @@ angular
 		}).when('/myreviews', {
 			templateUrl: 'views/myreviews.view.html',
       controller: 'ReviewCtrl'
+		}).when('/editingmyreview', {
+			templateUrl: 'views/editingmyreview.view.html',
+      controller: 'ReviewCtrl'
 		}).when('/myclasses', {
-			templateUrl: 'views/myclasses.view.html'
+			templateUrl: 'views/myclasses.view.html',
+      controller: 'ClassCtrl'
 		})
 		.otherwise({redirectTo: '/'});
 

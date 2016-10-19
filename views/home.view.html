@@ -1,10 +1,11 @@
-<div id="menu">
+<div id="menu" ng-controller="LogoutCtrl as logout">
 			<ul>
 				<li><a href="#/home">Home</a></li>
 				<li><a href="#/classes">Classes</a></li>
 				<li><a href="#/professors">Professors</a></li>
 				<li><a href="#/myreviews">My Reviews</a></li>
         <li><a href="#/myclasses">My Classes</a></li>
+				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
 			</ul>
 </div>
 		<div id="content">

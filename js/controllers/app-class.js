@@ -8,6 +8,23 @@ angular
 
   self.pathprofid = $routeParams.pathingprofId;
 
+self.loginid = sessionStorage.globaluserid;
+
+
+self.PROFfname = sessionStorage.PROFESSORfname
+self.PROFlname = sessionStorage.PROFESSORlname
+
+
+$http.get('http://localhost:8080/savedclasses/' + self.loginid)
+      .then(function(resp){
+        self.myclasses = resp.data;
+        
+      },function(err) {
+
+      });
+
+
+
   self.reverseList = function() {
     self.combinedclasses.reverse()
   }

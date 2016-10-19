@@ -38,4 +38,10 @@ angular
             }
 
 
+            self.saveProfFnameLname = function(proffname, proflname) {
+              sessionStorage.setItem("PROFESSORfname", proffname)
+              sessionStorage.setItem("PROFESSORlname", proflname)
+            }
+
+
 }

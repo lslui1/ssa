@@ -7,6 +7,7 @@ angular
   var self = this
   self.currentClassId = $routeParams.reviewClassId;
   self.loginId = sessionStorage.globaluserid
+  self.myReviewId = sessionStorage.myreviewid
 
 
   self.showClassName = sessionStorage.reviewClassName
@@ -31,6 +32,48 @@ angular
 
 
 
+                      $http.get('http://localhost:8080/SingleReview/' + self.myReviewId)
+                          			.then(function(resp){
+                            			self.singlereview = resp.data;
+                                  console.log(self.singlereview)
+                            		},function(err) {
+
+                            		});
+
+self.saveReviewId = function(reviewid) {
+  sessionStorage.setItem("myreviewid", reviewid)
+}
+
+
+self.editMyReview = function(loginid, id, classid, classReview, profReview, year, semester, classRating, professorRating) {
+  var myReview = {};
+  myReview.login_id = loginid;
+  myReview.id = id;
+  myReview.class_id = classid;
+  myReview.class_review = classReview;
+  myReview.professor_review = profReview;
+  myReview.year = year;
+  myReview.semester = semester;
+  myReview.class_rating = classRating;
+  myReview.professor_rating = professorRating;
+  myReview.review_date = null;
+
+  console.log("sdjkfjksdfj")
+  console.log(self.professor_rating)
+  console.log(myReview)
+
+  $http({
+    method: 'PUT',
+    url: 'http://localhost:8080/updatereview',
+    data: myReview
+  })
+    .then(function(resp) {
+      console.log("SUCCESS: " + resp)
+      //$window.location.href = '/#/submittedclass';
+    }, function(err) {
+      console.log("FAILURE: " + err)
+    });
+}
 
 
 

@@ -16,8 +16,7 @@
 		<input ng-model="search" class="form-control" type="text" placeholder="Search by Subject">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
-	<h1>List of Classes (Click on ID for details)</h1>
-	<a href="#/addclass/">Can't find your class? Click Here!</a>
+	<h1>My Classes (Click on ID for details)</h1>
 	<table class="table">
 		<thead>
 			<tr>
@@ -39,8 +38,8 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in class.combinedclasses | filter:{name: search}">
-			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">{{object.id}}</a></td>
+		<tr ng-repeat="object in class.myclasses | filter:{name: search}">
+			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.class_id}}">{{object.class_id}}</a></td>
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td ng-bind="object.professor_fname"></td>
