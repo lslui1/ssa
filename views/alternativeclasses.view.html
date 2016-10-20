@@ -16,7 +16,7 @@
 		<input ng-model="search" class="form-control" type="text" placeholder="Search by Subject">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
-	<h1>My Classes (Click on ID for details)</h1>
+	<h1>ALTERNATIVE CLASSES</h1>
 	<table class="table">
 		<thead>
 			<tr>
@@ -39,24 +39,18 @@
 				<button ng-click="class.reverseList()">Prof Last-Name</button>
 				</td>
 				<td>
-				<button>Actions</button>
-				</td>
-				<td>
 				<button>Alternate Classes</button>
 				</td>
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in class.myclasses | filter:{name: search}">
-			<td ng-bind="object.savedClassId"></td>
+		<tr ng-repeat="altclass in class.alternativeclasses | filter:{name: search}">
+			<td ng-bind="altclass.savedClassId"></td>
 			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">{{object.id}}</a></td>
-			<td ng-bind="object.name"></td>
-			<td ng-bind="object.section"></td>
-			<td ng-bind="object.professor_fname"></td>
-			<td ng-bind="object.professor_lname"></td>
-			<td ng-click="class.deletesavedclass(object.savedClassId)"><button>Remove Class</button></td>
-			<td ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id)"> <a href="#/alternativeclasses/" class="btn btn-default">Alternative Classes</a></td>
-			<td ng-show="object.alternativeCount > 0" ng-bind="object.alternativeCount"></td>
+			<td ng-bind="altclass.name"></td>
+			<td ng-bind="altclass.section"></td>
+			<td ng-bind="altclass.professor_fname"></td>
+			<td ng-bind="altclass.professor_lname"></td>
 		</tr>
 		</tbody>
 	</table>

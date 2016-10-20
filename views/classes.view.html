@@ -11,19 +11,19 @@
 
 
 
-<div style="width:50%;margin:10px auto;" ng-controller="ClassCtrl as class">
+<div style="width:75%;margin:10px auto;" ng-controller="ClassCtrl as class">
 	<div>
-		<input ng-model="search" class="form-control" type="text" placeholder="Search by Subject">
+		<select ng-options="subject for subject in class.subjectarray" name="singleSelect" ng-model="selectionvalue">
+			<!-- <option selected value = "">All Classes</option> -->
+    </select><br>
+		<input ng-model="search" class="form-control" type="text" placeholder="Search by {{search}}">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
 	<h1>List of Classes (Click on ID for details)</h1>
 	<a href="#/addclass/">Can't find your class? Click Here!</a>
-	<table class="table">
+	<table class ="table table-striped">
 		<thead>
 			<tr>
-        <td>
-					<button>ID</button>
-				</td>
 				<td>
 					<button ng-click="class.reverseList()">Class Name</button>
 				</td>
@@ -31,13 +31,7 @@
         <button ng-click="class.reverseList()">Section</button>
 				</td>
 				<td>
-				<button ng-click="class.reverseList()">Prof First-Name</button>
-				</td>
-				<td>
-				<button ng-click="class.reverseList()">Prof Last-Name</button>
-				</td>
-				<td>
-				<button>Actions</button>
+				<button ng-click="class.reverseList()">Professor</button>
 				</td>
 				<td>
 				<button>Class Rating</button>
@@ -51,16 +45,16 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in class.combinedclasses | filter:{name: search}">
-			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">{{object.id}}</a></td>
+		<tr ng-repeat="object in class.combinedclasses | filter:{name: selectionvalue} | filter:search">
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
-			<td ng-bind="object.professor_fname"></td>
+			<td ng-bind="(object.professor_fname) + (object.professor_lname)"></td>
 			<td ng-bind="object.professor_lname"></td>
-			<td ng-click="class.addToMySavedClasses(class.loginid, object.id)"><button>Add This Class!</button></td>
 			<td ng-bind="object.aggregateClassRating"></td>
 			<td ng-bind="object.aggregateProfessorRating"></td>
 			<td ng-bind="object.aggregateCount"></td>
+			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">Want to look at the reviews?</a></td>
+			<td ng-click="class.addToMySavedClasses(class.loginid, object.id)"><button class="btn-success">Add This Class!</button></td>
 		</tr>
 		</tbody>
 	</table>

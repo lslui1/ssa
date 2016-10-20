@@ -52,6 +52,9 @@ angular
 		}).when('/myclasses', {
 			templateUrl: 'views/myclasses.view.html',
       controller: 'ClassCtrl'
+		}).when('/alternativeclasses', {
+			templateUrl: 'views/alternativeclasses.view.html',
+      controller: 'ClassCtrl'
 		})
 		.otherwise({redirectTo: '/'});
 

@@ -2,11 +2,12 @@ angular
   .module("myApp")
   .controller("ClassCtrl", ClassCtrl)
 
+
   ClassCtrl.$inject = ['$http', '$window','$scope','$routeParams']
   function ClassCtrl($http, $window, $scope, $routeParams) {
   var self = this
 
-  self.pathprofid = $routeParams.pathingprofId;
+self.pathprofid = $routeParams.pathingprofId;
 
 self.loginid = sessionStorage.globaluserid;
 
@@ -14,11 +15,17 @@ self.loginid = sessionStorage.globaluserid;
 self.PROFfname = sessionStorage.PROFESSORfname
 self.PROFlname = sessionStorage.PROFESSORlname
 
+self.useAlternativeClassId = sessionStorage.alternativeClassId
+
+
+self.subjectarray = [];
+
 if(self.loginid != undefined) {
 $http.get('http://localhost:8080/savedclasses/' + self.loginid)
       .then(function(resp){
-        self.myclasses = resp.data;
 
+        self.myclasses = resp.data;
+        console.log(self.myclasses)
       },function(err) {
 
       })};
@@ -49,10 +56,16 @@ if(self.pathprofid != undefined) {
   $http.get('http://localhost:8080/classes')
   			.then(function(resp){
   				self.classes = resp.data;
-          // angular.forEach(self.classes, function(key, value) {
-          //   self.classes.prof = self.professors;
-          // })
-          // console.log(self.classes)
+          self.subjectarray.push("");
+          self.selectedOption = self.subjectarray[2];
+          angular.forEach(resp.data, function(value, key){
+            console.log("SUBJECT LOG LOOPING")
+            console.log(self.subjectarray)
+               if(self.subjectarray.indexOf(value.name) == -1) {
+                  self.subjectarray.push(value.name)
+                }
+            });
+
   			},function(err) {
 
   			});
@@ -71,6 +84,10 @@ self.saveClassId = function(classId, className, classSection, classFname, classL
   sessionStorage.setItem("reviewClassSection", classSection)
   sessionStorage.setItem("reviewClassFname", classFname)
   sessionStorage.setItem("reviewClassLname", classLname)
+}
+
+self.getClassIdForAlternativeClasses = function(classId) {
+  sessionStorage.setItem("alternativeClassId", classId)
 }
 
 self.addToMySavedClasses = function(loginId, classId) {
@@ -95,6 +112,7 @@ self.addToMySavedClasses = function(loginId, classId) {
 
 
 self.deletesavedclass = function(savedclassid) {
+  console.log(savedclassid)
   $http.get('http://localhost:8080/deletesavedclass/' + savedclassid)
         .then(function(resp){
           $window.location.reload();
@@ -131,5 +149,17 @@ self.deletesavedclass = function(savedclassid) {
         console.log("FAILURE: " + resp)
       });
   }
+
+  if(self.useAlternativeClassId != undefined) {
+              $http.get('http://localhost:8080/alternativeclassesbyclassid/' + self.useAlternativeClassId)
+                        .then(function(resp){
+                          self.alternativeclasses = resp.data;
+                          console.log(self.alternativeclasses)
+                        },function(err) {
+
+                        })};
+
+
+
 
 }
