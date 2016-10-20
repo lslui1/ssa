@@ -1,0 +1,16 @@
+package ssa.dao;
+
+import java.util.List;
+
+import ssa.entity.CombinedClass;
+import ssa.entity.SavedClasses;
+
+public interface ISavedClassesDAO {
+	
+	List<CombinedClass> getSavedClassesById(int login_id);
+	SavedClasses getSavedClassById(int login_id, int class_id);
+	SavedClasses getSavedClassByDatabaseId(int id);
+	void deleteSavedClass(int id);
+	void insertSavedClass(SavedClasses savedClass);
+
+}
