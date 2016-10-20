@@ -10,4 +10,5 @@ public interface IProfessorDAO {
 	List<Professor> getAllProfessors();
 	Professor getProfessorById(int professorId);
 	List<Professor> getProfessorByFnameLname(String fname, String lname);
+	List<Professor> searchProfessorByProfessorLastName(String last_name);
 }

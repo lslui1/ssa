@@ -2,9 +2,9 @@ package ssa.service;
 
 import java.util.List;
 
+
 import ssa.entity.RatingData;
 import ssa.entity.Review;
-import ssa.entity.Professor;
 
 public interface IReviewService {
 
@@ -24,6 +24,5 @@ public interface IReviewService {
 	RatingData getProfessorRatingDataByProfessorId(int professor_id);
 	RatingData getClassRatingDataByClassId(int class_id);
 	RatingData getProfessorRatingDataByClassId(int class_id);
-	Professor getProfessorByProfessorLastName(String last_name);
 
 }

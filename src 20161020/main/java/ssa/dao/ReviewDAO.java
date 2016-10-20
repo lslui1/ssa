@@ -1,6 +1,7 @@
 package ssa.dao;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ssa.entity.Review;
 import ssa.entity.Class;
 import ssa.entity.RatingData;
-import ssa.entity.Professor;
 
 @Transactional
 @Repository
@@ -32,21 +32,6 @@ public class ReviewDAO implements IReviewDAO {
 		 String hql = "FROM Review where login_id = '" + login_id + "'";
 	     return (List<Review>) hibernateTemplate.find(hql);
 	}
-	
-	
-	
-	// PROFESSOR SEARCH METHOD, MOVE TO PROFESSOR DAO EVENTUALLY //
-	
-	
-	public Professor getProfessorByProfessorLastName(String last_name) {
-		 String hql = "FROM Professor where last_name = '" + last_name + "'";
-	     return (Professor) hibernateTemplate.find(hql).get(0);
-	}
-	
-	
-	
-	
-	
 	
 	public double getAggregateClassRatingByClassId(int class_id) {
 		String hql = "FROM Review where class_id = '" + class_id + "'";
@@ -88,7 +73,6 @@ public class ReviewDAO implements IReviewDAO {
 		int count = reviews.size();
 		return count;
 	}
-	
 
 	public double getAggregateClassRatingByProfessorId(int professor_id) {
 		 String hql = "FROM Class where professor_id = '" + professor_id + "'";
@@ -143,7 +127,6 @@ public class ReviewDAO implements IReviewDAO {
     	 return total;
 	}
 	
-	
 	public int getRatingCountByProfessorId(int professor_id) {
 		 String hql = "FROM Class where professor_id = '" + professor_id + "'";
 		 List<Class> classList = new ArrayList<Class>();
@@ -159,10 +142,6 @@ public class ReviewDAO implements IReviewDAO {
 	     }
 	     return count;
 	}
-	
-	
-	
-	
 	
 	public RatingData getClassRatingDataByProfessorId(int professor_id) {
 		RatingData ratingData = new RatingData();
@@ -191,19 +170,11 @@ public class ReviewDAO implements IReviewDAO {
 		ratingData.setCount(getRatingCountByClassId(class_id));
 		return ratingData;
 	}
-	
-	
-	
-	
-	
-	
-    
     
     public Review getReviewById(int id) {
 		 String hql = "FROM Review where id = '" + id + "'";
 	     return (Review) hibernateTemplate.find(hql).get(0);
 	}
-
 	
 	@Override
 	public void deleteReview(Integer id) {
@@ -211,7 +182,6 @@ public class ReviewDAO implements IReviewDAO {
 		System.out.println(review);
 	    hibernateTemplate.delete(review);
 	}
-
 	
 	@Override
 	public void insertReview(Review Review) {

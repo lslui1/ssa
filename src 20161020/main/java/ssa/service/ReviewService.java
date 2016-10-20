@@ -3,13 +3,13 @@ package ssa.service;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ssa.dao.IReviewDAO;
 import ssa.entity.Review;
 import ssa.entity.RatingData;
-import ssa.entity.Professor;
 
 @Service
 public class ReviewService implements IReviewService {
@@ -26,7 +26,6 @@ public class ReviewService implements IReviewService {
 	public List<Review> getReviewsByLoginId(int login_id) {
 		return reviewDAO.getReviewsByLoginId(login_id);
 	}
-	
 	
 	@Override
 	public Review getReviewById(int id) {
@@ -96,8 +95,4 @@ public class ReviewService implements IReviewService {
 		return reviewDAO.getProfessorRatingDataByClassId(class_id);
 	}
 	
-	@Override
-	public Professor getProfessorByProfessorLastName(String last_name) {
-		return reviewDAO.getProfessorByProfessorLastName(last_name);
-	}
 }

@@ -30,6 +30,11 @@ public class ProfessorController {
         return new ResponseEntity<List<Professor>>(professors, HttpStatus.OK);
     }
 	
+	@RequestMapping(value="/SearchProfessorByLastName/{last_name}", method = RequestMethod.GET)
+	public ResponseEntity<List<Professor>> searchProfessorByProfessorLastName(@PathVariable("last_name") String last_name) {
+		List<Professor> professors = professorService.searchProfessorByProfessorLastName(last_name);
+		return new ResponseEntity<List<Professor>>(professors, HttpStatus.OK);
+	}
 	
 	@RequestMapping(value= "/professor/{id}", method = RequestMethod.GET)
     public ResponseEntity<Professor> getProfessorById(@PathVariable("id") Integer id) {

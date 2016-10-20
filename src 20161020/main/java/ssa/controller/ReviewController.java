@@ -1,6 +1,7 @@
 package ssa.controller;
 
 import java.util.Calendar;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ssa.entity.RatingData;
 import ssa.entity.Review;
-import ssa.entity.Professor;
 import ssa.service.IReviewService;
 
 @CrossOrigin
@@ -105,12 +105,7 @@ public class ReviewController {
 //        List<Review> review = ReviewService.getReviewsByClassId(class_id);
 //        return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
 //    }
-	
-	@RequestMapping(value="/SearchProfessorByLastName/{last_name}", method = RequestMethod.GET)
-	public ResponseEntity<Professor> getProfessorByProfessorLastName(@PathVariable("last_name") String last_name) {
-		Professor professor = ReviewService.getProfessorByProfessorLastName(last_name);
-		return new ResponseEntity<Professor>(professor, HttpStatus.OK);
-	}
+
 	
 	@RequestMapping(value= "/SingleReview/{id}", method = RequestMethod.GET)
     public ResponseEntity<Review> getReviewById(@PathVariable("id") int id) {
