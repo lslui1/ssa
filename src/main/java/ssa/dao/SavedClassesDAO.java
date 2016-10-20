@@ -48,11 +48,13 @@ public class SavedClassesDAO implements ISavedClassesDAO {
 	     ArrayList<CombinedClass> combinedclasses = new ArrayList<CombinedClass>();
 	     for (int i=0; i<savedClasses.size(); i++) {
 	    	 int classId = savedClasses.get(i).getClass_id();
+	    	 int savedClassId = savedClasses.get(i).getId();
 	    	 Class aClass = classService.getClassById(classId);
 	    	 Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());
 	    	 University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
 	    	 CombinedClass aCombinedClass = new CombinedClass();
 	    	 	aCombinedClass.setId(aClass.getId());
+	    	 	aCombinedClass.setSavedClassId(savedClassId);
 	 			aCombinedClass.setName(aClass.getName());
 	 			aCombinedClass.setUniversity_id(aClass.getUniversity_id());
 	 			aCombinedClass.setSection(aClass.getSection());
