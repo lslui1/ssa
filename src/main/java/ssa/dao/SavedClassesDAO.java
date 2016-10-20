@@ -93,7 +93,12 @@ public class SavedClassesDAO implements ISavedClassesDAO {
 	
 	@Override
 	public void insertSavedClass(SavedClasses savedClass) {
-	    hibernateTemplate.save(savedClass);
+		int login_id = savedClass.getLogin_id();
+		int class_id = savedClass.getClass_id();
+		String hql = "FROM SavedClasses where login_id = '" + login_id + "' and class_id = '" + class_id + "'";
+	    if (hibernateTemplate.find(hql).size() == 0) {
+	    	hibernateTemplate.save(savedClass);
+	    }
 	}
 }
 
