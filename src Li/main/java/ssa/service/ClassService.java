@@ -47,4 +47,9 @@ public class ClassService implements IClassService{
 		ClassDAO.updateClass(aClass);
 	}
 
+	@Override
+	public int getAlternativeClassCountByClassId(Integer classId) {
+		return ClassDAO.getAlternativeClassCountByClassId(classId);
+	}
+
 }

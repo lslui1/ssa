@@ -12,5 +12,6 @@ public interface IClassDAO {
 	List<Class> getAllClassesByProf(Integer instructorId);
 	List<Class> getAllClassesBySubject(String name);
 	List<Class> getAllClassesBySubjectSection(String name, Integer section);
+	int getAlternativeClassCountByClassId(Integer classId);
 
 }

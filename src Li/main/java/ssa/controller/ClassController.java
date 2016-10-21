@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import ssa.entity.Class;
 import ssa.service.IClassService;
@@ -78,11 +79,30 @@ public class ClassController {
         return new ResponseEntity<ArrayList<CombinedClass>>(alternativeclasses, HttpStatus.OK);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value= "/alternativeclasscountbyclassid/{classid}", method = RequestMethod.GET)
+    public int getAlternativeClassCountByClassId(@PathVariable("classid") Integer classId) {
+		int count = 0;
+		Class primaryClass = classService.getClassById(classId);
+		double aggregateClassRating = reviewService.getAggregateClassRatingByClassId(classId);
+		double aggregateProfessorRating = reviewService.getAggregateProfessorRatingByClassId(classId);
+		double totalAggregateRating = (aggregateClassRating + aggregateProfessorRating) / 2;
+
+		List<Class> comparisonClasses = classService.getAllClassesBySubjectSection(primaryClass.getName(), primaryClass.getSection());
+		for (Class aClass : comparisonClasses) {
+			double comparisonaggregateClassRating = reviewService.getAggregateClassRatingByClassId(aClass.getId());
+			double comparisonaggregateProfessorRating = reviewService.getAggregateProfessorRatingByClassId(aClass.getId());
+			double comptotalAggregateRating = (comparisonaggregateClassRating + comparisonaggregateProfessorRating) / 2;
+			if ( comptotalAggregateRating > totalAggregateRating) {
+				count++;
+			}
+		}
+        return count;
+	}
 	
 	
 	
-	
-	
+
 	@RequestMapping(value= "/combinedreviewsbyloginid/{loginid}", method = RequestMethod.GET)
     public ResponseEntity<ArrayList<CombinedReview>> getCombinedReviewsById(@PathVariable("loginid") Integer loginId) {
 		ArrayList<CombinedReview> combinedreviews = new ArrayList<CombinedReview>();

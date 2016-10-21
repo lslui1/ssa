@@ -3,6 +3,7 @@ package ssa.entity;
 public class CombinedClass {
 
 	private int id;
+	private int savedClassId;
 	private int university_id;
 	private int professor_id;
 	private String name;
@@ -13,6 +14,7 @@ public class CombinedClass {
 	private double aggregateClassRating;
 	private double aggregateProfessorRating;
 	private int aggregateCount;
+	private int alternativeCount;
 	
 	public CombinedClass() {}
 	
@@ -122,6 +124,22 @@ public class CombinedClass {
 
 	public void setAggregateCount(int aggregateCount) {
 		this.aggregateCount = aggregateCount;
+	}
+
+	public int getSavedClassId() {
+		return savedClassId;
+	}
+
+	public void setSavedClassId(int savedClassId) {
+		this.savedClassId = savedClassId;
+	}
+
+	public int getAlternativeCount() {
+		return alternativeCount;
+	}
+
+	public void setAlternativeCount(int alternativeCount) {
+		this.alternativeCount = alternativeCount;
 	}
 	
 	
