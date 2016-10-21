@@ -52,7 +52,7 @@
 		<div class="form-group row">
 			<label for="review-classrating" class="col-xs-2 col-form-label">Class Rating</label>
 			 <div class="col-xs-10">
-			 	<input class="form-control" type="text" ng-model="classrating" id="classratingid" name="classratinginput"  required>
+			 	<input class="form-control" type="text" ng-model="ctrl.classrating" id="classratingid" name="classratinginput"  required>
 					<span style="color:red" ng-show="myForm.classratinginput.$dirty && myForm.classratinginput.$invalid">
 						<span ng-show="myForm.classratinginput.$error.required">Class Rating is required.</span>
 					</span>

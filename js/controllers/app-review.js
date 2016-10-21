@@ -14,6 +14,7 @@ angular
   self.showClassSection = sessionStorage.reviewClassSection
   self.showClassFname = sessionStorage.reviewClassFname
   self.showClassLname = sessionStorage.reviewClassLname
+  self.classrating = 0
 
 if(self.currentClassId != undefined) {
   $http.get('http://localhost:8080/ReviewsByClass/' + self.currentClassId)
@@ -28,6 +29,7 @@ if(self.loginId != undefined) {
             $http.get('http://localhost:8080/combinedreviewsbyloginid/' + self.loginId)
                 			.then(function(resp){
                   			self.mysavedreviews = resp.data;
+                        console.log(self.mysavedreviews)
                   		},function(err) {
 
                   		})};

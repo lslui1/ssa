@@ -9,6 +9,7 @@ angular
   $http.get('http://localhost:8080/professors')
       			.then(function(resp){
         			self.professors = resp.data;
+              console.log(self.professors)
         		},function(err) {
 
         		});

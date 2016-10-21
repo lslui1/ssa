@@ -59,8 +59,8 @@ if(self.pathprofid != undefined) {
           self.subjectarray.push("");
           self.selectedOption = self.subjectarray[2];
           angular.forEach(resp.data, function(value, key){
-            console.log("SUBJECT LOG LOOPING")
-            console.log(self.subjectarray)
+            // console.log("SUBJECT LOG LOOPING")
+            // console.log(self.subjectarray)
                if(self.subjectarray.indexOf(value.name) == -1) {
                   self.subjectarray.push(value.name)
                 }
@@ -158,6 +158,8 @@ self.deletesavedclass = function(savedclassid) {
                         },function(err) {
 
                         })};
+
+
 
 
 
