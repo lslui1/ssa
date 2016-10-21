@@ -14,7 +14,12 @@ angular
   self.showClassSection = sessionStorage.reviewClassSection
   self.showClassFname = sessionStorage.reviewClassFname
   self.showClassLname = sessionStorage.reviewClassLname
-  self.classrating = 0
+
+  self.onestar = '\u2605';
+  self.twostar = '\u2605' + '\u2605';
+  self.threestar = '\u2605' + '\u2605' + '\u2605';
+  self.fourstar = '\u2605' + '\u2605' + '\u2605' + '\u2605';
+  self.fivestar = '\u2605' + '\u2605' + '\u2605' + '\u2605' + '\u2605';
 
 if(self.currentClassId != undefined) {
   $http.get('http://localhost:8080/ReviewsByClass/' + self.currentClassId)

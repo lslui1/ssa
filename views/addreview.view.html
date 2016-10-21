@@ -52,19 +52,25 @@
 		<div class="form-group row">
 			<label for="review-classrating" class="col-xs-2 col-form-label">Class Rating</label>
 			 <div class="col-xs-10">
-			 	<input class="form-control" type="text" ng-model="ctrl.classrating" id="classratingid" name="classratinginput"  required>
-					<span style="color:red" ng-show="myForm.classratinginput.$dirty && myForm.classratinginput.$invalid">
-						<span ng-show="myForm.classratinginput.$error.required">Class Rating is required.</span>
-					</span>
+				 <select ng-model="classrating">
+					 <option ng-bind="ctrl.onestar" value="1"></option>
+					 <option ng-bind="ctrl.twostar" value="2"></option>
+					 <option ng-bind="ctrl.threestar" value="3"></option>
+					 <option ng-bind="ctrl.fourstar" value="4"></option>
+					 <option ng-bind="ctrl.fivestar" value="5"></option>
+ 		    </select>
 			</div>
 	  	</div>
 			<div class="form-group row">
 				<label for="review-profrating" class="col-xs-2 col-form-label">Prof Rating</label>
 				 <div class="col-xs-10">
-				 	<input class="form-control" type="text" ng-model="profrating" id="profratingid" name="profratinginput"  required>
-						<span style="color:red" ng-show="myForm.profratinginput.$dirty && myForm.profratinginput.$invalid">
-							<span ng-show="myForm.profratinginput.$error.required">UniversityID is required.</span>
-						</span>
+					 <select ng-model="profrating">
+  					 <option ng-bind="ctrl.onestar" value="1"></option>
+  					 <option ng-bind="ctrl.twostar" value="2"></option>
+  					 <option ng-bind="ctrl.threestar" value="3"></option>
+  					 <option ng-bind="ctrl.fourstar" value="4"></option>
+  					 <option ng-bind="ctrl.fivestar" value="5"></option>
+   		    </select>
 				</div>
 		  	</div>
 

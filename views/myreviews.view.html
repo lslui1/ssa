@@ -15,48 +15,71 @@
 		<thead>
 			<tr>
 				<td>
-					<p>Review ID</p>
+					<button class="btn btn-primary">Review ID</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Subject</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Section</button>
 				</td>
         <td>
-					<p>Class Review</p>
+					<button class="btn btn-primary">Class Review</button>
 				</td>
 				<td>
-					<p>Professor Review</p>
+					<button class="btn btn-primary">Professor Review</button>
 				</td>
 				<td>
-					<p>Professor Name</p>
+					<button class="btn btn-primary">Professor Name</button>
 				</td>
 				<td>
-					<p>Review Date</p>
+					<button class="btn btn-primary">Review Date</button
 				</td>
 				<td>
-					<p>Year Taken</p>
+					<button class="btn btn-primary">Year Taken</button>
 				</td>
 				<td>
-					<p>Semester</p>
+					<button class="btn btn-primary">Semester</button>
 				</td>
 				<td>
-					<p>Class Rating</p>
+					<button class="btn btn-primary">Class Rating</button>
 				</td>
 				<td>
-					<p>Professor Rating</p>
+					<button class="btn btn-primary">Professor Rating</button>
 				</td>
 				<td>
-					<p>Actions</p>
+					<button class="btn btn-primary">Actions</button>
 				</td>
 			</tr>
 		</thead>
 		<tbody>
 		<tr ng-repeat="object in ctrl.mysavedreviews">
 			<td ng-bind="object.review_id"></td>
+			<td ng-bind="object.name"></td>
+			<td ng-bind="object.section"></td>
 			<td ng-bind="object.class_review"></td>
 			<td ng-bind="object.professor_review"></td>
 			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>
 			<td ng-bind="object.review_date"></td>
 			<td ng-bind="object.year"></td>
-			<td ng-bind="object.semester"></td>
-			<td ng-bind="object.class_rating"></td>
-			<td ng-bind="object.professor_rating"></td>
+			<td>
+				<span ng-show="object.semester === 1">Spring</span>
+				<span ng-show="object.semester === 2">Summer</span>
+				<span ng-show="object.semester === 3">Fall</span>
+				<span ng-show="object.semester === 4">Winter</span>
+			</td>
+			<td
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="object.class_rating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="object.class_rating"</p></span>
+			</td>
+			<td
+				<div ng-mouseover="hoverNumber2 = true" ng-mouseleave="hoverNumber2 = false">
+				<div star-rating rating-value="object.professor_rating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber2"><p ng-bind="object.professor_rating"</p></span>
+			</td>
 			<td class="btn btn-success"ng-click="ctrl.saveReviewId(object.review_id)"><a style href="#/editingmyreview/">Edit</a></td>
 		</tr>
 		</tbody>

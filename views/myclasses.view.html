@@ -51,8 +51,18 @@
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>
-			<td ng-bind="object.aggregateClassRating"></td>
-			<td ng-bind="object.aggregateProfessorRating"></td>
+			<td
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="object.aggregateClassRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="object.aggregateClassRating"</p></span>
+			</td>
+			<td
+				<div ng-mouseover="hoverNumber2 = true" ng-mouseleave="hoverNumber2 = false">
+				<div star-rating rating-value="object.aggregateProfessorRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber2"><p ng-bind="object.aggregateProfessorRating"</p></span>
+			</td>
 			<td ng-bind="object.aggregateCount"></td>
 			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">Want to look at the reviews?</a></td>
 			<td class="btn btn-danger" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</td>

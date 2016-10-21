@@ -6,7 +6,7 @@ angular
   function ProfessorCtrl($http, $window) {
   var self = this
 
-  $http.get('http://localhost:8080/professors')
+  $http.get('http://localhost:8080/combinedprofessors')
       			.then(function(resp){
         			self.professors = resp.data;
               console.log(self.professors)
