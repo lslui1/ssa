@@ -1,0 +1,67 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
+			</ul>
+</div>
+
+
+
+<div style="width:90%;margin:10px auto;" ng-controller="ClassCtrl as class">
+	<div>
+		<select ng-options="subject for subject in class.subjectarray" name="singleSelect" ng-model="selectionvalue">
+			<!-- <option selected value = "">All Classes</option> -->
+    </select><br>
+		<input ng-model="search" class="form-control" type="text" placeholder="Search by {{search}}">
+		<p ng-show="search">Filtering by {{search}}</p>
+	</div>
+	<h1>List of Classes (Click on ID for details)</h1>
+	<a href="#/addclass/">Can't find your class? Click Here!</a>
+	<table class ="table table-striped">
+		<thead>
+			<tr>
+				<td>
+					<button ng-click="class.reverseList()">Class Name</button>
+				</td>
+				<td>
+        <button ng-click="class.reverseList()">Section</button>
+				</td>
+				<td>
+				<button ng-click="class.reverseList()">Professor</button>
+				</td>
+				<td>
+				<button>Class Rating</button>
+				</td>
+				<td>
+				<button>Professor Rating</button>
+				</td>
+				<td>
+				<button># of Reviews</button>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="object in class.combinedclasses | filter:{name: selectionvalue} | filter:search">
+			<td ng-bind="object.name"></td>
+			<td ng-bind="object.section"></td>
+			<td ng-bind="(object.professor_fname) + (object.professor_lname)"></td>
+			<td ng-bind="object.professor_lname"></td>
+			<td ng-bind="object.aggregateClassRating"></td>
+			<td
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false"> 
+				<div star-rating rating-value="object.aggregateClassRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="object.aggregateClassRating"</p></span>
+			</td>
+			<td ng-bind="object.aggregateProfessorRating"></td>
+			<td ng-bind="object.aggregateCount"></td>
+			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">Want to look at the reviews?</a></td>
+			<td ng-click="class.addToMySavedClasses(class.loginid, object.id)"><button class="btn-success">Add This Class!</button></td>
+		</tr>
+		</tbody>
+	</table>
+</div>
