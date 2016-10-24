@@ -526,7 +526,7 @@ insert review (professor_review, class_review, login_id, class_id, review_date, 
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 21, 76, '2015-07-24', 2015, 2, 5, 1);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 40, 77, '2015-03-16', 2015, 2, 1, 1);
 
-insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 37, 61, '2016-02-12', 2016, 2, 4, 1);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values ("He was strict at the beginning of the semester, but loosened up towards the end - he does that on purpose, for those who like things handed to them easily drop the class. You just gotta pretend your interested, do the assignments, and be at class on time. If you do this, the course is an easy A.", null, 37, 61, '2016-02-12', 2016, 2, 4, 1);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 14, 80, '2016-01-07', 2016, 2, 3, 3);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 12, 87, '2016-10-12', 2016, 2, 1, 1);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 10, 62, '2016-08-12', 2016, 2, 4, 3);
