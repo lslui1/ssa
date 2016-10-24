@@ -43,7 +43,7 @@
 				</div>
 				<span ng-show="hoverNumber"><p ng-bind="person.aggregateProfRating"</p></span>
 			</td>
-			<td ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)"><a href="#/professorclasses/{{person.id}}">Look at his classes</a></td>
+			<td ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)"><a href="#/professorclasses/{{person.id}}">{{person.count}}</a></td>
 		</tr>
 		</tbody>
 	</table>
