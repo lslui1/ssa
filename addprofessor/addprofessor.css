@@ -1,0 +1,46 @@
+input[id=professor_name] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[id=professor_name]:focus {
+    width: 100%;
+}
+
+.tableStuff {
+	border: 2px solid black;
+	width: 40%;
+}
+
+  	.profTable{
+		width:40%; 
+		border-collapse:collapse; 
+	}
+	.profTable td{ 
+		padding:7px; border:#4e95f4 1px solid;
+	}
+	/* Define the default color for all the table rows */
+	.profTable tr{
+		background: white;
+	}
+	/* Define the hover highlight color for the table row */
+    .profTable tr:hover {
+          background-color: #b8d1f3;
+    }
+
+.hiddenSpan{
+	visibility: hidden;
+}
+
+.hiddenSpan:hover {
+	visibility: visible;
+}

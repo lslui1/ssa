@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="AppMod">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Professor</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script src="http://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js" type="text/javascript"></script>
+  <script src="addprofessor.js" type="text/javascript"></script>
+    <link href="addprofessor.css" rel="stylesheet" type="text/css">
+
+</head>
+
+	</script>
+
+
+<body ng-controller="AppCtrl as ctrl">
+<div ng-app="" style="width: 49%; float:left">
+<p />
+<p />
+<h1>Add Class</h1>
+
+    <form id = "professorForm" name="professorForm" style="width: 49%">
+    <table id="fntable">
+    <tr><td style="width:20%">
+    Professor Name:</td><td> <input id = "professor_name" name="professor_name" type="text" class="form-control" ng-model="professor_name" placeholder = "Search" ng-click = "ctrl.enableInput()"></td></tr>
+    <p />
+    <button id="cantFindProfessor" ng-click="ctrl.cantFindProfessor()">Can't Find Professor</button>
+    <p />
+    <tr><td style="width:20%" >
+    Professor First Name:</td><td> <input id = "professor_fname" name="professor_fname" type="text" class="form-control" ng-model="professor_fname" placeholder = "First Name" disabled></td></tr>
+    <tr><td style="width:20%">
+    Professor Last Name:</td><td> <input id = "professor_lname" name="professor_lname" type="text" class="form-control" ng-model="professor_lname" placeholder = "Last Name" disabled ></td></tr>
+     <tr><td style="width:20%">
+    Subject:</td><td> <input id = "subject" name="subject" type="text" class="form-control" ng-model="subject" placeholder = "Subject "></td></tr>
+     <tr><td style="width:20%">
+    Section:</td><td> <input id = "section" name="section" type="text" class="form-control" ng-model="section" placeholder = "Section"></td></tr></table><table>
+    <p />
+    <p />
+    </form>
+    </table>
+    </form>
+    <button id="addClass" ng-Click="ctrl.addClass()">Add Class</button>
+    </div>
+<div  style="width: 49%; float: right">
+      <table class = "profTable" name ="profTable">
+      <tr style="font-weight: bold">
+      <td width = 100px ng-show = "beenClicked">Professor Name</td>
+      </tr>
+
+      <tr ng-repeat="professor in ctrl.professors | filter : professor_name | orderBy: 'last_name'" ng-dblclick = "ctrl.populate(professor.first_name, professor.last_name)" >
+      <td width = 100px>{{professor.fullName}}</td>
+      </tr>
+    </table>
+    <p />
+
+
+<script type="text/javascript" src="canvasjs.min.js"></script>
+</head>
+</div> 
+    </p>
+    </p>
+    </body>
+    </html>
