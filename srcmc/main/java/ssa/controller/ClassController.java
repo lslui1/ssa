@@ -167,6 +167,26 @@ public class ClassController {
         return new ResponseEntity<ArrayList<CombinedClass>>(combinedclasses, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value= "/combinedclassbyclassid/{classid}", method = RequestMethod.GET)
+    public ResponseEntity<CombinedClass> getCombinedClassByClassId(@PathVariable("classid") Integer classId) {
+		Class aclass = classService.getClassById(classId);
+		Professor aProfessor = professorService.getProfessorById(aclass.getProfessor_id());
+		University aUniversity = universityService.getUniversityById(aclass.getUniversity_id());
+		CombinedClass aCombinedClass = new CombinedClass();
+		aCombinedClass.setId(aclass.getId());
+		aCombinedClass.setName(aclass.getName());
+		aCombinedClass.setUniversity_id(aclass.getUniversity_id());
+		aCombinedClass.setSection(aclass.getSection());
+		aCombinedClass.setProfessor_id(aclass.getProfessor_id());			
+		aCombinedClass.setProfessor_fname(aProfessor.getFirst_name());
+		aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
+		aCombinedClass.setUniversity_name(aUniversity.getName());			
+		aCombinedClass.setAggregateClassRating(reviewService.getAggregateClassRatingByClassId(aclass.getId()));
+		aCombinedClass.setAggregateProfessorRating(reviewService.getAggregateProfessorRatingByClassId(aclass.getId()));
+		aCombinedClass.setAggregateCount(reviewService.getRatingCountByClassId(aclass.getId()));
+
+        return new ResponseEntity<CombinedClass>(aCombinedClass, HttpStatus.OK);
+	}
 	
 	@RequestMapping(value= "/classes", method = RequestMethod.GET)
     public ResponseEntity<List<Class>> getAllClasses() {
