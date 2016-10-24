@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="review")
-
+@SuppressWarnings("unused")
 public class Review {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -80,6 +80,7 @@ public class Review {
 	public int getId() {
 		return id;
 	}
+
 	private void setId(int id) {
 		this.id = id;
 	}

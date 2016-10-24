@@ -18,22 +18,22 @@ public class Professor {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="university_id")
+	private int university_id;
+	
 	@Column(name="first_name")
 	private String first_name;
 
 	@Column(name="last_name")
 	private String last_name;
-	
-	@Column(name="university_id")
-	private int university_id;
 
 	public Professor() {}
 
-	public Professor(String first_name, String last_name, int university_id) {
+	public Professor(int university_id, String first_name, String last_name) {
 		super();
+		this.university_id = university_id;
 		this.first_name = first_name;
 		this.last_name = last_name;
-		this.university_id = university_id;
 	}
 
 	public int getId() {

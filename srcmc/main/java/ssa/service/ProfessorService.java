@@ -33,5 +33,11 @@ public class ProfessorService implements IProfessorService{
 	public boolean addProfessor(Professor professor) {
 		return ProfessorDAO.addProfessor(professor);
 	}
+
+	@Override
+	public List<Professor> searchProfessorByProfessorLastName(String last_name) {
+		return ProfessorDAO.searchProfessorByProfessorLastName(last_name);
+		
+	}
 	
 }

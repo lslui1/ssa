@@ -2,14 +2,15 @@ package ssa.service;
 
 import java.util.List;
 
+
 import ssa.entity.RatingData;
 import ssa.entity.Review;
-import ssa.entity.Professor;
 
 public interface IReviewService {
 
 	List<Review> getReviewsByClassId(int class_id);
 	List<Review> getReviewsByLoginId(int login_id);
+	List<Review> getReviewsByProfessorId(int professor_id);
 	Review getReviewById(int id);
 	void deleteReview(Integer id);
 	void insertReview(Review Review);
@@ -24,6 +25,5 @@ public interface IReviewService {
 	RatingData getProfessorRatingDataByProfessorId(int professor_id);
 	RatingData getClassRatingDataByClassId(int class_id);
 	RatingData getProfessorRatingDataByClassId(int class_id);
-	Professor getProfessorByProfessorLastName(String last_name);
 
 }

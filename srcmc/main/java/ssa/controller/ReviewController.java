@@ -2,10 +2,8 @@ package ssa.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,21 +14,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
+import ssa.entity.Class;
+import ssa.entity.CombinedReview;
+import ssa.entity.Professor;
 import ssa.entity.RatingData;
 import ssa.entity.Review;
-import ssa.entity.Class;
-import ssa.entity.CombinedClass;
-import ssa.entity.Professor;
+import ssa.entity.University;
+import ssa.service.IClassService;
+import ssa.service.IProfessorService;
 import ssa.service.IReviewService;
+import ssa.service.IUniversityService;
 
 @CrossOrigin
 @Controller
 @RequestMapping("/")
 public class ReviewController {
+	
+	@Autowired
+	private IClassService classService;
+	
+	@Autowired
+	private IProfessorService professorService;
+	
+	@Autowired
+	private IUniversityService universityService;
 	
 	@Autowired
 	private IReviewService ReviewService;
@@ -46,6 +54,40 @@ public class ReviewController {
         List<Review> review = ReviewService.getReviewsByLoginId(login_id);
         return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
     }
+	
+	@RequestMapping(value= "/ReviewsByProfessor/{professor_id}", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<CombinedReview>>  getReviewsByProfessorId(@PathVariable("professor_id") int professor_id) {
+		ArrayList<CombinedReview> combinedreviews = new ArrayList<CombinedReview>();
+        List<Review> reviews = ReviewService. getReviewsByProfessorId(professor_id);
+		for (Review aReview : reviews) {
+			Class aClass = classService.getClassById(aReview.getClass_id());
+			Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());			
+			University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
+			
+			CombinedReview aCombinedReview = new CombinedReview();
+			aCombinedReview.setReview_id(aReview.getId());
+			aCombinedReview.setLogin_id(aReview.getLogin_id());
+			aCombinedReview.setReview_date(aReview.getReview_date());
+			aCombinedReview.setProfessor_review(aReview.getProfessor_review());
+			aCombinedReview.setClass_review(aReview.getClass_review());
+			aCombinedReview.setClass_rating(aReview.getClass_rating());
+			aCombinedReview.setProfessor_rating(aReview.getProfessor_rating());
+			aCombinedReview.setClass_id(aClass.getId());
+			aCombinedReview.setName(aClass.getName());
+			aCombinedReview.setSection(aClass.getSection());
+			aCombinedReview.setUniversity_id(aUniversity.getId());
+			aCombinedReview.setUniversity_name(aUniversity.getName());
+			aCombinedReview.setSemester(aReview.getSemester());
+			aCombinedReview.setYear(aReview.getYear());
+			aCombinedReview.setProfessor_id(aProfessor.getId());
+			aCombinedReview.setProfessor_fname(aProfessor.getFirst_name());
+			aCombinedReview.setProfessor_lname(aProfessor.getLast_name());			
+			combinedreviews.add(aCombinedReview);
+		}
+        return new ResponseEntity<ArrayList<CombinedReview>>(combinedreviews, HttpStatus.OK);
+	}
+	
+
 	
 	@RequestMapping(value= "/AggregateClassRatingByProfessorId/{professor_id}", method = RequestMethod.GET)
     public ResponseEntity<Double> getAggregateClassRatingByProfessorId(@PathVariable("professor_id") int professor_id) {
@@ -115,12 +157,7 @@ public class ReviewController {
 //        List<Review> review = ReviewService.getReviewsByClassId(class_id);
 //        return new ResponseEntity<List<Review>>(review, HttpStatus.OK);
 //    }
-	
-	@RequestMapping(value="/SearchProfessorByLastName/{last_name}", method = RequestMethod.GET)
-	public ResponseEntity<Professor> getProfessorByProfessorLastName(@PathVariable("last_name") String last_name) {
-		Professor professor = ReviewService.getProfessorByProfessorLastName(last_name);
-		return new ResponseEntity<Professor>(professor, HttpStatus.OK);
-	}
+
 	
 	@RequestMapping(value= "/SingleReview/{id}", method = RequestMethod.GET)
     public ResponseEntity<Review> getReviewById(@PathVariable("id") int id) {

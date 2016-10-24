@@ -1,7 +1,5 @@
 package ssa.dao;
 
-import java.util.List;
-
 import ssa.entity.Login;
 
 public interface ILoginDAO {

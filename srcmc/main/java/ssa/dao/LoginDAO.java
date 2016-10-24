@@ -1,7 +1,5 @@
 package ssa.dao;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,7 +14,6 @@ public class LoginDAO implements ILoginDAO {
     @Autowired
     private HibernateTemplate hibernateTemplate;
 
-    @SuppressWarnings("unchecked")
     @Override
 	public boolean doesLoginExist(String user_name) {
     	boolean loginCheck = false;

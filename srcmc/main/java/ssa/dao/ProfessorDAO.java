@@ -23,6 +23,13 @@ public class ProfessorDAO implements IProfessorDAO{
 	    return (List<Professor>) hibernateTemplate.find(hql);
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Professor> searchProfessorByProfessorLastName(String last_name) {
+		 String hql = "FROM Professor as p where p.last_name like '%" + last_name + "%' ORDER BY p.id";
+		 return (List<Professor>) hibernateTemplate.find(hql);
+	}
+	
 	@Override
 	public Professor getProfessorById(int professorId) {
 	    return (Professor) hibernateTemplate.get(Professor.class, professorId);

@@ -2,24 +2,21 @@ package ssa.service;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ssa.dao.IReviewDAO;
-import ssa.dao.IProfessorDAO;
 import ssa.entity.Review;
-import ssa.entity.Class;
 import ssa.entity.RatingData;
-import ssa.entity.Professor;
 
 @Service
 public class ReviewService implements IReviewService {
 	
 	@Autowired
 	private IReviewDAO reviewDAO;
-	private IProfessorDAO professorDAO;
-
-
+	
 	@Override
 	public List<Review> getReviewsByClassId(int class_id) {
 		return reviewDAO.getReviewsByClassId(class_id);
@@ -30,6 +27,10 @@ public class ReviewService implements IReviewService {
 		return reviewDAO.getReviewsByLoginId(login_id);
 	}
 	
+	@Override
+	public List<Review> getReviewsByProfessorId(int professor_id) {
+		return reviewDAO.getReviewsByProfessorId(professor_id);
+	}
 	
 	@Override
 	public Review getReviewById(int id) {
@@ -99,8 +100,4 @@ public class ReviewService implements IReviewService {
 		return reviewDAO.getProfessorRatingDataByClassId(class_id);
 	}
 	
-	@Override
-	public Professor getProfessorByProfessorLastName(String last_name) {
-		return reviewDAO.getProfessorByProfessorLastName(last_name);
-	}
 }

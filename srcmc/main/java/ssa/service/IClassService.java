@@ -13,5 +13,6 @@ public interface IClassService {
 	List<Class> getAllClassesBySubject(String name);
 	List<Class> getAllClassesBySubjectSection(String name, Integer section);
 	List<Class> getAllClasses();
+	int getAlternativeClassCountByClassId(Integer classId);
 
 }

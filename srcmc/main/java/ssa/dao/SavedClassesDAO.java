@@ -4,18 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import ssa.entity.Class;
 import ssa.entity.CombinedClass;
 import ssa.entity.Professor;
-import ssa.entity.Review;
 import ssa.entity.SavedClasses;
 import ssa.entity.University;
 import ssa.service.IClassService;
@@ -48,11 +42,13 @@ public class SavedClassesDAO implements ISavedClassesDAO {
 	     ArrayList<CombinedClass> combinedclasses = new ArrayList<CombinedClass>();
 	     for (int i=0; i<savedClasses.size(); i++) {
 	    	 int classId = savedClasses.get(i).getClass_id();
+	    	 int savedClassId = savedClasses.get(i).getId();
 	    	 Class aClass = classService.getClassById(classId);
 	    	 Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());
 	    	 University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
 	    	 CombinedClass aCombinedClass = new CombinedClass();
 	    	 	aCombinedClass.setId(aClass.getId());
+	    	 	aCombinedClass.setSavedClassId(savedClassId);
 	 			aCombinedClass.setName(aClass.getName());
 	 			aCombinedClass.setUniversity_id(aClass.getUniversity_id());
 	 			aCombinedClass.setSection(aClass.getSection());
@@ -60,8 +56,10 @@ public class SavedClassesDAO implements ISavedClassesDAO {
 	 			aCombinedClass.setProfessor_fname(aProfessor.getFirst_name());
 	 			aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
 	 			aCombinedClass.setUniversity_name(aUniversity.getName());		
-	 			aCombinedClass.setAggregateClassScore(reviewService.getAggregateClassRatingByClassId(aClass.getId()));
-	 			aCombinedClass.setAggregateProfessorScore(reviewService.getAggregateProfessorRatingByClassId(aClass.getId()));
+	 			aCombinedClass.setAggregateClassRating(reviewService.getAggregateClassRatingByClassId(aClass.getId()));
+	 			aCombinedClass.setAggregateProfessorRating(reviewService.getAggregateProfessorRatingByClassId(aClass.getId()));
+				aCombinedClass.setAggregateCount(reviewService.getRatingCountByClassId(aClass.getId()));
+				aCombinedClass.setAlternativeCount(classService.getAlternativeClassCountByClassId(classId));
 	 			combinedclasses.add(aCombinedClass);		
 	 		}
 	         return combinedclasses;
@@ -90,7 +88,12 @@ public class SavedClassesDAO implements ISavedClassesDAO {
 	
 	@Override
 	public void insertSavedClass(SavedClasses savedClass) {
-	    hibernateTemplate.save(savedClass);
+		int login_id = savedClass.getLogin_id();
+		int class_id = savedClass.getClass_id();
+		String hql = "FROM SavedClasses where login_id = '" + login_id + "' and class_id = '" + class_id + "'";
+	    if (hibernateTemplate.find(hql).size() == 0) {
+	    	hibernateTemplate.save(savedClass);
+	    }
 	}
 }
 

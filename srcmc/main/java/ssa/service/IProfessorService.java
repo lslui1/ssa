@@ -10,4 +10,5 @@ public interface IProfessorService {
 	List<Professor> getAllProfessors();
 	List<Professor> getProfessorByFnameLname(String fname, String lname);
 	boolean addProfessor(Professor professor);
+	List<Professor> searchProfessorByProfessorLastName(String last_name);
 }
