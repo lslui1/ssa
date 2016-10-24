@@ -40,7 +40,7 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="object in class.profclasses | filter:{name: search}">
-			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">{{object.id}}</a></td>
+			<td ng-click="class.saveClassId(object.id, object.name, object.section, class.PROFfname, class.PROFlname)"><a href="#/review/{{object.id}}">{{object.id}}</a></td>
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td ng-bind="class.PROFfname"></td>
