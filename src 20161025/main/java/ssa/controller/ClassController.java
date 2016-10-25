@@ -191,6 +191,32 @@ public class ClassController {
 
         return new ResponseEntity<ArrayList<CombinedClass>>(combinedclasses, HttpStatus.OK);
 	}
+
+	@RequestMapping(value= "/combinedclassbyprofessorid/{professorid}", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<CombinedClass>> getCombinedClassByProfessorId(@PathVariable("professorid") Integer professorId) {
+		ArrayList<CombinedClass> combinedclasses = new ArrayList<CombinedClass>();
+		List<Class> classes = classService.getAllClassesByProf(professorId);
+		for (Class aClass : classes) {
+			Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());
+			University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
+			CombinedClass aCombinedClass = new CombinedClass();
+			aCombinedClass.setId(aClass.getId());
+			aCombinedClass.setName(aClass.getName());
+			aCombinedClass.setUniversity_id(aClass.getUniversity_id());
+			aCombinedClass.setSection(aClass.getSection());
+			aCombinedClass.setProfessor_id(aClass.getProfessor_id());			
+			aCombinedClass.setProfessor_fname(aProfessor.getFirst_name());
+			aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
+			aCombinedClass.setUniversity_name(aUniversity.getName());		
+			
+			aCombinedClass.setAggregateClassRating(reviewService.getAggregateClassRatingByClassId(aClass.getId()));
+			aCombinedClass.setAggregateProfessorRating(reviewService.getAggregateProfessorRatingByClassId(aClass.getId()));
+			aCombinedClass.setAggregateCount(reviewService.getRatingCountByClassId(aClass.getId()));
+			
+			combinedclasses.add(aCombinedClass);		
+		}
+        return new ResponseEntity<ArrayList<CombinedClass>>(combinedclasses, HttpStatus.OK);
+	}
 	
 	@RequestMapping(value= "/classes", method = RequestMethod.GET)
     public ResponseEntity<List<Class>> getAllClasses() {
