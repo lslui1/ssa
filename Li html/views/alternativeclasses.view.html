@@ -1,0 +1,130 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
+			</ul>
+</div>
+
+
+
+<div ng-controller="ClassCtrl as class">
+	<div id="compclass">
+	<table class="table">
+		<thead>
+			<tr>
+				<td>
+					<p>CLASS ID</p>
+				</td>
+				<td>
+					<p>Class Name</p>
+				</td>
+				<td>
+					<p>Section</p>
+				</td>
+				<td>
+					<p>Prof First-Name</p>
+				</td>
+				<td>
+					<p>Prof Last-Name</p>
+				</td>
+								<td>
+					<p>Class Rating</p>
+				</td>
+								<td>
+					<p>Professor Rating</p>
+				</td>
+								<td>
+					<p># of Reviews</p>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="focusclass in class.alternativecompareclass">
+			<td ng-bind="focusclass.id"></td>
+			<td ng-bind="focusclass.name"></td>
+			<td ng-bind="focusclass.section"></td>
+			<td ng-bind="focusclass.professor_fname"></td>
+			<td ng-bind="focusclass.professor_lname"></td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="focusclass.aggregateClassRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="focusclass.aggregateClassRating"</p></span>
+			</td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="focusclass.aggregateProfessorRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="focusclass.aggregateProfessorRating"</p></span>
+			</td>
+			<td ng-bind="focusclass.aggregateCount"></td>
+		</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<div align="center">
+	<br /><br /><br /><br /><br /><br /><br /><br />
+		<input ng-model="search" class="form-control" type="text" placeholder="Search Filter" maxlength="30" size="30" style="width: 300px;" />
+		<p ng-show="search">Filtering by {{search}}</p>
+	</div>
+	<h1 align="center">Recommended Alternatives</h1>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>
+					<button class="tbutton">CLASS ID</button>
+				</th>
+				<th>
+					<button class="tbutton">Class Name</button>
+				</th>
+				<th>
+					<button class="tbutton">Section</button>
+				</th>
+				<th>
+					<button class="tbutton">Prof First-Name</button>
+				</th>
+				<th>
+					<button class="tbutton">Prof Last-Name</button>
+				</th>
+				<th>
+					<button class="tbutton">Class Rating</button>
+				</th>
+				<th>
+					<button class="tbutton">Professor Rating</button>
+				</th>
+								<th>
+					<button class="tbutton"># of Reviews</button>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="altclass in class.alternativeclasses | filter:search">
+			<td ng-bind="altclass.id"></td>
+			<td ng-bind="altclass.name"></td>
+			<td ng-bind="altclass.section"></td>
+			<td ng-bind="altclass.professor_fname"></td>
+			<td ng-bind="altclass.professor_lname"></td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="altclass.aggregateClassRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="altclass.aggregateClassRating"</p></span>
+			</td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="altclass.aggregateProfessorRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="altclass.aggregateProfessorRating"</p></span>
+			</td>
+			<td ng-bind="altclass.aggregateCount"></td>
+			<td ng-click="class.addToMySavedClasses(class.loginid, altclass.id)"><button class="btn-success">Add This Class!</button></td>
+			<td ng-click="class.replaceMySavedClass(class.loginid, altclass.id, focusclass.savedClassId)"><button class="btn-success">Replace This Class!</button></td>
+		</tr>
+		</tbody>
+	</table>
+</div>

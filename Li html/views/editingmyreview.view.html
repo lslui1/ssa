@@ -1,0 +1,74 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
+			</ul>
+</div>
+<div ng-controller="ReviewCtrl as ctrl">
+<div style="width:50%;margin:10px auto;">
+<h1>Edit Review Page</h1>
+<p>This is the Edit Review page</p>
+<form name="myForm">
+	<div class="form-group row">
+		<label for="major-description" class="col-xs-2 col-form-label">Class Review</label>
+		 <div class="col-xs-10">
+		 	<textarea class="form-control" type="text" ng-model="ctrl.singlereview.class_review" id="classreview1" name="classreviewinput" required></textarea>
+				<span style="color:red" ng-show="myForm.classreviewinput.$dirty && myForm.classreviewinput.$invalid">
+					<span ng-show="myForm.classreviewinput.$error.required">Class Review is required.</span>
+				</span>
+		</div>
+  	</div>
+	<div class="form-group row">
+		<label for="major-reqsat" class="col-xs-2 col-form-label">Professor Review</label>
+		 <div class="col-xs-10">
+		 	<textarea class="form-control" type="text" ng-model="ctrl.singlereview.professor_review" id="professorreview1" name="professorreviewinput" required></textarea>
+				<span style="color:red" ng-show="myForm.professorreviewinput.$dirty && myForm.professorreviewinput.$invalid">
+					<span ng-show="myForm.professorreviewinput.$error.required">Professor Review is required.</span>
+				</span>
+		</div>
+  	</div>
+	<div class="form-group row">
+		<label for="major-reqsat" class="col-xs-2 col-form-label">Year</label>
+		 <div class="col-xs-10">
+		 	<input class="form-control" type="text" ng-model="ctrl.singlereview.year" id="year1" name="yearinput" required>
+				<span style="color:red" ng-show="myForm.yearinput.$dirty && myForm.yearinput.$invalid">
+					<span ng-show="myForm.yearinput.$error.required">Year is required.</span>
+				</span>
+		</div>
+  	</div>
+	<div class="form-group row">
+		<label for="major-reqsat" class="col-xs-2 col-form-label">Semester</label>
+		 <div class="col-xs-10">
+		 	<input class="form-control" type="text" ng-model="ctrl.singlereview.semester" id="semester1" name="semesterinput"  required>
+				<span style="color:red" ng-show="myForm.semesterinput.$dirty && myForm.semesterinput.$invalid">
+					<span ng-show="myForm.semesterinput.$error.required">Semester is required.</span>
+				</span>
+		</div>
+  	</div>
+		<div class="form-group row">
+			<label for="major-reqsat" class="col-xs-2 col-form-label">Class Rating</label>
+			 <div class="col-xs-10">
+			 	<input class="form-control" type="text" ng-model="ctrl.singlereview.class_rating" id="classrating1" name="classratinginput"  required>
+					<span style="color:red" ng-show="myForm.classratinginput.$dirty && myForm.classratinginput.$invalid">
+						<span ng-show="myForm.classratinginput.$error.required">Class Rating is required.</span>
+					</span>
+			</div>
+	  	</div>
+			<div class="form-group row">
+				<label for="major-reqsat" class="col-xs-2 col-form-label">Professor Rating</label>
+				 <div class="col-xs-10">
+				 	<input class="form-control" type="text" ng-model="ctrl.singlereview.professor_rating" id="professorrating1" name="professorratinginput"  required>
+						<span style="color:red" ng-show="myForm.professorratinginput.$dirty && myForm.professorratinginput.$invalid">
+							<span ng-show="myForm.professorratinginput.$error.required">Professor Rating is required.</span>
+						</span>
+				</div>
+		  	</div>
+
+	<button ng-disabled="myForm.$invalid && myForm.$error" type="button" class="btn btn-success" ng-click="ctrl.editMyReview(ctrl.singlereview.login_id,ctrl.singlereview.id, ctrl.singlereview.class_id, ctrl.singlereview.class_review,ctrl.singlereview.professor_review,ctrl.singlereview.year,ctrl.singlereview.semester,ctrl.singlereview.class_rating,ctrl.singlereview.professor_rating)">Edit Review</button>
+	&nbsp;
+</div>
+</div>

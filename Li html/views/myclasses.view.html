@@ -66,7 +66,7 @@
 			<td ng-bind="object.aggregateCount"></td>
 			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">Want to look at the reviews?</a></td>
 			<td class="btn btn-danger" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</td>
-			<td ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id)"> <a href="#/alternativeclasses/" class="btn btn-default">Alternative Classes</a></td>
+			<td ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)"> <a href="#/alternativeclasses/" class="btn btn-default">Alternative Classes</a></td>
 			<td ng-show="object.alternativeCount > 0" ng-bind="object.alternativeCount"></td>
 		</tr>
 		</tbody>

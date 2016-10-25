@@ -1,0 +1,87 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
+			</ul>
+</div>
+
+<div align="left" ng-controller="ReviewCtrl as ctrl">
+	<h1>My Reviews</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<td>
+					<button class="btn btn-primary">Review ID</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Subject</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Section</button>
+				</td>
+        <td>
+					<button class="btn btn-primary">Class Review</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Professor Review</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Professor Name</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Review Date</button
+				</td>
+				<td>
+					<button class="btn btn-primary">Year Taken</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Semester</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Class Rating</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Professor Rating</button>
+				</td>
+				<td>
+					<button class="btn btn-primary">Actions</button>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="object in ctrl.mysavedreviews">
+			<td ng-bind="object.review_id"></td>
+			<td ng-bind="object.name"></td>
+			<td ng-bind="object.section"></td>
+			<td ng-bind="object.class_review"></td>
+			<td ng-bind="object.professor_review"></td>
+			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>
+			<td ng-bind="object.review_date"></td>
+			<td ng-bind="object.year"></td>
+			<td>
+				<span ng-show="object.semester === 1">Spring</span>
+				<span ng-show="object.semester === 2">Summer</span>
+				<span ng-show="object.semester === 3">Fall</span>
+				<span ng-show="object.semester === 4">Winter</span>
+			</td>
+			<td
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="object.class_rating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="object.class_rating"</p></span>
+			</td>
+			<td
+				<div ng-mouseover="hoverNumber2 = true" ng-mouseleave="hoverNumber2 = false">
+				<div star-rating rating-value="object.professor_rating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber2"><p ng-bind="object.professor_rating"</p></span>
+			</td>
+			<td class="btn btn-success"ng-click="ctrl.saveReviewId(object.review_id)"><a style href="#/editingmyreview/">Edit</a></td>
+		</tr>
+		</tbody>
+	</table>
+</div>

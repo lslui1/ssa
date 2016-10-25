@@ -16,15 +16,13 @@
 		<input ng-model="search" class="form-control" type="text" placeholder="Search by Subject">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
-	<h1>ALTERNATIVE CLASSES</h1>
+	<h1>List of Classes (Click on ID for details)</h1>
+	<a href="#/addclass/">Can't find your class? Click Here!</a>
 	<table class="table">
 		<thead>
 			<tr>
         <td>
 					<button>ID</button>
-				</td>
-				<td>
-					<button>CLASS ID</button>
 				</td>
 				<td>
 					<button ng-click="class.reverseList()">Class Name</button>
@@ -38,19 +36,15 @@
 				<td>
 				<button ng-click="class.reverseList()">Prof Last-Name</button>
 				</td>
-				<td>
-				<button>Alternate Classes</button>
-				</td>
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="altclass in class.alternativeclasses | filter:{name: search}">
-			<td ng-bind="altclass.savedClassId"></td>
+		<tr ng-repeat="object in class.profclasses | filter:{name: search}">
 			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">{{object.id}}</a></td>
-			<td ng-bind="altclass.name"></td>
-			<td ng-bind="altclass.section"></td>
-			<td ng-bind="altclass.professor_fname"></td>
-			<td ng-bind="altclass.professor_lname"></td>
+			<td ng-bind="object.name"></td>
+			<td ng-bind="object.section"></td>
+			<td ng-bind="class.PROFfname"></td>
+			<td ng-bind="class.PROFlname"></td>
 		</tr>
 		</tbody>
 	</table>

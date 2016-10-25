@@ -1,0 +1,37 @@
+
+div#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+div#menu li {
+    float: left;
+}
+div#menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+div#menu li a:hover {
+    background-color: #111111;
+}
+
+
+div#compclass {
+    position: fixed;
+    /* center the element */
+    right: 0;
+    left: 0;
+    margin-right: 5cm;
+    margin-left: 5cm;
+}
+
+.tbutton {
+    background: transparent;
+    border: none;
+}
