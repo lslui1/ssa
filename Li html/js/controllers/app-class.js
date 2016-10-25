@@ -117,8 +117,11 @@ self.replaceMySavedClass = function(loginId, newClassId) {
   replacetheseclasses.newclass_id = newClassId;
   replacetheseclasses.oldclass_id = self.useAlternativeSavedClassId;
   console.log(replacetheseclasses)
-  console.log(self.useAlternativeSavedClassId)
 
+  
+  self.deletesavedclass(replacetheseclasses.oldclass_id)
+  self.addToMySavedClasses(loginId, newClassId)
+  $window.location.href = '#/myclasses';
 }
 
 self.deletesavedclass = function(savedclassid) {

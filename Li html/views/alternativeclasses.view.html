@@ -122,8 +122,9 @@
 				<span ng-show="hoverNumber"><p ng-bind="altclass.aggregateProfessorRating"</p></span>
 			</td>
 			<td ng-bind="altclass.aggregateCount"></td>
-			<td ng-click="class.addToMySavedClasses(class.loginid, altclass.id)"><button class="btn-success">Add This Class!</button></td>
-			<td ng-click="class.replaceMySavedClass(class.loginid, altclass.id, focusclass.savedClassId)"><button class="btn-success">Replace This Class!</button></td>
+			<td ng-click="class.addToMySavedClasses(class.loginid, altclass.id)"><button ng-show="!showAltBtn" ng-click="showAltBtn = true" class="btn-success">Add This Class!</button>
+																				 <button ng-show="showAltBtn" class="tbutton">               </button></td>
+			<td ng-click="class.replaceMySavedClass(class.loginid, altclass.id)"><button class="btn-success">Replace This Class!</button></td>
 		</tr>
 		</tbody>
 	</table>
