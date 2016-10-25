@@ -36,14 +36,14 @@
 		<tbody>
 		<tr ng-repeat="person in professor.professors | filter:{last_name: search}">
 			<td ng-bind="person.university_name"></td>
-			<td ng-bind="person.first_name + ' ' + person.last_name"></td>
+			<td><a href="#/professorclasses/{{person.id}}">{{person.first_name + ' ' + person.last_name}}</td>
 			<td
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="person.aggregateProfRating" max=5 ></div>
 				</div>
 				<span ng-show="hoverNumber"><p ng-bind="person.aggregateProfRating"</p></span>
 			</td>
-			<td ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)"><a href="#/professorclasses/{{person.id}}">{{person.count}}</a></td>
+			<td ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)"><a href="#/professorreview/{{person.id}}">{{person.count}}</a></td>
 		</tr>
 		</tbody>
 	</table>

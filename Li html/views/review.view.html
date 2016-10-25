@@ -56,7 +56,12 @@
 			<td ng-bind="object.professor_review"></td>
 			<td ng-bind="object.review_date"></td>
 			<td ng-bind="object.year"></td>
-			<td ng-bind="object.semester"></td>
+			<td>
+				<span ng-show="object.semester === 1">Spring</span>
+				<span ng-show="object.semester === 2">Summer</span>
+				<span ng-show="object.semester === 3">Fall</span>
+				<span ng-show="object.semester === 4">Winter</span>
+			</td>
 			<td
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="object.class_rating" max=5 ></div>

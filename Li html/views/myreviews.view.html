@@ -9,14 +9,11 @@
 			</ul>
 </div>
 
-<div align="left" ng-controller="ReviewCtrl as ctrl">
+<div style="width:50%" align="center" ng-controller="ReviewCtrl as ctrl">
 	<h1>My Reviews</h1>
 	<table class="table">
 		<thead>
 			<tr>
-				<td>
-					<button class="btn btn-primary">Review ID</button>
-				</td>
 				<td>
 					<button class="btn btn-primary">Subject</button>
 				</td>
@@ -54,11 +51,10 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="object in ctrl.mysavedreviews">
-			<td ng-bind="object.review_id"></td>
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
-			<td ng-bind="object.class_review"></td>
-			<td ng-bind="object.professor_review"></td>
+			<td><textarea cols="50" rows="5" style="border:solid 1px orange; resize: none" readonly ng-bind="object.class_review"></textarea></td>
+			<td><textarea cols="50" rows="5" style="border:solid 1px orange; resize: none" readonly ng-bind="object.professor_review"></textarea></td>
 			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>
 			<td ng-bind="object.review_date"></td>
 			<td ng-bind="object.year"></td>
@@ -80,7 +76,7 @@
 				</div>
 				<span ng-show="hoverNumber2"><p ng-bind="object.professor_rating"</p></span>
 			</td>
-			<td class="btn btn-success"ng-click="ctrl.saveReviewId(object.review_id)"><a style href="#/editingmyreview/">Edit</a></td>
+			<td ng-click="ctrl.saveReviewId(object.review_id)"><a style href="#/editingmyreview/">Edit</a></td>
 		</tr>
 		</tbody>
 	</table>

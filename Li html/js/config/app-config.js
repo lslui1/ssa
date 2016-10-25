@@ -34,6 +34,9 @@ angular
 		}).when('/professorclasses/:pathingprofId', {
 			templateUrl: 'views/professorclasses.view.html',
       controller: 'ClassCtrl'
+		}).when('/professorreview/:pathingprofId', {
+			templateUrl: 'views/professorreview.view.html',
+      controller: 'ClassCtrl'
 		}).when('/addreview', {
 			templateUrl: 'views/addreview.view.html',
       controller: 'ReviewCtrl'

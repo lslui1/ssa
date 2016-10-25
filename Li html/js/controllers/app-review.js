@@ -20,7 +20,7 @@ angular
   self.threestar = '\u2605' + '\u2605' + '\u2605';
   self.fourstar = '\u2605' + '\u2605' + '\u2605' + '\u2605';
   self.fivestar = '\u2605' + '\u2605' + '\u2605' + '\u2605' + '\u2605';
-
+  
 if(self.currentClassId != undefined) {
   $http.get('http://localhost:8080/ReviewsByClass/' + self.currentClassId)
       			.then(function(resp){
