@@ -1,0 +1,42 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
+			</ul>
+</div>
+<div ng-controller="SubmittedCtrl as ctrl">
+<div style="width:50%;margin:10px auto;">
+<h1>Submitted Page</h1>
+<p>This is the submitted class page</p>
+<table class="table">
+	<thead>
+		<tr>
+			<td>
+			<p>Class Name</p>
+			</td>
+			<td>
+			<p>Section</p>
+			</td>
+			<td>
+			<p>Prof ID</p>
+			</td>
+			<td>
+			<p>University ID</p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td ng-bind="ctrl.Classsubject"></td>
+		<td ng-bind="ctrl.Classsubjectsection"></td>
+		<td ng-bind="ctrl.Classsubjectprofessor_id"></td>
+		<td ng-bind="ctrl.Classsubjectuniversity_id"></td>
+	</tr>
+	</tbody>
+</table>
+</div>
+</div>
