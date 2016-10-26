@@ -45,4 +45,47 @@ angular
             }
 
 
+
+            //Sort Methods
+
+var sortName = false;
+self.sortName = function() {
+  if (sortName == false) {
+    sortType = ['last_name', 'first_name'];
+    sortName = true;
+  }
+  else {
+    sortType = ['-last_name', 'first_name'];
+    sortName = false;
+  }
+  return sortType
+}
+
+var sortPR = false;
+self.sortPR = function() {
+  if (sortPR == false) {
+    sortType = '-aggregateProfRating';
+    sortPR = true;
+  }
+  else {
+    sortType = 'aggregateProfRating';
+    sortPR = false;
+  }
+  return sortType
+}
+
+var sortCount = false;
+self.sortCount = function() {
+  if (sortCount == false) {
+    sortType = '-count';
+    sortCount = true;
+  }
+  else {
+    sortType = 'count';
+    sortCount = false;
+  }
+  return sortType
+}
+
+
 }

@@ -15,40 +15,40 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<td>
-					<button class="btn tbutton">Class Name</button>
-				</td>
-				<td>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = class.sortSubject()">Class Name</button>
+				</th>
+				<th>
 					<button class="btn tbutton">Class Section</button>
-				</td>
-				<td>
+				</th>
+				<th>
 					<button class="btn tbutton">Class Review</button>
-				</td>
-				<td>
-					<button class="btn tbutton">Professor Name</button>
-				</td>
-				<td>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = class.sortName()">Professor Name</button>
+				</th>
+				<th>
 					<button class="btn tbutton">Professor Review</button>
-				</td>
-				<td>
-					<button class="btn tbutton">Review Date</button>
-				</td>
-				<td>
-					<button class="btn tbutton">Year</button>
-				</td>
-				<td>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortYOR()">Review Date</button>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortYear()">Year</button>
+				</th>
+				<th>
 					<button class="btn tbutton">Semester</button>
-				</td>
-				<td>
-					<button class="btn tbutton">Class Rating</button>
-				</td>
-				<td>
-					<button class="btn tbutton">Professor Rating</button>
-				</td>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortCR()">Class Rating</button>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortPR()">Professor Rating</button>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in ctrl.reviews">
+		<tr ng-repeat="object in ctrl.reviews | orderBy:sortType">
 			<td ng-bind="ctrl.showClassName"></td>
 			<td ng-bind="ctrl.showClassSection"></td>
 			<td ng-bind="object.class_review"></td>

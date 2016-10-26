@@ -18,41 +18,35 @@
 	</div>
 	<h1>My Classes</h1>
 	<table class="table">
-		<thead>
-	            <tr>
-	               <th>
-	                <button class="btn tbutton" ng-click="sortType = ['name', 'section']; sortReverse= !sortReverse">Subject<span ng-show="sortType == ['name', 'section'] && !sortReverse" class="fa fa-caret-down"></span>
-	           <span ng-show="sortType == ['name', 'section'] && sortReverse" class="fa fa-caret-up"></span></button>
-	                </th>
-	                <th>
-	                <button class="btn tbutton">Section</button>
-	                </th>
-	                <th>
-	                <button class="btn tbutton" ng-click="sortType = ['professor_lname', 'professor_fname']; sortReverse= !sortReverse">Professor Name<span ng-show="sortType == 'professor_lname' && !sortReverse" class="fa fa-caret-down"></span>
-	           <span ng-show="sortType == 'professor_lname' && sortReverse" class="fa fa-caret-up"></span></button>
-	                </th>
-	                <th>
-	                <button class="btn tbutton" ng-click="sortType = 'aggregateClassRating'; sortReverse= !sortReverse">Class Rating<span ng-show="sortType == 'aggregateClassRating' && !sortReverse" class="fa fa-caret-down"></span>
-	           <span ng-show="sortType == 'aggregateClassRating' && sortReverse" class="fa fa-caret-up"></span></button>
-	                </th>
-	                <th>
-	                <button class="btn tbutton" ng-click="sortType = 'aggregateProfessorRating'; sortReverse= !sortReverse">Professor Rating<span ng-show="sortType == 'aggregateProfessorRating' && !sortReverse" class="fa fa-caret-down"></span>
-	           <span ng-show="sortType == 'aggregateProfessorRating' && sortReverse" class="fa fa-caret-up"></span></button>
-	                </th>
-	                <th>
-	                <button class="btn tbutton" ng-click="sortType = 'aggregateCount'; sortReverse= !sortReverse"># of Reviews<span ng-show="sortType == 'aggregateCount' && !sortReverse" class="fa fa-caret-down"></span>
-	           <span ng-show="sortType == 'aggregateCount' && sortReverse" class="fa fa-caret-up"></span></button>
-	                </th>
-	                <th>
-	                </th>
-	                <th>
-	                </th>
-	                <th>
-	                </th>
-	            </tr>
-	        </thead>
+						<thead>
+			<tr>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortSubject()">Subject</button>
+				</th>
+				<th>
+        		<button class="btn tbutton">Section</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortName()">Professor Name</button>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sort1CR()">Class Rating</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sort1PR()">Professor Rating</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortCount()"># of Reviews</button>
+				</th>
+				<th>
+				</th>
+				<th>
+				</th>
+				<th>
+				</th>
+			</tr>
+		</thead>
 		<tbody>
-		<tr ng-repeat="object in class.myclasses | filter:{name: search} | orderBy:sortType:sortReverse">
+		<tr ng-repeat="object in class.myclasses | filter:{name: search} | orderBy:sortType">
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>

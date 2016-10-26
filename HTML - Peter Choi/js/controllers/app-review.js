@@ -153,6 +153,88 @@ self.editMyReview = function(loginid, id, classid, classReview, profReview, year
             }
 
 
+            //Sort Methods //
+            var sortSubject = false;
+self.sortSubject = function() {
+  if (sortSubject == false) {
+    sortType = ['name', 'section'];
+    sortSubject = true;
+  }
+  else {
+    sortType = ['-name', 'section'];
+    sortSubject = false;
+  }
+  return sortType
+}
+
+var sortName = false;
+self.sortName = function() {
+  if (sortName == false) {
+    sortType = ['professor_lname', 'professor_fname'];
+    sortName = true;
+  }
+  else {
+    sortType = ['-professor_lname', 'professor_fname'];
+    sortName = false;
+  }
+  return sortType
+}
+
+var sortYear = false;
+self.sortYear = function() {
+  if (sortYear == false) {
+    sortType = ['-year', 'semester'];
+    sortYear = true;
+  }
+  else {
+    sortType = ['year', 'semester'];
+    sortYear = false;
+  }
+  return sortType
+}
+
+var sortCR = false;
+self.sortCR = function() {
+  if (sortCR == false) {
+    sortType = '-class_rating';
+    sortCR = true;
+  }
+  else {
+    sortType = 'class_rating';
+    sortCR = false;
+  }
+  return sortType
+}
+
+var sortPR = false;
+self.sortPR = function() {
+  if (sortPR == false) {
+    sortType = '-professor_rating';
+    sortPR = true;
+  }
+  else {
+    sortType = 'professor_rating';
+    sortPR = false;
+  }
+  return sortType
+}
+
+var sortYOR = false;
+self.sortYOR = function() {
+  if (sortYOR== false) {
+    sortType = '-review_date';
+    sortYOR = true;
+  }
+  else {
+    sortType = 'review_date';
+    sortYOR = false;
+  }
+  return sortType
+}
+
+
+
+
 
 
 }

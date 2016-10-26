@@ -15,7 +15,7 @@
 		<thead>
 			<tr>
 				<td>
-					<button class="btn tbutton">Subject</button>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortSubject()">Subject</button>
 				</td>
 				<td>
 					<button class="btn tbutton">Section</button>
@@ -27,22 +27,22 @@
 					<button class="btn tbutton">Professor Review</button>
 				</td>
 				<td>
-					<button class="btn tbutton">Professor Name</button>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortName()">Professor Name</button>
 				</td>
 				<td>
-					<button class="btn tbutton">Review Date</button
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortYOR()">Review Date</button
 				</td>
 				<td>
-					<button class="btn tbutton">Year Taken</button>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortYear()">Year Taken</button>
 				</td>
 				<td>
 					<button class="btn tbutton">Semester</button>
 				</td>
 				<td>
-					<button class="btn tbutton">Class Rating</button>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortCR()">Class Rating</button>
 				</td>
 				<td>
-					<button class="btn tbutton">Professor Rating</button>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortPR()">Professor Rating</button>
 				</td>
 				<td>
 					<button class="btn tbutton">Actions</button>
@@ -50,7 +50,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in ctrl.mysavedreviews">
+		<tr ng-repeat="object in ctrl.mysavedreviews  | orderBy:sortType"">
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td><textarea cols="50" rows="5" style="border:solid 1px orange; resize: none" readonly ng-bind="object.class_review"></textarea></td>

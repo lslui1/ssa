@@ -17,24 +17,24 @@
 	<h1>List of Professors</h1>
 	<a href="#/addprofessor/">Can't find your professor? Click Here!</a>
 	<table class="table">
-		<thead>
+			<thead>
 			<tr>
-        <td>
+        		<th>
 					<button class="btn tbutton">University</button>
-				</td>
-				<td>
-					<button class="btn tbutton">Professor Name</button>
-				</td>
-				<td>
-					<button class="btn tbutton">Professor Rating</button>
-				</td>
-				<td>
-					<button class="btn tbutton"># of Reviews</button>
-				</td>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = professor.sortName()">Professor Name</button>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = professor.sortPR()">Professor Rating</button>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = professor.sortCount()"># of Ratings</button>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="person in professor.professors | filter:{last_name: search}">
+		<tr ng-repeat="person in professor.professors | filter:{last_name: search} | orderBy:sortType">
 			<td ng-bind="person.university_name"></td>
 			<td><a href="#/professorclasses/{{person.id}}" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)">{{person.first_name + ' ' + person.last_name}}</td>
 			<td

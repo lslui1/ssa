@@ -21,39 +21,39 @@
 		<thead>
 			<tr>
 				<td>
-					<p>Class Name</p>
+					<button class="btn tbutton" ng-click="sortType = class.sortSubject()">Class Name</button>
 				</td>
 				<td>
-					<p>Class Section</p>
+					<button class="btn tbutton" ng-click="sortType = class.sortSection()">Section</button>
 				</td>
 				<td>
 					<p>Class Review</p>
 				</td>
 				<td>
-					<p>Professor Name</p>
+					<button class="btn tbutton" ng-click="sortType = class.sortName()">Professor</button>
 				</td>
 				<td>
 					<p>Professor Review</p>
 				</td>
 				<td>
-					<p>Review Date</p>
+					<button class="btn tbutton" ng-click="sortType = class.sortYOR()">Review Date</button>
 				</td>
 				<td>
-					<p>Year</p>
+					<button class="btn tbutton" ng-click="sortType = class.sortYear()">Year</button>
 				</td>
 				<td>
 					<p>Semester</p>
 				</td>
 				<td>
-					<p>Class Rating</p>
+					<button class="btn tbutton" ng-click="sortType = class.sortCR2()">Class Rating</button>
 				</td>
 				<td>
-					<p>Professor Rating</p>
+					<button class="btn tbutton" ng-click="sortType = class.sortPR2()">Professor Rating</button>
 				</td>
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in class.profreview">
+		<tr ng-repeat="object in class.profreview | orderBy:sortType">
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td ng-bind="object.class_review"></td>

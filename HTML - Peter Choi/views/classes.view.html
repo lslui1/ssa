@@ -23,28 +23,28 @@
 	<table class ="table table-striped">
 		<thead>
 			<tr>
-				<td>
-					<button class="btn tbutton">Class Name</button>
-				</td>
-				<td>
-        <button class="btn tbutton">Section</button>
-				</td>
-				<td>
-				<button class="btn tbutton">Professor</button>
-				</td>
-				<td>
-				<button class="btn tbutton">Class Rating</button>
-				</td>
-				<td>
-				<button class="btn tbutton">Professor Rating</button>
-				</td>
-				<td>
-				<button class="btn tbutton"># of Reviews</button>
-				</td>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortSubject()">Class Name</button>
+				</th>
+				<th>
+        		<button class="btn tbutton">Section</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortName()">Professor</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sort1CR()">Class Rating</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sort1PR()">Professor Rating</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortCount()"># of Reviews</button>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in class.combinedclasses | filter:{name: selectionvalue} | filter:search">
+		<tr ng-repeat="object in class.combinedclasses | filter:{name: selectionvalue} | filter:search | orderBy:sortType">
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>

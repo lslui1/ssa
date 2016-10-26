@@ -311,6 +311,139 @@ self.saveClassProfNames = function(className,classSection,profFname, profLname) 
 }
 
 
+//Sort Methods//
+
+var sortSubject = false;
+self.sortSubject = function() {
+  if (sortSubject == false) {
+    sortType = ['name', 'section'];
+    sortSubject = true;
+  }
+  else {
+    sortType = ['-name', 'section'];
+    sortSubject = false;
+  }
+  return sortType
+}
+
+var sortName = false;
+self.sortName = function() {
+  if (sortName == false) {
+    sortType = ['professor_lname', 'professor_fname'];
+    sortName = true;
+  }
+  else {
+    sortType = ['-professor_lname', 'professor_fname'];
+    sortName = false;
+  }
+  return sortType
+}
+
+var sort1CR = false;
+self.sort1CR = function() {
+  if (sort1CR == false) {
+    sortType = '-aggregateClassRating';
+    sort1CR = true;
+  }
+  else {
+    sortType = 'aggregateClassRating';
+    sort1CR = false;
+  }
+  return sortType
+}
+
+var sort1PR = false;
+self.sort1PR = function() {
+  if (sort1PR == false) {
+    sortType = '-aggregateProfessorRating';
+    sort1PR = true;
+  }
+  else {
+    sortType = 'aggregateProfessorRating';
+    sort1PR = false;
+  }
+  return sortType
+}
+
+var sortCount = false;
+self.sortCount = function() {
+  if (sortCount == false) {
+    sortType = '-aggregateCount';
+    sortCount = true;
+  }
+  else {
+    sortType = 'aggregateCount';
+    sortCount = false;
+  }
+  return sortType
+}
+
+var sortYOR = false;
+self.sortYOR = function() {
+  if (sortYOR== false) {
+    sortType = '-review_date';
+    sortYOR = true;
+  }
+  else {
+    sortType = 'review_date';
+    sortYOR = false;
+  }
+  return sortType
+}
+
+var sortYear = false;
+self.sortYear = function() {
+  if (sortYear == false) {
+    sortType = ['-year', 'semester'];
+    sortYear = true;
+  }
+  else {
+    sortType = ['year', 'semester'];
+    sortYear = false;
+  }
+  return sortType
+}
+
+var sortCR2 = false;
+self.sortCR2 = function() {
+  if (sortCR2 == false) {
+    sortType = '-class_rating';
+    sortCR2 = true;
+  }
+  else {
+    sortType = 'class_rating';
+    sortCR2 = false;
+  }
+  return sortType
+}
+
+var sortPR2 = false;
+self.sortPR2 = function() {
+  if (sortPR2 == false) {
+    sortType = '-professor_rating';
+    sortPR2 = true;
+  }
+  else {
+    sortType = 'professor_rating';
+    sortPR2 = false;
+  }
+  return sortType
+}
+
+var sortSection = false;
+self.sortSection = function() {
+  if (sortSection == false) {
+    sortType = '-section';
+    sortSection = true;
+  }
+  else {
+    sortType = 'section';
+    sortSection = false;
+  }
+  return sortType
+}
+
+
 
 };
 
