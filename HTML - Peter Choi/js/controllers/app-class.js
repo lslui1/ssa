@@ -21,6 +21,15 @@ self.useAlternativeSavedClassId = sessionStorage.alternativeSavedClassId
 self.showProfessorTable = false;
 
 
+// self.addReviewClassName = sessionStorage.addReviewClassName
+// self.addReviewClassSection = sessionStorage.addReviewClassSection
+// self.addReviewProfFname = sessionStorage.addReviewProfFname
+// self.addReviewProfLname = sessionStorage.addReviewProfLname
+
+
+
+
+
 
 
 self.subjectarray = [];
@@ -199,8 +208,8 @@ self.deletesavedclass = function(savedclassid) {
 
 
   self.populate = function(firstName, lastName) {
-          document.getElementById("professor_fname").value = firstName;
-          document.getElementById("professor_lname").value = lastName;
+          self.professor_fname = firstName;
+          self.professor_lname = lastName;
           document.getElementById("professor_fname").style.backgroundColor = 'lightgreen';
           document.getElementById("professor_lname").style.backgroundColor = 'lightgreen';
   }
@@ -219,8 +228,8 @@ self.deletesavedclass = function(savedclassid) {
   	}
 
     self.addClassOrProf = function() {
-          var fname = document.getElementById("professor_fname").value;
-          var lname = document.getElementById("professor_lname").value;
+          var fname = self.professor_fname;
+          var lname = self.professor_lname;
           var url = "http://localhost:8080/professorbyfnamelname/" + fname + "/" + lname;
           var professorId = 0 ;
                 $.ajax({
@@ -291,6 +300,16 @@ self.cantFindProfessor = function() {
         document.getElementById("professor_fname").style.backgroundColor = '#b8d1f3';
         document.getElementById("professor_lname").style.backgroundColor = '#b8d1f3';
 }
+
+
+self.saveClassProfNames = function(className,classSection,profFname, profLname) {
+    sessionStorage.setItem("reviewClassName", className);
+    sessionStorage.setItem("reviewClassSection", classSection);
+    sessionStorage.setItem("reviewClassFname", profFname);
+    sessionStorage.setItem("reviewClassLname", profLname);
+
+}
+
 
 
 };

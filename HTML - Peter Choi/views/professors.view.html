@@ -20,23 +20,23 @@
 		<thead>
 			<tr>
         <td>
-					<button class="btn btn-primary">University</button>
+					<button class="btn tbutton">University</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Professor Name</button>
+					<button class="btn tbutton">Professor Name</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Professor Rating</button>
+					<button class="btn tbutton">Professor Rating</button>
 				</td>
 				<td>
-					<button class="btn btn-primary"># of Reviews</button>
+					<button class="btn tbutton"># of Reviews</button>
 				</td>
 			</tr>
 		</thead>
 		<tbody>
 		<tr ng-repeat="person in professor.professors | filter:{last_name: search}">
 			<td ng-bind="person.university_name"></td>
-			<td><a href="#/professorclasses/{{person.id}}">{{person.first_name + ' ' + person.last_name}}</td>
+			<td><a href="#/professorclasses/{{person.id}}" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)">{{person.first_name + ' ' + person.last_name}}</td>
 			<td
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="person.aggregateProfRating" max=5 ></div>

@@ -88,3 +88,7 @@ div#compclass {
     background: transparent;
     border: none;
 }
+
+.dropdown_container {
+	width:200px;
+}

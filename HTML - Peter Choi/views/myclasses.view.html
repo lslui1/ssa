@@ -21,26 +21,26 @@
 		<thead>
 	            <tr>
 	               <th>
-	                <button class="btn btn-primary" ng-click="sortType = ['name', 'section']; sortReverse= !sortReverse">Subject<span ng-show="sortType == ['name', 'section'] && !sortReverse" class="fa fa-caret-down"></span>
+	                <button class="btn tbutton" ng-click="sortType = ['name', 'section']; sortReverse= !sortReverse">Subject<span ng-show="sortType == ['name', 'section'] && !sortReverse" class="fa fa-caret-down"></span>
 	           <span ng-show="sortType == ['name', 'section'] && sortReverse" class="fa fa-caret-up"></span></button>
 	                </th>
 	                <th>
-	                <button class="btn btn-primary">Section</button>
+	                <button class="btn tbutton">Section</button>
 	                </th>
 	                <th>
-	                <button class="btn btn-primary" ng-click="sortType = ['professor_lname', 'professor_fname']; sortReverse= !sortReverse">Professor Name<span ng-show="sortType == 'professor_lname' && !sortReverse" class="fa fa-caret-down"></span>
+	                <button class="btn tbutton" ng-click="sortType = ['professor_lname', 'professor_fname']; sortReverse= !sortReverse">Professor Name<span ng-show="sortType == 'professor_lname' && !sortReverse" class="fa fa-caret-down"></span>
 	           <span ng-show="sortType == 'professor_lname' && sortReverse" class="fa fa-caret-up"></span></button>
 	                </th>
 	                <th>
-	                <button class="btn btn-primary" ng-click="sortType = 'aggregateClassRating'; sortReverse= !sortReverse">Class Rating<span ng-show="sortType == 'aggregateClassRating' && !sortReverse" class="fa fa-caret-down"></span>
+	                <button class="btn tbutton" ng-click="sortType = 'aggregateClassRating'; sortReverse= !sortReverse">Class Rating<span ng-show="sortType == 'aggregateClassRating' && !sortReverse" class="fa fa-caret-down"></span>
 	           <span ng-show="sortType == 'aggregateClassRating' && sortReverse" class="fa fa-caret-up"></span></button>
 	                </th>
 	                <th>
-	                <button class="btn btn-primary" ng-click="sortType = 'aggregateProfessorRating'; sortReverse= !sortReverse">Professor Rating<span ng-show="sortType == 'aggregateProfessorRating' && !sortReverse" class="fa fa-caret-down"></span>
+	                <button class="btn tbutton" ng-click="sortType = 'aggregateProfessorRating'; sortReverse= !sortReverse">Professor Rating<span ng-show="sortType == 'aggregateProfessorRating' && !sortReverse" class="fa fa-caret-down"></span>
 	           <span ng-show="sortType == 'aggregateProfessorRating' && sortReverse" class="fa fa-caret-up"></span></button>
 	                </th>
 	                <th>
-	                <button class="btn btn-primary" ng-click="sortType = 'aggregateCount'; sortReverse= !sortReverse"># of Reviews<span ng-show="sortType == 'aggregateCount' && !sortReverse" class="fa fa-caret-down"></span>
+	                <button class="btn tbutton" ng-click="sortType = 'aggregateCount'; sortReverse= !sortReverse"># of Reviews<span ng-show="sortType == 'aggregateCount' && !sortReverse" class="fa fa-caret-down"></span>
 	           <span ng-show="sortType == 'aggregateCount' && sortReverse" class="fa fa-caret-up"></span></button>
 	                </th>
 	                <th>
@@ -70,7 +70,10 @@
 			</td>
 			<td ng-bind="object.aggregateCount"></td>
 			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">Want to look at the reviews?</a></td>
-			<td class="btn btn-danger" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</td>
+			<td>
+			<button class="btn btn-danger" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</button>
+			<a class="btn btn-success" href="#/addreview/" ng-click="class.saveClassProfNames(object.name, object.section, object.professor_fname, object.professor_lname)">Add Review</a>
+			</td>
 			<td ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)"> <a href="#/alternativeclasses/" class="btn btn-default">Alternative Classes</a></td>
 			<td ng-show="object.alternativeCount > 0" ng-bind="object.alternativeCount"></td>
 		</tr>

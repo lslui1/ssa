@@ -15,6 +15,18 @@ angular
   self.showClassFname = sessionStorage.reviewClassFname
   self.showClassLname = sessionStorage.reviewClassLname
 
+  self.editReviewClassName = sessionStorage.editReviewClassName
+  self.editReviewSectionName = sessionStorage.editReviewSectionName
+  self.editReviewFName = sessionStorage.editReviewFName
+  self.editReviewLName = sessionStorage.editReviewLName
+
+
+
+  // self.showClassName = sessionStorage.showClassName
+  // self.showClassSection = sessionStorage.showClassSection
+  // self.showClassFname = sessionStorage.showClassFname
+  // self.showClassLname = sessionStorage.showClassLname
+
   self.onestar = '\u2605';
   self.twostar = '\u2605' + '\u2605';
   self.threestar = '\u2605' + '\u2605' + '\u2605';
@@ -50,8 +62,12 @@ if(self.myReviewId != undefined) {
 
                             		})};
 
-self.saveReviewId = function(reviewid) {
+self.saveReviewId = function(reviewid,reviewclassname,reviewsectionname,reviewfname,reviewlname) {
   sessionStorage.setItem("myreviewid", reviewid)
+  sessionStorage.setItem("editReviewClassName", reviewclassname)
+  sessionStorage.setItem("editReviewSectionName", reviewsectionname)
+  sessionStorage.setItem("editReviewFName", reviewfname)
+  sessionStorage.setItem("editReviewLName", reviewlname)
 }
 
 

@@ -32,4 +32,31 @@ angular
           }
   			});
 }
+
+
+
+self.addLogin = function() {
+   console.log("in addLogin")
+   var newLogin= {};
+         newLogin.password = document.getElementById("password").value;
+         newLogin.user_name = document.getElementById("username").value;
+         console.log(newLogin);
+      $http({
+       method: "POST",
+       url: 'http://localhost:8080/insertlogin',
+       data: newLogin
+     }).then(function() {
+       $window.alert("Registered!");
+       $window.location.href = '/';
+     })
+}
+
+
+self.reloadPage = function() {
+  $window.location.reload();
+}
+
+
+
+
 }

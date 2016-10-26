@@ -15,37 +15,37 @@
 		<thead>
 			<tr>
 				<td>
-					<button class="btn btn-primary">Subject</button>
+					<button class="btn tbutton">Subject</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Section</button>
+					<button class="btn tbutton">Section</button>
 				</td>
         <td>
-					<button class="btn btn-primary">Class Review</button>
+					<button class="btn tbutton">Class Review</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Professor Review</button>
+					<button class="btn tbutton">Professor Review</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Professor Name</button>
+					<button class="btn tbutton">Professor Name</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Review Date</button
+					<button class="btn tbutton">Review Date</button
 				</td>
 				<td>
-					<button class="btn btn-primary">Year Taken</button>
+					<button class="btn tbutton">Year Taken</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Semester</button>
+					<button class="btn tbutton">Semester</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Class Rating</button>
+					<button class="btn tbutton">Class Rating</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Professor Rating</button>
+					<button class="btn tbutton">Professor Rating</button>
 				</td>
 				<td>
-					<button class="btn btn-primary">Actions</button>
+					<button class="btn tbutton">Actions</button>
 				</td>
 			</tr>
 		</thead>
@@ -76,7 +76,7 @@
 				</div>
 				<span ng-show="hoverNumber2"><p ng-bind="object.professor_rating"</p></span>
 			</td>
-			<td ng-click="ctrl.saveReviewId(object.review_id)"><a style href="#/editingmyreview/">Edit</a></td>
+			<td ng-click="ctrl.saveReviewId(object.review_id, object.name, object.section, object.professor_fname, object.professor_lname)"><a style href="#/editingmyreview/">Edit</a></td>
 		</tr>
 		</tbody>
 	</table>
