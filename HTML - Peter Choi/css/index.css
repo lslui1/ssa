@@ -1,4 +1,4 @@
-div#menu ul {
+/*div#menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -18,7 +18,7 @@ div#menu li a {
 
 div#menu li a:hover {
     background-color: #111111;
-}
+}*/
 
 div#content {
 	width:100%;
@@ -92,3 +92,14 @@ div#compclass {
 .dropdown_container {
 	width:200px;
 }
+
+body {
+	background: url(pics/wqeqweqweqweqwe.png);
+	background-position: center;
+  background-repeat:no-repeat;
+	background-attachment: fixed;
+}
+
+/*table {
+	background-color: white;
+}*/

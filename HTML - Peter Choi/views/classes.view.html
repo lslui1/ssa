@@ -1,26 +1,26 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-			<ul>
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#/classes">Classes</a></li>
-				<li><a href="#/professors">Professors</a></li>
-				<li><a href="#/myreviews">My Reviews</a></li>
-        <li><a href="#/myclasses">My Classes</a></li>
-				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
-			</ul>
+	<ul class="nav nav-tabs">
+		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
+		<li class="active"><a href="#/classes"  data-toggle="tab" aria-expanded="true">Classes</a></li>
+		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
+		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">My Reviews</a></li>
+		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+	</ul>
 </div>
 
 
 
 <div style="width:75%;margin:10px auto;" ng-controller="ClassCtrl as class">
 	<div>
-		<select ng-options="subject for subject in class.subjectarray" name="singleSelect" ng-model="selectionvalue">
+		<select style="width:300px" class="form-control" ng-options="subject for subject in class.subjectarray" name="singleSelect" ng-model="selectionvalue">
     </select><br>
-		<input ng-model="search" class="form-control" type="text" placeholder="Search by {{search}}">
+		<input style="width:300px" ng-model="search" class="form-control" type="text" placeholder="Search by {{search}}">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
-	<h1>List of Classes</h1>
+	<h1 align="center">Classes</h1>
 	<a href="#/addclass/">Can't find your class? Click Here!</a>
-	<table class ="table table-striped">
+	<table class ="table table-hover">
 		<thead>
 			<tr>
 				<th>
