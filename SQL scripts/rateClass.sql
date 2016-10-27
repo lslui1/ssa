@@ -187,7 +187,7 @@ INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',1
 INSERT class(university_id, professor_id, name, section)  VALUES(1,2,'English',201);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,2,'English',202);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,2,'English',203);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,3,'English',301);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,80,'English',301);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,3,'English',302);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,3,'English',303);
 -- Math
