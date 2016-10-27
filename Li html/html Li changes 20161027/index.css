@@ -1,0 +1,107 @@
+/*div#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+div#menu li {
+    float: left;
+}
+div#menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+div#menu li a:hover {
+    background-color: #111111;
+}*/
+
+div#content {
+	width:100%;
+	display:inline-block;
+}
+
+
+input[id=professor_name] {
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[id=professor_name]:focus {
+    width: 100%;
+}
+
+.tableStuff {
+	border: 2px solid black;
+	width: 40%;
+}
+
+  	.profTable{
+		width:40%;
+		border-collapse:collapse;
+	}
+	.profTable td{
+		padding:7px; border:#4e95f4 1px solid;
+	}
+	/* Define the default color for all the table rows */
+	.profTable tr{
+		background: white;
+	}
+	/* Define the hover highlight color for the table row */
+    .profTable tr:hover {
+          background-color: #b8d1f3;
+    }
+
+.hiddenSpan{
+	visibility: hidden;
+}
+
+.hiddenSpan:hover {
+	visibility: visible;
+}
+
+
+
+div#compclass {
+    position: fixed;
+    /* center the element */
+    right: 0;
+    left: 0;
+    margin-right: 5cm;
+    margin-left: 5cm;
+}
+
+.tbutton {
+    background: transparent;
+    border: none;
+	font-size: 20px;
+	color: darkblue;
+}
+
+.dropdown_container {
+	width:200px;
+}
+
+body {
+	background: url(pics/wqeqweqweqweqwe.png);
+	background-position: center;
+  background-repeat:no-repeat;
+	background-attachment: fixed;
+}
+
+/*table {
+	background-color: white;
+}*/
