@@ -1,5 +1,5 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top" style="position:fixed; background:white;">
 		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
 		<li class="active"><a href="#/classes"  data-toggle="tab" aria-expanded="true">Classes</a></li>
 		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
@@ -12,6 +12,9 @@
 
 
 <div style="width:75%;margin:10px auto;" ng-controller="ClassCtrl as class">
+	<br />
+	<br />
+	<br />
 	<div>
 		<select style="width:300px" class="form-control" ng-options="subject for subject in class.subjectarray" name="singleSelect" ng-model="selectionvalue">
     </select><br>
@@ -20,7 +23,7 @@
 	</div>
 	<h1 align="center">Classes</h1>
 	<a href="#/addclass/">Can't find your class? Click Here!</a>
-	<table class ="table table-hover">
+	<table class ="table table-hover tbfontsize">
 		<thead>
 			<tr>
 				<th>
@@ -41,6 +44,10 @@
 				<th>
 				<button class="btn tbutton" ng-click="sortType = class.sortCount()"># of Reviews</button>
 				</th>
+				<th>
+				</th>
+				<th>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -60,9 +67,16 @@
 				</div>
 				<span ng-show="hoverNumber2"><p ng-bind="object.aggregateProfessorRating"</p></span>
 			</td>
-			<td ng-bind="object.aggregateCount"></td>
-			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">Want to look at the reviews?</a></td>
-			<td ng-click="class.addToMySavedClasses(class.loginid, object.id)"><button class="btn-success">Add This Class!</button></td>
+			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}" style="font-size:25px" ng-bind="object.aggregateCount"></td>
+			<td class="tdheight">
+				<div ng-show="((object.aggregateProfessorRating + object.aggregateClassRating) / 2) > 3.49">
+				<img class="img-circle" src="/css/pics/thumbs_up2_small.jpg" />
+				</div>
+				<div ng-show="((object.aggregateProfessorRating + object.aggregateClassRating) / 2) < 2.5 && ((object.aggregateProfessorRating + object.aggregateClassRating) / 2) > 0">
+				<img class="img-circle" src="/css/pics/thumbs_down2_small.jpg" />
+				</div>
+			</td>
+			<td ng-click="class.addToMySavedClasses(class.loginid, object.id)"><button class=" btn btn-success">Add Class</button></td>
 		</tr>
 		</tbody>
 	</table>

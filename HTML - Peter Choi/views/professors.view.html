@@ -1,5 +1,5 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top" style="position:fixed; background:white;">
 		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
 		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">Classes</a></li>
 		<li class="active"><a href="#/professors"  data-toggle="tab" aria-expanded="true">Professors</a></li>
@@ -9,14 +9,17 @@
 	</ul>
 </div>
 
-<div style="width:50%;margin:10px auto;" ng-controller="ProfessorCtrl as professor">
+<div style="width:75%;margin:10px auto;" ng-controller="ProfessorCtrl as professor">
+	<br />
+	<br />
+	<br />
 	<div>
-		<input ng-model="search" class="form-control" type="text" placeholder="Search by Last Name">
+		<input ng-model="search" style="width:300px" class="form-control" type="text" placeholder="Search Filter">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
-	<h1>List of Professors</h1>
+	<h1 align="center">List of Professors</h1>
 	<a href="#/addprofessor/">Can't find your professor? Click Here!</a>
-	<table class="table">
+	<table class="table table-hover">
 			<thead>
 			<tr>
         		<th>
@@ -34,8 +37,8 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="person in professor.professors | filter:{last_name: search} | orderBy:sortType">
-			<td ng-bind="person.university_name"></td>
+		<tr ng-repeat="person in professor.professors | filter: search | orderBy:sortType">
+			<td class="tdheight" ng-bind="person.university_name"></td>
 			<td><a href="#/professorclasses/{{person.id}}" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)">{{person.first_name + ' ' + person.last_name}}</td>
 			<td
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">

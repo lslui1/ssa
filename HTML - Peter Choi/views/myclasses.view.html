@@ -1,5 +1,5 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top" style="position:fixed; background:white;">
 		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
 		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">Classes</a></li>
 		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
@@ -11,12 +11,12 @@
 
 
 
-<div style="width:50%;margin:10px auto;" ng-controller="ClassCtrl as class">
+<div style="width:75%;margin:10px auto;" ng-controller="ClassCtrl as class">
 	<div>
 		<input ng-model="search" class="form-control" type="text" placeholder="Search by Subject">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
-	<h1>My Classes</h1>
+	<h1 align="center">My Classes</h1>
 	<table class="table">
 						<thead>
 			<tr>
@@ -47,7 +47,7 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="object in class.myclasses | filter:{name: search} | orderBy:sortType">
-			<td ng-bind="object.name"></td>
+			<td class="tdheight" ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>
 			<td
@@ -62,14 +62,14 @@
 				</div>
 				<span ng-show="hoverNumber2"><p ng-bind="object.aggregateProfessorRating"</p></span>
 			</td>
-			<td ng-bind="object.aggregateCount"></td>
-			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}">Want to look at the reviews?</a></td>
+			<td><a href="#/review/{{object.id}}" ng-bind="object.aggregateCount" ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"></a></td>
 			<td>
+				<a class="btn btn-success" href="#/addreview/" ng-click="class.saveClassProfNames(object.name, object.section, object.professor_fname, object.professor_lname)">Add Review</a>
 			<button class="btn btn-danger" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</button>
-			<a class="btn btn-success" href="#/addreview/" ng-click="class.saveClassProfNames(object.name, object.section, object.professor_fname, object.professor_lname)">Add Review</a>
+		  <a ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)" href="#/alternativeclasses/" class="btn btn-default">{{object.alternativeCount + ' - '}}Recommendations</a>
 			</td>
-			<td ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)"> <a href="#/alternativeclasses/" class="btn btn-default">Alternative Classes</a></td>
-			<td ng-show="object.alternativeCount > 0" ng-bind="object.alternativeCount"></td>
+			<!-- <td ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)"> <a href="#/alternativeclasses/" class="btn btn-default">{{object.alternativeCount + ' - '}}Alternative Classes</a></td> -->
+			<!-- <td ng-show="object.alternativeCount > 0" ng-bind="object.alternativeCount"></td> -->
 		</tr>
 		</tbody>
 	</table>

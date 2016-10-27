@@ -1,79 +1,85 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-			<ul>
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#/classes">Classes</a></li>
-				<li><a href="#/professors">Professors</a></li>
-				<li><a href="#/myreviews">My Reviews</a></li>
-        <li><a href="#/myclasses">My Classes</a></li>
-				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
+			<ul class="nav nav-tabs">
+				<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
+				<li class="active"><a href="#/classes"  data-toggle="tab" aria-expanded="true">Classes</a></li>
+				<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
+				<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">My Reviews</a></li>
+        <li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
+				<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
 			</ul>
 </div>
 <div ng-controller="ClassCtrl as ctrl">
-<div style="width:50%; float:left;">
-<h1>Add a Class</h1>
-<form name="myForm">
-	<div class="form-group row">
-		<label for="major-description" class="col-xs-2 col-form-label">Search for Professor</label>
-		 <div class="col-xs-10">
-			<input class="form-control" type="text" ng-model="professor_name" id="professor_name" name="professor_name"  ng-click = "ctrl.enableInput()">
+<div>
+	<br />
+	<br />
+	<h1 align="center" style="font-weight: bold">Add Class</h1>
+	<form class="form-horizontal" name="myForm">
+	  <fieldset>
+	    <legend></legend>
+			<div style="width:60%;float:left;">
+	    <div class="form-group">
+	      <label class="col-lg-5 control-label">Search</label>
+	      <div class="col-lg-5">
+					<input style="width:400px" class="form-control" type="text" ng-model="professor_name" id="professor_name" name="professor_name"  ng-click = "ctrl.enableInput()">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-lg-5 control-label">First Name</label>
+	      <div class="col-lg-5">
+	        <input style="width:400px" class="form-control" type="text" ng-model="ctrl.professor_fname" id="professor_fname" name="professor_fname" disabled required>
+	      </div>
+	    </div>
+			<div class="form-group">
+	      <label class="col-lg-5 control-label">Last Name</label>
+	      <div class="col-lg-5">
+	        <input  style="width:400px" class="form-control" type="text" ng-model="ctrl.professor_lname" id="professor_lname" name="professor_lname" disabled required>
+	      </div>
+	    </div>
+			<div class="form-group">
+	      <label class="col-lg-5 control-label">Subject</label>
+	      <div class="col-lg-5">
+					<input style="width:400px" class="form-control" type="text" ng-model="subject" id="subject" name="subject" ng-pattern="/^[a-zA-Z]*$/" required>
+						<span style="color:red" ng-show="myForm.subject.$touched && myForm.subject.$invalid">
+							<span ng-show="myForm.subject.$error.required">Subject is required</span>
+						</span>
+	      </div>
+	    </div>
+			<div class="form-group">
+	      <label class="col-lg-5 control-label">Section</label>
+	      <div class="col-lg-5">
+					<input style="width:400px" class="form-control" type="text" ng-model="section" id="section" name="section" ng-pattern="/^\d+$/" required>
+						<span style="color:red" ng-show="myForm.section.$touched && myForm.section.$invalid">
+							<span ng-show="myForm.section.$error.required">Section is required</span>
+						</span>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <div class="col-lg-5 col-lg-offset-5">
+					<button class="btn btn-success" id="addClass" ng-Click="ctrl.addClassOrProf()" ng-disabled="myForm.$invalid && myForm.$error">Add Class</button>
+					<button class="btn btn-info" id="cantFindProfessor" ng-click="ctrl.cantFindProfessor()">Can't Find Professor</button>
+	      </div>
+	    </div>
 		</div>
+		<div style="width:39%;float:left;" ng-show="ctrl.showProfessorTable">
+
+					<table class = "profTable" name ="profTable">
+					<tr style="font-weight: bold">
+					<td width = 100px ng-show = "beenClicked">Professor Name</td>
+					</tr>
+
+					<tr ng-repeat="professor in ctrl.professors | filter : professor_name | orderBy: 'last_name'" ng-dblclick = "ctrl.populate(professor.first_name, professor.last_name)" >
+					<td width = 100px>{{professor.fullName}}</td>
+					</tr>
+				</table>
+				<p />
+
 		</div>
-		<div class="form-group row">
-			<label for="major-description" class="col-xs-2 col-form-label">Professor First Name</label>
-			 <div class="col-xs-10">
-				<input class="form-control" type="text" ng-model="ctrl.professor_fname" id="professor_fname" name="professor_fname" disabled required>
-			</div>
-			</div>
-			<div class="form-group row">
-				<label for="major-description" class="col-xs-2 col-form-label">Professor Last Name</label>
-				 <div class="col-xs-10">
-					<input class="form-control" type="text" ng-model="ctrl.professor_lname" id="professor_lname" name="professor_lname" disabled required>
-					<span style="color:red" ng-show="myForm.professor_lname.$dirty && myForm.professor_lname.$invalid">
-						<span ng-show="myForm.professor_lname.$error.required">PROF L NAME</span>
-					</span>
-				</div>
-				</div>
-	<div class="form-group row">
-		<label for="major-description" class="col-xs-2 col-form-label">Subject</label>
-		 <div class="col-xs-10">
-		 	<input class="form-control" type="text" ng-model="subject" id="subject" name="subject" required>
-				<span style="color:red" ng-show="myForm.subject.$dirty && myForm.subject.$invalid">
-					<span ng-show="myForm.subject.$error.required">Subject is required - Alpha Only</span>
-				</span>
-		</div>
-  	</div>
-	<div class="form-group row">
-		<label for="major-reqsat" class="col-xs-2 col-form-label">Section</label>
-		 <div class="col-xs-10">
-		 	<input class="form-control" type="text" ng-model="section" id="section" name="section" required>
-				<span style="color:red" ng-show="myForm.section.$dirty && myForm.section.$invalid">
-					<span ng-show="myForm.section.$error.required">Section is required</span>
-				</span>
-		</div>
-  	</div>
+	  </fieldset>
 	</form>
 
 
-<button class="btn btn-success" id="addClass" ng-Click="ctrl.addClassOrProf()" ng-disabled="myForm.$invalid && myForm.$error">Add Class</button>
-<button id="cantFindProfessor" ng-click="ctrl.cantFindProfessor()">Can't Find Professor</button>
-
-
-
-
 
 </div>
 
-<div style="width: 30%; float: right" ng-show="ctrl.showProfessorTable">
-			<table class = "profTable" name ="profTable">
-			<tr style="font-weight: bold">
-			<td width = 100px ng-show = "beenClicked">Professor Name</td>
-			</tr>
 
-			<tr ng-repeat="professor in ctrl.professors | filter : professor_name | orderBy: 'last_name'" ng-dblclick = "ctrl.populate(professor.first_name, professor.last_name)" >
-			<td width = 100px>{{professor.fullName}}</td>
-			</tr>
-		</table>
-		<p />
-
-</div>
 </div>

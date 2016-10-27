@@ -1,5 +1,6 @@
 <div ng-controller="LoginCtrl as login" style="width:25%;margin:10px auto;">
 <div ng-show="!showRegister">
+  <br />
   <form class="form-signin" name="myForm">
     <h2 class="form-signin-heading">Sign In</h2>
       <input class="form-control" type="text" class="input-block-level" placeholder="Username" ng-model="signinuser" name="usernameinput" ng-minlength="4" ng-maxlength="10" required>
@@ -21,6 +22,7 @@
 
 <div>
   <div ng-show="showRegister" style="margin:10px auto;">
+      <br />
  <form class="form-signin" name="registerForm">
    <h2 class="form-signin-heading">Register Account</h2>
      <input class="form-control" id = "username" type="text" class="input-block-level" placeholder="Enter New Username" ng-model="username" name="registerusername" ng-minlength="4" ng-maxlength="10" required>

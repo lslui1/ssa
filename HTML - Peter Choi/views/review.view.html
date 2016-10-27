@@ -1,80 +1,121 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-			<ul>
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#/classes">Classes</a></li>
-				<li><a href="#/professors">Professors</a></li>
-				<li><a href="#/myreviews">My Reviews</a></li>
-        <li><a href="#/myclasses">My Classes</a></li>
-				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
-			</ul>
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top" style="position:fixed; background:white;">
+		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
+		<li class="active"><a href="#/classes"  data-toggle="tab" aria-expanded="true">Classes</a></li>
+		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
+		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">My Reviews</a></li>
+		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+	</ul>
 </div>
 
-<div style="width:75%;margin:10px auto;" ng-controller="ReviewCtrl as ctrl">
-	<h1>List of Reviews</h1>
-	<a href="#/addreview/">Did you take this course/professor? Add a review and Click Here!</a>
-	<table class="table">
+
+<style>
+
+.colStyle {
+	border: 1px solid grey;
+	border-radius: 25px;
+}
+
+
+.colGroup1 {
+	border: 2px lightblue;
+	background-color: transparent;
+		border-radius: 25px;
+}
+
+.colGroup2 {
+	border: 2px lightblue;
+		border-radius: 25px;
+}
+
+.textBox {
+	border:solid 1px grey;
+	resize: none;
+	border-radius: 5px;
+}
+
+</style>
+
+<div style="width:70%" align="center" ng-controller="ReviewCtrl as ctrl">
+<br />
+<br />
+<br />
+<div>
+	<table class="table table-striped" style="margin:20px; opacity:0.8;">
 		<thead>
-			<tr>
-				<th>
-					<button class="btn tbutton" ng-click="sortType = class.sortSubject()">Class Name</button>
-				</th>
-				<th>
-					<button class="btn tbutton">Class Section</button>
-				</th>
-				<th>
-					<button class="btn tbutton">Class Review</button>
-				</th>
-				<th>
-					<button class="btn tbutton" ng-click="sortType = class.sortName()">Professor Name</button>
-				</th>
-				<th>
-					<button class="btn tbutton">Professor Review</button>
-				</th>
-				<th>
-					<button class="btn tbutton" ng-click="sortType = ctrl.sortYOR()">Review Date</button>
-				</th>
-				<th>
-					<button class="btn tbutton" ng-click="sortType = ctrl.sortYear()">Year</button>
-				</th>
-				<th>
-					<button class="btn tbutton">Semester</button>
-				</th>
-				<th>
-					<button class="btn tbutton" ng-click="sortType = ctrl.sortCR()">Class Rating</button>
-				</th>
-				<th>
-					<button class="btn tbutton" ng-click="sortType = ctrl.sortPR()">Professor Rating</button>
-				</th>
+			<a href="#/addreview/">Did you take this course/professor? Add a review and Click Here!</a>
+			<tr style="font-weight: bold; color: black;">
+				<td style="border:1px lightblue">
+					<button class="btn tbutton"  style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortSubject()">Subject</button>
+				</td>
+				<td style="border:1px lightblue">
+					<button class="btn tbutton"  style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortName()">Professor</button>
+				</td>
+
+<!--				<td>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortYear()">Year Taken</button>
+				</td> -->
+        		<td>
+					<button class="btn tbutton" style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortYOR()">Review</button>
+				</td>
+
+				<td style="border:1px lightblue">
+					<button class="btn tbutton"  style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortCR()">Class Rating</button>
+				</td>
+
+				<td style="border:1px lightblue">
+					<button class="btn tbutton"  style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortPR()">Prof. Rating</button>
+				</td>
+
+
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in ctrl.reviews | orderBy:sortType">
-			<td ng-bind="ctrl.showClassName"></td>
-			<td ng-bind="ctrl.showClassSection"></td>
-			<td ng-bind="object.class_review"></td>
-			<td ng-bind="ctrl.showClassFname + ' ' + ctrl.showClassLname"></td>
-			<td ng-bind="object.professor_review"></td>
-			<td ng-bind="object.review_date"></td>
-			<td ng-bind="object.year"></td>
+					<colgroup span="2" class="colGroup1">
+					<col class="colStyle"></col>
+					<col class="colStyle"></col>
+					</colgroup>
+					<colgroup span="4" class="colGroup2">
+					<col class="colStyle"></col>
+					<col class="colStyle"></col>
+					<col class="colStyle"></col>
+					<col class="colStyle"></col>
+					</colgroup>
+		<tr ng-repeat="object in ctrl.reviews  | orderBy:sortType">
+			<td><span ng-bind="ctrl.showClassName + ' ' + ctrl.showClassSection"  style="font-weight: bold; font-size: 120%"></span></a>
+			<p />
+				(<span ng-show="object.semester === 1">Spring </span>
+				<span ng-show="object.semester === 2">Summer </span>
+				<span ng-show="object.semester === 3">Fall </span>
+				<span ng-show="object.semester === 4">Winter </span>
+				<span ng-bind="object.year"></span>)</td>
+
+						<td>
+						<span ng-bind="ctrl.showClassFname + ' ' + ctrl.showClassLname" style="font-weight: bold; font-size: 120%"></span></a></td>
+			<span>
+			<td><p style="font-weight:bold">Class:</p><textarea cols="50" rows="5" class="textBox" readonly ng-bind="object.class_review"></textarea>
+
+			<p style="font-weight:bold">Professor:</p><textarea cols="50" rows="5" class="textBox" readonly ng-bind="object.professor_review"></textarea>Submitted: <span ng-bind="object.review_date"></span></td>
+
 			<td>
-				<span ng-show="object.semester === 1">Spring</span>
-				<span ng-show="object.semester === 2">Summer</span>
-				<span ng-show="object.semester === 3">Fall</span>
-				<span ng-show="object.semester === 4">Winter</span>
-			</td>
-			<td
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="object.class_rating" max=5 ></div>
 				</div>
-				<span ng-show="hoverNumber"><p ng-bind="object.class_rating"</p></span>
+				<span ng-show="hoverNumber"><p ng-bind="object.class_rating"></p></span>
 			</td>
-			<td
+
+			<td>
 				<div ng-mouseover="hoverNumber2 = true" ng-mouseleave="hoverNumber2 = false">
 				<div star-rating rating-value="object.professor_rating" max=5 ></div>
 				</div>
-				<span ng-show="hoverNumber2"><p ng-bind="object.professor_rating"</p></span>
+				<span ng-show="hoverNumber2"><p ng-bind="object.professor_rating"></p></span>
 			</td>
+
+			</span>
+			</colgroup>
 		</tr>
 		</tbody>
 	</table>
+</div>
 </div>

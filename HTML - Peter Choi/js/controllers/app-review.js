@@ -70,6 +70,11 @@ self.saveReviewId = function(reviewid,reviewclassname,reviewsectionname,reviewfn
   sessionStorage.setItem("editReviewLName", reviewlname)
 }
 
+self.saveProfName = function(firstName, secondName) {
+  sessionStorage.setItem("PROFESSORfname", firstName)
+  sessionStorage.setItem("PROFESSORlname", secondName)
+}
+
 
 self.editMyReview = function(loginid, id, classid, classReview, profReview, year, semester, classRating, professorRating) {
   var myReview = {};

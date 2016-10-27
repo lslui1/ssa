@@ -1,11 +1,11 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-			<ul>
-				<li><a href="#/home">Home</a></li>
-				<li><a href="#/classes">Classes</a></li>
-				<li><a href="#/professors">Professors</a></li>
-				<li><a href="#/myreviews">My Reviews</a></li>
-        <li><a href="#/myclasses">My Classes</a></li>
-				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
+			<ul class="nav nav-tabs">
+				<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
+				<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">Classes</a></li>
+				<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
+				<li class="active"><a href="#/myreviews"  data-toggle="tab" aria-expanded="true">My Reviews</a></li>
+        <li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
+				<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
 			</ul>
 </div>
 <div ng-controller="ReviewCtrl as ctrl">

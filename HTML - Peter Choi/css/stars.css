@@ -21,3 +21,12 @@ ul.rating {
 .rating .filled {
     color: red;
 }
+
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.tdheight {
+	height: 100px;
+}
