@@ -1,0 +1,115 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/classes">Classes</a></li>
+				<li><a href="#/professors">Professors</a></li>
+				<li><a href="#/myreviews">My Reviews</a></li>
+        <li><a href="#/myclasses">My Classes</a></li>
+				<li ng-click="logout.loggingOut()"><a href="#/">Log Out</a></li>
+			</ul>
+</div>
+
+<style>
+
+.colStyle {
+	border: 1px solid grey;
+}
+
+
+.colGroup1 {
+	border: 2px solid black; 
+	background-color: #f1f1f1;
+}
+
+.colGroup2 {
+	border: 2px solid black; 
+}
+
+.textBox {
+	border:solid 1px grey; 
+	resize: none; 
+	border-radius: 5px;
+}
+
+</style>
+
+<div style="width:50%" align="center" ng-controller="ReviewCtrl as ctrl">
+	<h1>My Reviews</h1>
+	<table class="table" style="border:2px solid black; margin:20px">
+		<thead>
+
+			<tr style="background-color: grey; font-weight: bold; color: black">
+				<td style="border:1px solid black">
+					<button class="btn tbutton"  style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortSubject()">Subject</button>
+				</td>
+				<td style="border:1px solid black">
+					<button class="btn tbutton"  style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortName()">Professor</button>
+				</td>
+
+<!--				<td>
+					<button class="btn tbutton" ng-click="sortType = ctrl.sortYear()">Year Taken</button>
+				</td> -->
+        		<td style="border:1px solid black">
+					<button class="btn tbutton" style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortYOR()">My Review</button>
+				</td> 
+
+				<td style="border:1px solid black">
+					<button class="btn tbutton"  style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortCR()">Class Rating</button>
+				</td>
+
+				<td style="border:1px solid black">
+					<button class="btn tbutton"  style="font-weight: bold; font-size: 150%" ng-click="sortType = ctrl.sortPR()">Prof. Rating</button>
+				</td>
+				<td style="border:1px solid black">
+					
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+					<colgroup span="2" class="colGroup1">
+					<col class="colStyle"></col>
+					<col class="colStyle"></col>
+					</colgroup>
+					<colgroup span="4" class="colGroup2">
+					<col class="colStyle"></col>
+					<col class="colStyle"></col>
+					<col class="colStyle"></col>
+					<col class="colStyle"></col>
+					</colgroup>
+		<tr ng-repeat="object in ctrl.mysavedreviews  | orderBy:sortType" style="border:2px solid black">
+			<td><a style="color: black" ng-href ="#/review/{{object.class_id}}"> <span ng-bind="object.name + ' ' + object.section"  style="font-weight: bold; font-size: 120%"></span></a>
+			<p />
+				(<span ng-show="object.semester === 1">Spring </span>
+				<span ng-show="object.semester === 2">Summer </span>
+				<span ng-show="object.semester === 3">Fall </span>
+				<span ng-show="object.semester === 4">Winter </span>
+				<span ng-bind="object.year"></span>)</td>
+
+						<td><a style="color: black" ng-href="#/professorclasses/{{object.professor_id}}">
+						<span ng-bind="object.professor_fname + ' ' + object.professor_lname" style="font-weight: bold; font-size: 120%"></span></a></td>
+			<span>
+			<td><p style="font-weight:bold">Class:</p><textarea cols="50" rows="5" class="textBox" readonly ng-bind="object.class_review"></textarea>
+
+			<p style="font-weight:bold">Professor:</p><textarea cols="50" rows="5" class="textBox" readonly ng-bind="object.professor_review"></textarea>Submitted: <span ng-bind="object.review_date"></span></td>
+			
+			<td> 
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="object.class_rating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="object.class_rating"></p></span>
+			</td>
+
+			<td>
+				<div ng-mouseover="hoverNumber2 = true" ng-mouseleave="hoverNumber2 = false">
+				<div star-rating rating-value="object.professor_rating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber2"><p ng-bind="object.professor_rating"></p></span>
+			</td>
+			<td ng-click="ctrl.saveReviewId(object.review_id, object.name, object.section, object.professor_fname, object.professor_lname)"><a style href="#/editingmyreview/"><button>Edit</button></a></td>
+	
+			</span>
+			</colgroup>
+		</tr>
+		</tbody>
+	</table>
+</div>
