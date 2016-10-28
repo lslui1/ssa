@@ -1151,7 +1151,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid white;
 }
 .sr-only {
   position: absolute;
@@ -1414,7 +1414,7 @@ a.bg-danger:focus {
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid white;
 }
 ul,
 ol {
@@ -1482,7 +1482,7 @@ blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
   font-size: 17.5px;
-  border-left: 5px solid #eeeeee;
+  border-left: 5px solid white;
 }
 blockquote p:last-child,
 blockquote ul:last-child,
@@ -1506,7 +1506,7 @@ blockquote .small:before {
 blockquote.pull-right {
   padding-right: 15px;
   padding-left: 0;
-  border-right: 5px solid #eeeeee;
+  border-right: 5px solid white;
   border-left: 0;
   text-align: right;
 }
@@ -2591,7 +2591,7 @@ output {
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-  background-color: #eeeeee;
+  background-color: white;
   opacity: 1;
 }
 .form-control[disabled],
@@ -3906,7 +3906,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 1;
   color: #666666;
   text-align: center;
-  background-color: #eeeeee;
+  background-color: white;
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
@@ -3992,7 +3992,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: lightgrey;
 }
 .nav > li.disabled > a {
   color: #999999;
@@ -4001,13 +4001,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li.disabled > a:focus {
   color: #999999;
   text-decoration: none;
-  background-color: transparent;
+  background-color: blue;
   cursor: not-allowed;
 }
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eeeeee;
+  background-color: blue;
   border-color: #3399f3;
 }
 .nav .nav-divider {
@@ -4033,13 +4033,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-radius: 4px 4px 0 0;
 }
 .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
+  border-color: white white #dddddd;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #666666;
-  background-color: #ffffff;
+  background: url(pics/2144tran.jpg);
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -4497,7 +4497,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #eeeeee;
+  background-color: white;
   border-color: #dddddd;
 }
 .navbar-default .navbar-brand {
@@ -4750,7 +4750,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > span:focus {
   z-index: 2;
   color: #3399f3;
-  background-color: #eeeeee;
+  background-color: white;
   border-color: #dddddd;
 }
 .pagination > .active > a,
@@ -4828,7 +4828,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: white;
 }
 .pager .next > a,
 .pager .next > span {
@@ -4964,7 +4964,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: white;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5289,7 +5289,7 @@ button.list-group-item {
 .list-group-item.disabled,
 .list-group-item.disabled:hover,
 .list-group-item.disabled:focus {
-  background-color: #eeeeee;
+  background-color: white;
   color: #999999;
   cursor: not-allowed;
 }
@@ -6756,10 +6756,10 @@ button.close {
   }
 }
 .navbar {
-  background-image: -webkit-linear-gradient(#ffffff, #eeeeee 50%, #e4e4e4);
-  background-image: -o-linear-gradient(#ffffff, #eeeeee 50%, #e4e4e4);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(50%, #eeeeee), to(#e4e4e4));
-  background-image: linear-gradient(#ffffff, #eeeeee 50%, #e4e4e4);
+  background-image: -webkit-linear-gradient(#ffffff, white 50%, #e4e4e4);
+  background-image: -o-linear-gradient(#ffffff, white 50%, #e4e4e4);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(50%, white), to(#e4e4e4));
+  background-image: linear-gradient(#ffffff, white 50%, #e4e4e4);
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe4e4e4', GradientType=0);
   -webkit-filter: none;

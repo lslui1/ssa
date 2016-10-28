@@ -93,14 +93,22 @@ background: url(pics/cool.jpg) ;
 	text-transform: uppercase;
 	width: auto;
 }
-body {
-	background: url(pics/wqeqweqweqweqwe.png);
+/*body {
+	background: url(pics/2144tran.jpg);
 	background-position: center;
 	background-repeat:no-repeat;
 	background-attachment: fixed;
 
 
+}*/
+
+.blueBackground {
+	background: url(/pics/2144tran.jpg);
+	background-position: center;
+  background-repeat:no-repeat;
+	background-attachment: fixed;
 }
+
 
 @keyframes play {
     100% { background-position: -1900px; }

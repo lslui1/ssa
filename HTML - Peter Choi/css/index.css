@@ -94,8 +94,15 @@ div#compclass {
 	width:200px;
 }
 
-body {
-	background: url(/pics/2144tran.jpg);
+/*body {
+	background: url(pics/2144tran.jpg);
+	background-position: center;
+  background-repeat:no-repeat;
+	background-attachment: fixed;
+}*/
+
+.blueBackground {
+	background: url(pics/2144tran.jpg);
 	background-position: center;
   background-repeat:no-repeat;
 	background-attachment: fixed;

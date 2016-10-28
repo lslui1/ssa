@@ -1,5 +1,5 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-			<ul class="nav nav-tabs">
+			<ul class="nav nav-tabs navbar-default navbar-fixed-top">
 				<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
 				<li class="active"><a href="#/classes"  data-toggle="tab" aria-expanded="true">Classes</a></li>
 				<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
@@ -8,16 +8,21 @@
 				<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
 			</ul>
 </div>
+
+
+<div class="blueBackground minpageheight">
 <div ng-controller="ReviewCtrl as ctrl">
 <div style="width:75%;margin:10px auto;">
+	<br />
+	<br />
 <h1 align="center">Add a Review</h1>
-<div><h2 align="center">Class:    {{ctrl.showClassName}} {{ctrl.showClassSection}}</h2> </div>
-<div><h2 align="center">Professor: {{ctrl.showClassFname}} {{ctrl.showClassLname}}</h2></div>
+<div><h2 align="center">{{ctrl.showClassName}} {{ctrl.showClassSection}} - {{ctrl.showClassFname}} {{ctrl.showClassLname}}</h2> </div>
+<!-- <div><h2 align="center">Professor: {{ctrl.showClassFname}} {{ctrl.showClassLname}}</h2></div> -->
 <form name="myForm">
 	<div class="form-group row">
 		<label for="review-profreview" class="col-xs-2 col-form-label">Professor Review</label>
 		 <div class="col-xs-10">
-		 	<textarea class="form-control" rows="8" style="resize:none" ng-model="profreview" id="profinputid" name="profreviewinput" required></textarea>
+		 	<textarea class="form-control" rows="6" style="resize:none" ng-model="profreview" id="profinputid" name="profreviewinput" required></textarea>
 				<span style="color:red" ng-show="myForm.profreviewinput.$dirty && myForm.profreviewinput.$invalid">
 					<span ng-show="myForm.profreviewinput.$error.required">Professor Review is required.</span>
 				</span>
@@ -26,7 +31,7 @@
 	<div class="form-group row">
 		<label for="review-classreview" class="col-xs-2 col-form-label">Class Review</label>
 		 <div class="col-xs-10">
-		 	<textarea class="form-control" rows="8" style="resize:none" ng-model="classreview" id="classreviewid" name="classreviewinput" required></textarea>
+		 	<textarea class="form-control" rows="6" style="resize:none" ng-model="classreview" id="classreviewid" name="classreviewinput" required></textarea>
 				<span style="color:red" ng-show="myForm.classreviewinput.$dirty && myForm.classreviewinput.$invalid">
 					<span ng-show="myForm.classreviewinput.$error.required">Class Review is required.</span>
 				</span>
@@ -80,5 +85,6 @@
 
 	<button ng-disabled="myForm.$invalid && myForm.$error" type="button" class="btn btn-success" ng-click="ctrl.addReview(profreview,classreview,year,semester,classrating,profrating)">Add Review</button>
 	&nbsp;
+</div>
 </div>
 </div>
