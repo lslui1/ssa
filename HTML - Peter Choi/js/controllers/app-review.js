@@ -100,6 +100,7 @@ self.editMyReview = function(loginid, id, classid, classReview, profReview, year
   })
     .then(function(resp) {
       console.log("SUCCESS: " + resp)
+      sessionStorage.setItem("returnstate", "editmyreview");
       $window.location.href = '/#/editsuccessful';
     }, function(err) {
       console.log("FAILURE: " + err)
@@ -151,6 +152,7 @@ self.editMyReview = function(loginid, id, classid, classReview, profReview, year
               })
                 .then(function(resp) {
                   console.log("SUCCESS: " + resp)
+                  sessionStorage.setItem("returnstate", "addreview");
                   $window.location.href = '/#/submittedreview';
                 }, function(err) {
                   console.log("FAILURE: " + resp)

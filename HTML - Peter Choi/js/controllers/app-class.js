@@ -136,6 +136,9 @@ self.saveClassId = function(classId, className, classSection, classFname, classL
   sessionStorage.setItem("reviewClassSection", classSection)
   sessionStorage.setItem("reviewClassFname", classFname)
   sessionStorage.setItem("reviewClassLname", classLname)
+  console.log("testing function click")
+  console.log(classId)
+  console.log(sessionStorage.reviewClassId)
 }
 
 self.getClassIdForAlternativeClasses = function(classId, savedClassId) {
@@ -314,6 +317,7 @@ self.deletesavedclass = function(savedclassid) {
     dataType: 'text'
 }).then(function() {
   console.log("hi")
+    sessionStorage.setItem("returnstate", "classes");
     $window.location.href = '/#/submittedclass';
 })
 }
@@ -328,7 +332,8 @@ self.cantFindProfessor = function() {
 }
 
 
-self.saveClassProfNames = function(className,classSection,profFname, profLname) {
+self.saveClassProfNames = function(classId,className,classSection,profFname, profLname) {
+    sessionStorage.setItem("reviewClassId", classId);
     sessionStorage.setItem("reviewClassName", className);
     sessionStorage.setItem("reviewClassSection", classSection);
     sessionStorage.setItem("reviewClassFname", profFname);

@@ -2,9 +2,24 @@ angular
   .module("myApp")
   .controller("SubmittedCtrl", SubmittedCtrl)
 
-  SubmittedCtrl.$inject = ['$window','$scope']
-  function SubmittedCtrl($window, $scope) {
-  var self = this
+SubmittedCtrl.$inject = ['$window','$scope', '$location', '$timeout']
+ function SubmittedCtrl($window, $scope, $location, $timeout) {
+ var self = this
+
+ $timeout(function() {
+      if (sessionStorage.returnstate == 'classes') {
+          console.log("Going to " + sessionStorage.returnstate)
+        $window.location.href = '/#/classes';
+      }
+      if (sessionStorage.returnstate == 'editmyreview') {
+          console.log("Going to " + sessionStorage.returnstate)
+        $window.location.href = '/#/myreviews';
+      }
+      if (sessionStorage.returnstate == 'addreview') {
+          console.log("Going to " + sessionStorage.returnstate)
+        $window.location.href = '/#/myreviews';
+      }
+   }, 3000);
 
     self.Classsubject = sessionStorage.name
     self.Classsubjectsection = sessionStorage.section

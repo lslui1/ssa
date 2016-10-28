@@ -64,7 +64,7 @@
 			</td>
 			<td><a href="#/review/{{object.id}}" ng-bind="object.aggregateCount" ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"></a></td>
 			<td>
-				<a class="btn btn-success" href="#/addreview/" ng-click="class.saveClassProfNames(object.name, object.section, object.professor_fname, object.professor_lname)">Add Review</a>
+				<a class="btn btn-success" href="#/addreview/" ng-click="class.saveClassProfNames(object.id,object.name, object.section, object.professor_fname, object.professor_lname)">Add Review</a>
 			<button class="btn btn-danger" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</button>
 		  <a ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)" href="#/alternativeclasses/" class="btn btn-default">{{object.alternativeCount + ' - '}}Recommendations</a>
 			</td>
