@@ -39,7 +39,7 @@
 		<tbody>
 		<tr ng-repeat="person in professor.professors | filter: search | orderBy:sortType">
 			<td class="tdheight" ng-bind="person.university_name"></td>
-			<td><a href="#/professorclasses/{{person.id}}" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)">{{person.first_name + ' ' + person.last_name}}</td>
+			<td><a href="#/professorclasses/{{person.id}}" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name, person.id)">{{person.first_name + ' ' + person.last_name}}</td>
 			<td
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="person.aggregateProfRating" max=5 ></div>

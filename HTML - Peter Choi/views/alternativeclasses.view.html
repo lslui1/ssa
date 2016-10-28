@@ -1,5 +1,5 @@
 <div id="menu" ng-controller="LogoutCtrl as logout">
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs" style="position:fixed;">
 		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
 		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">Classes</a></li>
 		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
@@ -14,13 +14,11 @@
 <div ng-controller="ClassCtrl as class">
 	<br />
 	<br />
+	<br />
 	<div id="compclass">
 	<table class="table">
 		<thead>
 			<tr>
-				<td>
-					<p>CLASS ID</p>
-				</td>
 				<td>
 					<p>Class Name</p>
 				</td>
@@ -28,10 +26,7 @@
 					<p>Section</p>
 				</td>
 				<td>
-					<p>Prof First-Name</p>
-				</td>
-				<td>
-					<p>Prof Last-Name</p>
+					<p>Prof Name</p>
 				</td>
 								<td>
 					<p>Class Rating</p>
@@ -46,11 +41,9 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="focusclass in class.alternativecompareclass">
-			<td ng-bind="focusclass.id"></td>
 			<td ng-bind="focusclass.name"></td>
 			<td ng-bind="focusclass.section"></td>
-			<td ng-bind="focusclass.professor_fname"></td>
-			<td ng-bind="focusclass.professor_lname"></td>
+			<td ng-bind="focusclass.professor_fname + ' ' + focusclass.professor_lname"></td>
 			<td>
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="focusclass.aggregateClassRating" max=5 ></div>
@@ -70,17 +63,14 @@
 	</div>
 
 	<div align="center">
-	<br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br />
 		<input ng-model="search" class="form-control" type="text" placeholder="Search Filter" maxlength="30" size="30" style="width: 300px;" />
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
 	<h1 align="center">Recommended Alternatives</h1>
-	<table class="table table-striped">
+	<table class="table table-striped header-fixed">
 		<thead>
 			<tr>
-				<th>
-					<button class="tbutton">CLASS ID</button>
-				</th>
 				<th>
 					<button class="tbutton">Class Name</button>
 				</th>
@@ -91,9 +81,6 @@
 					<button class="tbutton">Prof First-Name</button>
 				</th>
 				<th>
-					<button class="tbutton">Prof Last-Name</button>
-				</th>
-				<th>
 					<button class="tbutton">Class Rating</button>
 				</th>
 				<th>
@@ -102,15 +89,16 @@
 								<th>
 					<button class="tbutton"># of Reviews</button>
 				</th>
+				<th>
+	<button class="tbutton">Functions</button>
+</th>
 			</tr>
 		</thead>
 		<tbody>
 		<tr ng-repeat="altclass in class.alternativeclasses | filter:search">
-			<td ng-bind="altclass.id"></td>
-			<td ng-bind="altclass.name"></td>
+			<td class="tdheight" ng-bind="altclass.name"></td>
 			<td ng-bind="altclass.section"></td>
-			<td ng-bind="altclass.professor_fname"></td>
-			<td ng-bind="altclass.professor_lname"></td>
+			<td ng-bind="altclass.professor_fname + ' ' + altclass.professor_lname"></td>
 			<td>
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="altclass.aggregateClassRating" max=5 ></div>
@@ -124,9 +112,10 @@
 				<span ng-show="hoverNumber"><p ng-bind="altclass.aggregateProfessorRating"</p></span>
 			</td>
 			<td ng-bind="altclass.aggregateCount"></td>
-			<td ng-click="class.addToMySavedClasses(class.loginid, altclass.id)"><button ng-show="!showAltBtn" ng-click="showAltBtn = true" class="btn btn-success">Add Class</button>
-																				 <button ng-show="showAltBtn" class="tbutton">               </button></td>
-			<td ng-click="class.replaceMySavedClass(class.loginid, altclass.id)"><button class="btn btn-warning">Replace Class</button></td>
+			<td><button ng-click="class.addToMySavedClasses(class.loginid, altclass.id);showAltBtn = true;" ng-show="!showAltBtn" class="btn btn-success">Add Class</button>
+					<!-- <button ng-show="showAltBtn" class="tbutton"></button> -->
+			<button ng-click="class.replaceMySavedClass(class.loginid, altclass.id)" class="btn btn-warning">Replace Class</button></td>
+
 		</tr>
 		</tbody>
 	</table>

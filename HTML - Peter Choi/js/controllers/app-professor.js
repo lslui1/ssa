@@ -39,9 +39,12 @@ angular
             }
 
 
-            self.saveProfFnameLname = function(proffname, proflname) {
+            self.saveProfFnameLname = function(proffname, proflname, pid) {
               sessionStorage.setItem("PROFESSORfname", proffname)
               sessionStorage.setItem("PROFESSORlname", proflname)
+              sessionStorage.setItem("reviewClassFname", proffname)
+              sessionStorage.setItem("reviewClassLname", proflname)
+              sessionStorage.setItem("professor_id", pid);
             }
 
 

@@ -18,6 +18,8 @@ self.PROFlname = sessionStorage.PROFESSORlname
 self.useAlternativeClassId = sessionStorage.alternativeClassId
 self.useAlternativeSavedClassId = sessionStorage.alternativeSavedClassId
 
+self.profClassId = sessionStorage.professor_id
+
 self.showProfessorTable = false;
 
 
@@ -33,6 +35,7 @@ self.showProfessorTable = false;
 
 
 self.subjectarray = [];
+self.profsubjectarray = [];
 
 if(self.loginid != undefined) {
 $http.get('http://localhost:8080/savedclasses/' + self.loginid)
@@ -95,6 +98,29 @@ if(self.pathprofid != undefined) {
   			},function(err) {
 
   			});
+
+
+        $http.get('http://localhost:8080/combinedclassbyprofessorid/' + self.profClassId)
+        			.then(function(resp){
+        				self.classes = resp.data;
+                self.profsubjectarray.push("");
+                self.profselectedOption = self.profsubjectarray[2];
+                angular.forEach(resp.data, function(value, key){
+                  // console.log("SUBJECT LOG LOOPING")
+                  // console.log(self.subjectarray)
+                     if(self.profsubjectarray.indexOf(value.name) == -1) {
+                        self.profsubjectarray.push(value.name)
+                      }
+                  });
+
+        			},function(err) {
+
+        			});
+
+
+
+
+
 
         $http.get('http://localhost:8080/combinedclasses')
             			.then(function(resp){

@@ -95,7 +95,7 @@ div#compclass {
 }
 
 body {
-	background: url(pics/wqeqweqweqweqwe.png);
+	background: url(pics/2144tran.jpg);
 	background-position: center;
   background-repeat:no-repeat;
 	background-attachment: fixed;
@@ -121,4 +121,53 @@ label {
 	display:block;
 	text-align:right;
 	width:200px;
+}
+
+
+/*
+.Alttbody {
+    height: 300px;
+    overflow: auto;
+}
+
+
+.Altthead > tr{
+    display:block;
+	}
+
+.Alttbody{
+    display:block;
+	}*/
+
+
+	.header-fixed {
+    width: 100%
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+    display: block;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.header-fixed > tbody {
+    overflow-y: auto;
+    height: 300px;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    width: 14%;
+    float: left;
 }

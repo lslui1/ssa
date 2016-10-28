@@ -11,12 +11,14 @@
 
 
 
-<div style="width:50%;margin:10px auto;" ng-controller="ClassCtrl as class">
+<div style="width:75%;margin:10px auto;" ng-controller="ClassCtrl as class">
 	<div>
-		<input ng-model="search" class="form-control" type="text" placeholder="Search by Subject">
+		<select style="width:300px" class="form-control" ng-options="subject for subject in class.profsubjectarray" name="singleSelect" ng-model="selectionvalue">
+    </select><br>
+		<input style="width:300px" ng-model="search" class="form-control" type="text" placeholder="Search by Subject">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
-	<h1>List of Classes (Click on ID for details)</h1>
+	<h1 align="center">Professor Classes</h1>
 	<a href="#/addclass/">Can't find your class? Click Here!</a>
 	<table class="table">
 		<thead>
@@ -42,7 +44,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="object in class.profclasses | filter:{name: search} | orderBy:sortType">
+		<tr ng-repeat="object in class.profclasses | filter:{name: selectionvalue} | filter:search |orderBy:sortType">
 			<td class="tdheight" ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
 			<td ng-bind="class.PROFfname + ' ' + class.PROFlname"></td>
