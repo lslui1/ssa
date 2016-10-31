@@ -39,4 +39,9 @@ public class SavedClassesService implements ISavedClassesService {
 	public void insertSavedClass(SavedClasses savedClass) {
 		savedClassesDAO.insertSavedClass(savedClass);
 	}
+
+	@Override
+	public List<CombinedClass> getSavedClassesByLoginClassId(int login_id, int class_id) {
+		return savedClassesDAO.getSavedClassesByLoginClassId(login_id, class_id);
+	}
 }

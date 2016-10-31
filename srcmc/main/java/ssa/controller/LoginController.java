@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import ssa.entity.Class;
 import ssa.entity.Login;
 import ssa.entity.Review;
 import ssa.service.ILoginService;
@@ -56,15 +58,24 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping(value= "/deletelogin/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Review> deleteLogin(@PathVariable("id") Integer id) {
-        loginService.deleteLogin(id);
-        return new ResponseEntity<Review>(HttpStatus.OK);
+	@RequestMapping(value= "/deletelogin", method = RequestMethod.POST)
+	public ResponseEntity<Void> deleteLogin(@RequestBody Login logindata) {
+		boolean loginCheck = loginService.doesLoginExist(logindata.getUser_name());
+		if (loginCheck == true) {
+			Login login = loginService.getLoginById(logindata.getUser_name());
+				if (login.getPassword().equals(logindata.getPassword())) {
+        loginService.deleteLogin(login.getId());
+				}
+		}
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 	
 	@RequestMapping(value= "/insertlogin", method = RequestMethod.POST)
 	public ResponseEntity<Void> insertLogin(@RequestBody Login login) {
+		boolean loginCheck = loginService.doesLoginExist(login.getUser_name());
+		if (loginCheck == false) {
 		loginService.insertLogin(login);
+		}
 	    return new ResponseEntity<Void>(HttpStatus.OK);    
     }
 	

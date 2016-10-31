@@ -19,6 +19,7 @@ import ssa.service.IReviewService;
 
 @Transactional
 @Repository
+@SuppressWarnings("unchecked")
 public class SavedClassesDAO implements ISavedClassesDAO {
 
 	@Autowired
@@ -33,8 +34,7 @@ public class SavedClassesDAO implements ISavedClassesDAO {
     @Autowired
     private HibernateTemplate hibernateTemplate;
 
-    @SuppressWarnings("unchecked"
-    		)
+
     @Override
 	public List<CombinedClass> getSavedClassesById(int login_id) {
 		 String hql = "FROM SavedClasses where login_id = '" + login_id + "'";
@@ -65,7 +65,35 @@ public class SavedClassesDAO implements ISavedClassesDAO {
 	         return combinedclasses;
 	 	}
 	     
-	
+	@Override
+	public List<CombinedClass> getSavedClassesByLoginClassId(int login_id, int class_id) {
+		 String hql = "FROM SavedClasses where login_id = '" + login_id + "' and class_id = '" + class_id + "'";
+	     List<SavedClasses> savedClasses = (List<SavedClasses>) hibernateTemplate.find(hql);
+	     ArrayList<CombinedClass> combinedclasses = new ArrayList<CombinedClass>();
+	     for (int i=0; i<savedClasses.size(); i++) {
+	    	 int classId = savedClasses.get(i).getClass_id();
+	    	 int savedClassId = savedClasses.get(i).getId();
+	    	 Class aClass = classService.getClassById(classId);
+	    	 Professor aProfessor = professorService.getProfessorById(aClass.getProfessor_id());
+	    	 University aUniversity = universityService.getUniversityById(aClass.getUniversity_id());
+	    	 CombinedClass aCombinedClass = new CombinedClass();
+	    	 	aCombinedClass.setId(aClass.getId());
+	    	 	aCombinedClass.setSavedClassId(savedClassId);
+	 			aCombinedClass.setName(aClass.getName());
+	 			aCombinedClass.setUniversity_id(aClass.getUniversity_id());
+	 			aCombinedClass.setSection(aClass.getSection());
+	 			aCombinedClass.setProfessor_id(aClass.getProfessor_id());			
+	 			aCombinedClass.setProfessor_fname(aProfessor.getFirst_name());
+	 			aCombinedClass.setProfessor_lname(aProfessor.getLast_name());
+	 			aCombinedClass.setUniversity_name(aUniversity.getName());		
+	 			aCombinedClass.setAggregateClassRating(reviewService.getAggregateClassRatingByClassId(aClass.getId()));
+	 			aCombinedClass.setAggregateProfessorRating(reviewService.getAggregateProfessorRatingByClassId(aClass.getId()));
+				aCombinedClass.setAggregateCount(reviewService.getRatingCountByClassId(aClass.getId()));
+				aCombinedClass.setAlternativeCount(classService.getAlternativeClassCountByClassId(classId));
+	 			combinedclasses.add(aCombinedClass);		
+	 		}
+	         return combinedclasses;
+	}
     
     @Override
     public SavedClasses getSavedClassById(int login_id, int class_id) {
@@ -95,6 +123,8 @@ public class SavedClassesDAO implements ISavedClassesDAO {
 	    	hibernateTemplate.save(savedClass);
 	    }
 	}
+
+
 }
 
 

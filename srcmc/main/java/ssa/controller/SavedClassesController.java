@@ -29,12 +29,17 @@ public class SavedClassesController {
         return new ResponseEntity<List<CombinedClass>>(combinedClasses, HttpStatus.OK);
     }
 	
+	@RequestMapping(value= "/savedclassbyloginclassid/{login_id}/{class_id}", method = RequestMethod.GET)
+    public ResponseEntity<List<CombinedClass>> getSavedClassesBLoginClassyId(@PathVariable("login_id") int login_id, @PathVariable("class_id") int class_id) {
+        List<CombinedClass> combinedClasses = SavedClassesService.getSavedClassesByLoginClassId(login_id, class_id);
+        return new ResponseEntity<List<CombinedClass>>(combinedClasses, HttpStatus.OK);
+    }
+	
 	@RequestMapping(value= "/deletesavedclass/{id}", method = RequestMethod.GET)
     public ResponseEntity<SavedClasses> deleteReview(@PathVariable("id") int id) {
         SavedClassesService.deleteSavedClass(id);
         return new ResponseEntity<SavedClasses>(HttpStatus.OK);
     }
-	
 
 	@RequestMapping(value= "/insertsavedclass", method = RequestMethod.POST)
 	public ResponseEntity<Void> insertSavedClass(@RequestBody SavedClasses savedClass) {

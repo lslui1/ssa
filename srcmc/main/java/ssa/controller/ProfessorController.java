@@ -48,7 +48,7 @@ public class ProfessorController {
         List<Professor> professors = professorService.getAllProfessors();
         
         for (Professor aprofessor : professors) {
-        	double profRating = reviewService.getAggregateClassRatingByProfessorId(aprofessor.getId());
+        	double profRating = reviewService.getAggregateProfessorRatingByProfessorId(aprofessor.getId());
         	int count = reviewService.getRatingCountByProfessorId(aprofessor.getId());
         	CombinedProfessor aCProfessor = new CombinedProfessor();
         	University aUniversity = universityService.getUniversityById(aprofessor.getUniversity_id());
