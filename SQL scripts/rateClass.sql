@@ -182,6 +182,26 @@ insert professor(first_name, last_name, university_id) values ('Sean', 'Howard',
 -- CLASS: Sample data
 -- English
 INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',101);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',102);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',103);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',201);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',202);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',203);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',301);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',302);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',303);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',400);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',101);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',102);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',103);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',201);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',202);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',203);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',301);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',302);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',303);
+INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',400);
+
 INSERT class(university_id, professor_id, name, section)  VALUES(1,2,'English',102);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,3,'English',103);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,4,'English',201);
@@ -392,6 +412,29 @@ insert review (professor_review, class_review, login_id, class_id, review_date, 
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 19, 80, '2016-03-27', 2016, 1, 1, 3);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 47, 81, '2016-06-15', 2016, 1, 3, 3);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 21, 82, '2016-08-14', 2016, 1, 3, 5);
+
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 39, 1, '2013-01-05', 2013, 1, 1, 1);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 36, 2, '2013-02-06', 2013, 1, 1, 1);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 44, 3, '2013-03-16', 2013, 1, 1, 1);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 40, 4, '2013-04-13', 2013, 2, 2, 2);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 13, 5, '2013-05-12', 2013, 2, 3, 2);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 23, 6, '2013-06-06', 2013, 2, 3, 2);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 11, 7, '2014-01-24', 2014, 1, 3, 2);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 19, 8, '2014-02-27', 2014, 1, 2, 3);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 47, 9, '2014-03-15', 2014, 1, 3, 3);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 21, 10, '2014-04-14', 2014, 2, 3, 3);
+
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 39, 1, '2014-05-05', 2014, 2, 3, 3);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 36, 2, '2014-05-16', 2014, 2, 3, 3);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 44, 3, '2014-01-16', 2015, 1, 4, 3);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 40, 4, '2014-02-13', 2015, 1, 3, 4);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 13, 5, '2014-03-12', 2015, 1, 4, 4);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 23, 6, '2015-03-26', 2015, 2, 3, 3);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 11, 7, '2015-04-24', 2015, 2, 4, 4);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 19, 8, '2016-03-27', 2016, 1, 5, 5);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 47, 9, '2016-05-15', 2016, 1, 4, 5);
+insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 21, 10, '2016-05-20', 2016, 2, 5, 5);
+
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 39, 83, '2016-05-23', 2016, 1, 3, 2);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 22, 79, '2016-01-14', 2016, 1, 5, 5);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 36, 79, '2016-04-24', 2016, 1, 2, 2);
@@ -431,8 +474,6 @@ insert review (professor_review, class_review, login_id, class_id, review_date, 
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 11, 32, '2016-08-18', 2016, 1, 1, 3);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 35, 12, '2016-05-18', 2016, 1, 5, 2);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 39, 77, '2016-08-02', 2016, 1, 5, 4);
-insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 3, 6, '2016-05-09', 2016, 1, 1, 1);
-insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 1, 9, '2016-04-14', 2016, 1, 1, 1);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 5, 47, '2016-09-10', 2016, 1, 4, 1);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 16, 22, '2016-05-17', 2016, 1, 2, 3);
 insert review (professor_review, class_review, login_id, class_id, review_date, year, semester, class_rating, professor_rating) values (null, null, 10, 50, '2016-07-31', 2016, 1, 1, 2);
