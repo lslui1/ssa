@@ -1,15 +1,40 @@
+<style>
+    .headerForm{
+        display: block;
+        right: 150px;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 41px;
+        width: 300px;
+      height: 240px;
+      margin: 2% auto;
+      background: url('css/pics/bookscrown4.png')  ;
+			background-repeat: no-repeat;
+      /*animation: play .3s steps(5) ;*/
 
 
-<div ng-controller="LogoutCtrl as logout">
-	<ul class="nav nav-tabs navbar-default navbar-fixed-top" style="position:fixed;">
+    }
+    </style>
+
+<div id="header" ng-controller="LogoutCtrl as logout">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;">
+		<li></li>
+		<li></li>
+		<li></li>
 		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
 		<li class="active"><a href="#/classes"  data-toggle="tab" aria-expanded="true">Classes</a></li>
 		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
 		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">My Reviews</a></li>
 		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
 		<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+		<li></li>
+		<li></li>
+		<li></li>
 	</ul>
 </div>
+
+
 
 <div class="blueBackground minpageheight">
 
@@ -22,8 +47,10 @@
 			<option style="font-weight: bold;" value="" disabled selected> Select Subject</option>
 		</select><br>
 		<input style="width:300px" ng-model="search" class="form-control" type="text" placeholder="Search by {{search}}">
-		<p ng-show="search">Filtering by {{search}}</p>
+		<!-- <p ng-show="search">Filtering by {{search}}</p>
+		<p ng-hide="search"></p> -->
 	</div>
+	<div class="headerForm"></div>
 	<h1 align="center">Classes</h1>
 	<a href="#/addclass/">Can't find your class? Click Here!</a>
 	<table class ="table table-hover tbfontsize">
@@ -57,7 +84,7 @@
 		<tr ng-repeat="object in class.combinedclasses | filter:{name: selectionvalue} | filter:search | orderBy:sortType">
 			<td ng-bind="object.name"></td>
 			<td ng-bind="object.section"></td>
-			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>
+			<td ng-bind="object.fullProfName"></td>
 			<td
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="object.aggregateClassRating" max=5 ></div>
@@ -70,7 +97,8 @@
 				</div>
 				<span ng-show="hoverNumber2"><p ng-bind="object.aggregateProfessorRating"</p></span>
 			</td>
-			<td ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}" style="font-size:25px" ng-bind="object.aggregateCount"></td>
+			<td ng-hide="object.aggregateCount == 0" ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"><a href="#/review/{{object.id}}" style="font-size:25px" ng-bind="object.aggregateCount"></td>
+				<td ng-show="object.aggregateCount == 0"></td>
 			<td class="tdheight">
 				<div ng-show="((object.aggregateProfessorRating + object.aggregateClassRating) / 2) > 3.49">
 				<img class="img-circle" src="/css/pics/thumbs_up2_small.jpg" />
@@ -79,7 +107,7 @@
 				<img class="img-circle" src="/css/pics/thumbs_down2_small.jpg" />
 				</div>
 			</td>
-			<td ng-click="class.addToMySavedClasses(class.loginid, object.id)"><button class=" btn btn-success">Add Class</button></td>
+			<td ng-click="class.addToMySavedClasses(class.loginid, object.id);showAddBtn = true;"><button ng-show="!showAddBtn" class=" btn btn-success">Add Class</button></td>
 		</tr>
 		</tbody>
 	</table>

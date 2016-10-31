@@ -102,10 +102,11 @@ div#compclass {
 }*/
 
 .blueBackground {
-	background: url(pics/2144tran.jpg);
-	background-position: center;
-  background-repeat:no-repeat;
-	background-attachment: fixed;
+	background: url(pics/2144tran.jpg) no-repeat center center fixed;
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 background-size: cover;
 }
 
 /*table {

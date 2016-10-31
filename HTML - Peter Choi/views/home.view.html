@@ -7,16 +7,40 @@ form{
   width: 500px;
 }
 
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #666666;
+  background: transparent;
+  border: 1px solid #dddddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
+
+@media (min-width: 768px) {
+  .nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #dddddd;
+    border-radius: 4px 4px 0 0;
+  }
+  .nav-tabs.nav-justified > .active > a,
+  .nav-tabs.nav-justified > .active > a:hover,
+  .nav-tabs.nav-justified > .active > a:focus {
+    border-bottom-color: white;
+  }
+}
+
+
+
 </style>
 
-<body>
 
-			<div id="allpage">
 
-<div id="leftbarx">
-				</div>
+			<!-- <div id="allpage"> -->
 
-<div id="header">
+<!-- <div id="leftbarx">
+				</div> -->
+
+        <!-- <div id="header">
 					<div>
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#/home"  data-toggle="tab" aria-expanded="true">Home</a></li>
@@ -27,14 +51,34 @@ form{
 							<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
 						</ul>
 			</div>
-		</div>
-		<div id="content">
+		</div> -->
 
-      <div>
-</div>
+    <div id="header" ng-controller="LogoutCtrl as logout">
+    	<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;">
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li class="active"><a href="#/home"  data-toggle="tab" aria-expanded="true">Home</a></li>
+    		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">Classes</a></li>
+    		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
+    		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">My Reviews</a></li>
+    		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
+    		<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
 
-<div class="blueBackground">
+
+		<!-- <div id="content"> -->
+
+
+
+<!-- <div class="blueBackground"> -->
 <div id="body" class="home">
+  <br />
+
 			<div class="header">
 				<div>
           <img  alt="" class="satellite">
@@ -46,7 +90,7 @@ form{
 			<div class="body">
 				<div>
 					<h1>The College Critic</h1>
-					<p>Providing real life reviews of professors so students know exctly what to expect when choosing a class</p>
+					<p>Providing real life reviews of professors so students know exactly what to expect when choosing a class</p>
 				</div>
 			</div>
 			<div class="footer">
@@ -76,24 +120,23 @@ form{
 					</ul>
 				</div>
 			</div>
-		</div>
-  </div>
+      <div id="footer">
+  			<div class="connect">
+  				<div>
+  					<h1>The College Critic</h1>
+  				</div>
+          <img src="css/pics/logo_large.png" alt="" class="satellite">
+  			</div>
+  			<div class="footnote">
+  				<div>
+  					<p>&copy; 2016 BY The College Critic| ALL RIGHTS RESERVED</p>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+		<!-- </div> -->
+  <!-- </div> -->
 
-		<div id="footer">
-			<div class="connect">
-				<div>
-					<h1>The College Critic</h1>
-				</div>
-        <img src="css/pics/logo_large.png" alt="" class="satellite">
-			</div>
-			<div class="footnote">
-				<div>
-					<p>&copy; 2016 BY The College Critic| ALL RIGHTS RESERVED</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-</body>
-</html>
+
+<!-- </div>
+</div> -->

@@ -30,13 +30,13 @@ img {
 }
 /*----------------------------------------header-styles---------------------------------------*/
 
-#header {
+/*#header {
 background: url(pics/usethispicture.jpg) ;
 	margin: 0;
 	min-height: 60px;
 	padding: 0;
 	width: 1750px;
-}
+}*/
 #header2 {
 /*background: url(pics/cool.jpg) ;*/
 	margin: 0;
@@ -184,7 +184,7 @@ background: url(pics/usethispicture.jpg) ;
 #body.home {
 	background: none;
 	margin: 0;
-	min-height: 1308px;
+	/*min-height: 1308px;*/
 	overflow: hidden;
 	padding: 0;
 	width: 100%;

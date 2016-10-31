@@ -125,6 +125,11 @@ if(self.pathprofid != undefined) {
         $http.get('http://localhost:8080/combinedclasses')
             			.then(function(resp){
               			self.combinedclasses = resp.data;
+                    for (combinedclasses of self.combinedclasses) {
+                      combinedclasses.fullProfName = combinedclasses.professor_fname + " " + combinedclasses.professor_lname;
+                    }
+                    console.log("hi")
+                    console.log(self.combinedclasses)
               		},function(err) {
 
               		});
