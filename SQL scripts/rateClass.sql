@@ -191,16 +191,7 @@ INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',3
 INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',302);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',303);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',400);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',101);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',102);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',103);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',201);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',202);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',203);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',301);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',302);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',303);
-INSERT class(university_id, professor_id, name, section)  VALUES(1,1,'English',400);
+
 
 INSERT class(university_id, professor_id, name, section)  VALUES(1,2,'English',102);
 INSERT class(university_id, professor_id, name, section)  VALUES(1,3,'English',103);
