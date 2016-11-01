@@ -9,6 +9,9 @@ angular
   $http.get('http://localhost:8080/combinedprofessors')
       			.then(function(resp){
         			self.professors = resp.data;
+              for (professors of self.professors) {
+                professors.fullnameofprof = professors.first_name + " " + professors.last_name;
+              }
               console.log(self.professors)
         		},function(err) {
 

@@ -1338,16 +1338,27 @@ background: url(pics/usethispicture.jpg) ;
 }
 #footer .connect div h1 {
 	color: #FFFFFF;
-	float: left;
 	font-family: audiowide-regular-webfont;
 	font-size: 23px;
 	font-weight: normal;
 	line-height: 23px;
-	margin: 0;
-	padding: 8px 25px 0 0;
-	text-align: right;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
 	text-transform: uppercase;
 	width: 525px;
+
+	/*color: #000000;
+	display: block;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: normal;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	text-transform: uppercase;
+	width: 940px;*/
+
 }
 #footer .connect div div {
 	float: left;

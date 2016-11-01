@@ -109,6 +109,15 @@ div#compclass {
 	 background-size: cover;
 }
 
+.loginBackground {
+	background: url(pics/9.jpg) no-repeat center center fixed;
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 background-size: cover;
+	 min-height: 800px;
+}
+
 /*table {
 	background-color: white;
 }*/
@@ -178,4 +187,12 @@ label {
 .header-fixed > thead > tr > th {
     width: 14%;
     float: left;
+}
+
+
+.loginLogo {
+   background-image: url('pics/logo_large.png');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: left bottom;
 }
