@@ -1,21 +1,21 @@
 
 <div id="menu" ng-controller="LogoutCtrl as logout">
-			<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified">
+			<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="font-family: 'Tauri', sans-serif;">
 				<li></li>
 				<li></li>
 				<li></li>
-				<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
-				<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">Classes</a></li>
-				<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
-				<li class="active"><a href="#/myreviews"  data-toggle="tab" aria-expanded="true">My Reviews</a></li>
-        <li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
-				<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+				<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">HOME</a></li>
+				<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">CLASSES</a></li>
+				<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">PROFESSORS</a></li>
+				<li class="active"><a href="#/myreviews"  data-toggle="tab" aria-expanded="true">MY REVIEWS</a></li>
+        <li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">MY CLASSES</a></li>
+				<li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
 				<li></li>
 				<li></li>
 				<li></li>
 			</ul>
 </div>
-<div class="blueBackground minpageheight">
+<div class="blueBackground minpageheight" style="font-family: 'Tauri', sans-serif;">
 <div ng-controller="ReviewCtrl as ctrl">
 <div style="width:75%;margin:10px auto;">
 
@@ -24,8 +24,8 @@
 <br />
 
 
-<div><h2 align="center">Class:    {{ctrl.editReviewClassName}} {{ctrl.editReviewSectionName}}</h2> </div>
-<div><h2 align="center">Professor: {{ctrl.editReviewFName}} {{ctrl.editReviewLName}}</h2></div>
+<div><h1 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;" align="center">Class:    {{ctrl.editReviewClassName}} {{ctrl.editReviewSectionName}}</h1> </div>
+<div><h1 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;" align="center">Professor: {{ctrl.editReviewFName}} {{ctrl.editReviewLName}}</h1></div>
 <form name="myForm">
 	<div class="form-group row">
 		<label for="review-profreview" class="col-xs-2 col-form-label">Professor Review</label>
@@ -90,10 +90,10 @@
 				</div>
 		  	</div>
 			</form>
-
+<div style="width: 66%; margin: 0 auto;">
 	<button ng-disabled="myForm.$invalid && myForm.$error" type="button" class="btn btn-success" ng-click="ctrl.editMyReview(ctrl.singlereview.login_id,ctrl.singlereview.id, ctrl.singlereview.class_id, ctrl.singlereview.class_review,ctrl.singlereview.professor_review,ctrl.singlereview.year,semester,classrating,profrating)">Edit Review</button>
 	&nbsp;
-
+</div>
 </div>
 </div>
 </div>

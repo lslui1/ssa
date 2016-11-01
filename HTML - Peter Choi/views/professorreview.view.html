@@ -1,15 +1,15 @@
 
 <div id="menu" ng-controller="LogoutCtrl as logout">
-	<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;font-family: 'Tauri', sans-serif;">
 		<li></li>
 		<li></li>
 		<li></li>
-		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
-		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">Classes</a></li>
-		<li class="active"><a href="#/professors"  data-toggle="tab" aria-expanded="true">Professors</a></li>
-		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">My Reviews</a></li>
-		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
-		<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">HOME</a></li>
+		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">CLASSES</a></li>
+		<li class="active"><a href="#/professors"  data-toggle="tab" aria-expanded="true">PROFESSORS</a></li>
+		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">MY REVIEWS</a></li>
+		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">MY CLASSES</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
 		<li></li>
 		<li></li>
 		<li></li>
@@ -37,13 +37,23 @@
 }
 
 .textBox {
-	border:solid 1px grey;
-	resize: none;
-	border-radius: 5px;
+<!--    border:solid 1px grey; -->
+    resize: none;
+    border-radius: 5px;
+    border: none;
+    overflow: hidden;
+<!--    background: transparent; -->
+}
+
+.textBox:focus{
+    resize: none;
+   border: 0 none #FFF;
+    overflow: auto;
+    outline:none;
 }
 
 </style>
-<div class="blueBackground minpageheight">
+<div class="blueBackground minpageheight" style="font-family: 'Tauri', sans-serif;">
 <div style="width:70%" align="center" ng-controller="ClassCtrl as class">
 <br />
 <br />
@@ -101,9 +111,9 @@
 						<td>
 						<span ng-bind="object.professor_fname + ' ' + object.professor_lname" style="font-weight: bold; font-size: 120%"></span></a></td>
 			<span>
-			<td><p style="font-weight:bold">Class:</p><textarea cols="50" rows="5" class="textBox" readonly ng-bind="object.class_review"></textarea>
+			<td><p style="font-weight:bold">Class:</p><textarea cols="50" rows="5" class="textBox" readonly ng-bind="object.class_review" style="resize:none"></textarea>
 
-			<p style="font-weight:bold">Professor:</p><textarea cols="50" rows="5" class="textBox" readonly ng-bind="object.professor_review"></textarea>Submitted: <span ng-bind="object.review_date"></span></td>
+			<p style="font-weight:bold">Professor:</p><textarea cols="50" rows="5" class="textBox" readonly ng-bind="object.professor_review" style="resize:none"></textarea>Submitted: <span ng-bind="object.review_date"></span></td>
 
 			<td>
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">

@@ -9,7 +9,7 @@
 		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">PROFESSORS</a></li>
 		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">MY REVIEWS</a></li>
 		<li class="active"><a href="#/myclasses"  data-toggle="tab" aria-expanded="true">MY CLASSES</a></li>
-		<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
 		<li></li>
 		<li></li>
 		<li></li>
@@ -27,7 +27,7 @@
 		<input ng-model="search" style="width:300px" class="form-control" type="text" placeholder="Search Filter">
 		<p ng-show="search">Filtering by {{search}}</p>
 	</div>
-	<h1 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;"align="center">My Classes</h1>
+	<h1 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;"align="center">MY CLASSES</h1>
 	<table class="table">
 						<thead>
 			<tr>
@@ -75,9 +75,9 @@
 			</td>
 			<td><a href="#/review/{{object.id}}" ng-bind="object.aggregateCount" ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"></a></td>
 			<td>
-				<a class="btn btn-success" href="#/addreview/" ng-click="class.saveClassProfNames(object.id,object.name, object.section, object.professor_fname, object.professor_lname)">Add Review</a>
-			<button class="btn btn-danger" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</button>
-		  <a ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)" href="#/alternativeclasses/" class="btn btn-default">{{object.alternativeCount + ' - '}}Recommendations</a>
+				<a style="width:174px;"  class="btn btn-success" href="#/addreview/" ng-click="class.saveClassProfNames(object.id,object.name, object.section, object.professor_fname, object.professor_lname)">Add Review</a>
+			<button style="width:174px;" class="btn btn-warning" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</button>
+		  <a style="width:174px;" ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)" href="#/alternativeclasses/" class="btn btn-default">{{object.alternativeCount + ' - '}}Recommendations</a>
 			</td>
 			<!-- <td ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)"> <a href="#/alternativeclasses/" class="btn btn-default">{{object.alternativeCount + ' - '}}Alternative Classes</a></td> -->
 			<!-- <td ng-show="object.alternativeCount > 0" ng-bind="object.alternativeCount"></td> -->
