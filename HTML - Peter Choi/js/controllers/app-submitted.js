@@ -19,6 +19,10 @@ SubmittedCtrl.$inject = ['$window','$scope', '$location', '$timeout']
           console.log("Going to " + sessionStorage.returnstate)
         $window.location.href = '/#/myreviews';
       }
+      if (sessionStorage.returnstate == 'addprofessor') {
+          console.log("Going to " + sessionStorage.returnstate)
+        $window.location.href = '/#/professors';
+      }
    }, 3000);
 
     self.Classsubject = sessionStorage.name

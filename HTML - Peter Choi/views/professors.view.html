@@ -43,11 +43,11 @@
 				</th>
 			</tr>
 		</thead>
-		<tbody>
+<tbody>
 		<tr ng-repeat="person in professor.professors | filter: search | orderBy:sortType">
 			<td class="tdheight" ng-bind="person.university_name"></td>
 			<td><a href="#/professorclasses/{{person.id}}" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name, person.id)">{{person.fullnameofprof}}</td>
-			<td
+			<td>
 				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
 				<div star-rating rating-value="person.aggregateProfRating" max=5 ></div>
 				</div>
@@ -55,8 +55,26 @@
 			</td>
 			<td ng-show="person.aggregateProfRating > 0" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)"><a href="#/professorreview/{{person.id}}">{{person.count}}</a></td>
 			<td ng-show="person.aggregateProfRating ==0"></td>
+			<td ng-show = "person.count > 4"> 
+			<div ng-mouseover = "hoverNumber2 = true" ng-mouseleave = "hoverNumber2 = false">
+			<span ng-show="!hoverNumber2">
+				<img class="circle-img" src="/css/pics/graphcropped.jpg" /></span>
+			<span ng-show="hoverNumber2"  ng-click = "professor.buildModal(); professor.buildArrays(person.id)">
+				<img class="circle2-img" src="/css/pics/graphcropped.jpg" /></span>
+				</div>
+			</td>
 		</tr>
 		</tbody>
 	</table>
+</div>
+<!-- Modal content -->
+<div id="myModal" class="modal">
+  <div class="modal-content" ng-controller="ProfessorCtrl as professor">
+  <div class="modal-body">
+    <span class="spanClose" ng-click ="professor.spanClick()">x</span>
+	<div id="chartContainer" style="height: 300px; width: 95%; border: 5px solid peru; background-image: url('http://img04.deviantart.net/dd7c/i/2015/010/0/3/chalkboard_texture_mc2015_by_mattiamc-d8dbnac.jpg')">
+	</div>
+	</div> 
+</div>
 </div>
 </div>

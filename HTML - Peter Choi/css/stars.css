@@ -27,6 +27,29 @@ ul.rating {
     border-radius: 50%;
 }
 
+/* CSS for graph icon on professors.view page */
+.circle-img {
+    border-radius: 50%;
+    width:85px;
+    height:85px;
+    opacity:0.2;
+
+}
+
+.circle2-img {
+    border-radius: 50%;
+    width:85px;
+    height:85px;
+    opacity:0.8;
+
+}
+
+.circle-img:hover {
+	background-color: yellow;
+}
+
+/* End of graph icon CSS */
+
 .tdheight {
 	height: 100px;
 }
@@ -113,7 +136,3 @@ background: url(pics/usethispicture.jpg) ;
 	background-color: white;
 	color: #a3a3a3;
 }
-
-
-
-    
