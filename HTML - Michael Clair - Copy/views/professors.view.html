@@ -1,0 +1,80 @@
+
+<div id="menu" ng-controller="LogoutCtrl as logout">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;font-family: 'Tauri', sans-serif;">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">HOME</a></li>
+		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">CLASSES</a></li>
+		<li class="active"><a href="#/professors"  data-toggle="tab" aria-expanded="true">PROFESSORS</a></li>
+		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">MY REVIEWS</a></li>
+		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">MY CLASSES</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<div class="blueBackground minpageheight" style="font-family: 'Tauri', sans-serif;">
+<div style="width:75%;margin:10px auto;" ng-controller="ProfessorCtrl as professor">
+	<br />
+	<br />
+	<br />
+	<div>
+		<input ng-model="search" style="width:300px" class="form-control" type="text" placeholder="Search Filter">
+		<p ng-show="search">Filtering by {{search}}</p>
+	</div>
+	<h1 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;" align="center">PROFESSORS</h1>
+	<a href="#/addprofessor/">Can't find your professor? Click Here!</a>
+	<table class="table table-hover">
+			<thead>
+			<tr>
+        		<th>
+					<button class="btn tbutton">University</button>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = professor.sortName()">Professor Name</button>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = professor.sortPR()">Professor Rating</button>
+				</th>
+				<th>
+					<button class="btn tbutton" ng-click="sortType = professor.sortCount()"># of Reviews</button>
+				</th>
+			</tr>
+		</thead>
+<tbody>
+		<tr ng-repeat="person in professor.professors | filter: search | orderBy:sortType">
+			<td class="tdheight" ng-bind="person.university_name"></td>
+			<td><a href="#/professorclasses/{{person.id}}" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name, person.id)">{{person.fullnameofprof}}</td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="person.aggregateProfRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="person.aggregateProfRating"</p></span>
+			</td>
+			<td ng-show="person.aggregateProfRating > 0" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)"><a href="#/professorreview/{{person.id}}">{{person.count}}</a></td>
+			<td ng-show="person.aggregateProfRating ==0"></td>
+			<td ng-show = "person.count > 4"> 
+			<div ng-mouseover = "hoverNumber2 = true" ng-mouseleave = "hoverNumber2 = false">
+			<span ng-show="!hoverNumber2">
+				<img class="circle-img" src="/css/pics/graphcropped.jpg" /></span>
+			<span ng-show="hoverNumber2"  ng-click = "professor.buildModal(); professor.buildArrays(person.id)">
+				<img class="circle2-img" src="/css/pics/graphcropped.jpg" /></span>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<!-- Modal content -->
+<div id="myModal" class="modal">
+  <div class="modal-content" ng-controller="ProfessorCtrl as professor">
+  <div class="modal-body">
+    <span class="spanClose" ng-click ="professor.spanClick()">x</span>
+	<div id="chartContainer" style="height: 300px; width: 95%; border: 5px solid peru; background-image: url('http://img04.deviantart.net/dd7c/i/2015/010/0/3/chalkboard_texture_mc2015_by_mattiamc-d8dbnac.jpg')">
+	</div>
+	</div> 
+</div>
+</div>
+</div>

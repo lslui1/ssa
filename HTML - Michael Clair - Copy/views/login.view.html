@@ -1,0 +1,63 @@
+<!--<style>
+
+
+div{
+  background: url(css/pics/9.jpg) ;
+
+  height: 800px;
+
+
+}
+form{
+  width: 500px;
+}
+
+</style>-->
+
+
+
+<div class="loginBackground" style="font-family: 'Tauri', sans-serif;">
+<div ng-controller="LoginCtrl as login" style="width:25%;margin:100px 100px 100px 500px;position:fixed">
+<div ng-show="!showRegister">
+  <br />
+  <form class="form-signin" name="myForm">
+    <h2 class="form-signin-heading" style="font-family: 'Averia Serif Libre', cursive;">SIGN IN</h2>
+      <input class="form-control" type="text" class="input-block-level" placeholder="Username" ng-model="signinuser" name="usernameinput" ng-minlength="4" ng-maxlength="10" required>
+      <span style="color:red" ng-show="myForm.usernameinput.$dirty && myForm.usernameinput.$invalid">
+        <span ng-show="myForm.usernameinput.$error.required">Username is required.</span>
+      </span>
+      <br />
+      <input class="form-control" type="password" class="input-block-level" placeholder="Password" ng-model="signinpass" name="passwordinput" ng-minlength="8" ng-maxlength="20" required>
+      <span style="color:red" ng-show="myForm.passwordinput.$dirty && myForm.passwordinput.$invalid">
+        <span ng-show="myForm.passwordinput.$error.required">Password is required.</span>
+      </span>
+      <br />
+
+      <button class="btn btn-large btn-primary" type="submit" ng-click="login.getLogin(signinuser, signinpass)" ng-disabled="myForm.$invalid && myForm.$error">Sign in</button>
+      <button class="btn btn-large btn-primary" type="submit" ng-init="showRegister = false" ng-click="showRegister = !showRegister;signinuser = '';signinpass = '';username='';pass=''">Register</button>
+    </form>
+</div>
+
+
+<div>
+  <div ng-show="showRegister" style="margin:50px auto;">
+ <form class="form-signin" name="registerForm">
+   <h2 class="form-signin-heading">Register Account</h2>
+     <input class="form-control" id = "username" type="text" class="input-block-level" placeholder="Enter New Username" ng-model="username" name="registerusername" ng-minlength="4" ng-maxlength="10" required>
+     <span style="color:red" ng-show="registerForm.registerusername.$dirty && registerForm.registerusername.$invalid">
+       <span ng-show="registerForm.registerusername.$error.required">Username is required.</span>
+     </span>
+     <br />
+     <input class="form-control" id = "password" type="password" class="input-block-level" placeholder="Enter New Password" ng-model="pass" name="registerpassword" ng-minlength="8" ng-maxlength="20" required>
+     <span style="color:red" ng-show="registerForm.registerpassword.$dirty && registerForm.registerpassword.$invalid">
+       <span ng-show="registerForm.registerpassword.$error.required">Password is required.</span>
+     </span>
+     <br />
+     <button class="btn btn-large btn-primary" type="submit" ng-click="login.addLogin()" ng-disabled="registerForm.$invalid && registerForm.$error">Submit</button>
+     <button class="btn btn-large btn-primary" type="submit" ng-click="login.reloadPage()">Back to Login</button>
+   </form>
+ </div>
+</div>
+</div>
+  <img src="css/pics/logo_large.png" alt="" class="satellite">
+</div>

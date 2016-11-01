@@ -1,0 +1,237 @@
+/*div#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+div#menu li {
+    float: left;
+}
+div#menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+div#menu li a:hover {
+    background-color: #111111;
+}*/
+
+div#content {
+	width:100%;
+	display:inline-block;
+}
+
+
+input[id=professor_name] {
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[id=professor_name]:focus {
+    width: 100%;
+}
+
+.tableStuff {
+	border: 2px solid black;
+	width: 40%;
+}
+
+  	.profTable{
+		width:40%;
+		border-collapse:collapse;
+	}
+	.profTable td{
+		padding:7px; border:#4e95f4 1px solid;
+	}
+	/* Define the default color for all the table rows */
+	.profTable tr{
+		background: white;
+	}
+	/* Define the hover highlight color for the table row */
+    .profTable tr:hover {
+          background-color: #b8d1f3;
+    }
+
+.hiddenSpan{
+	visibility: hidden;
+}
+
+.hiddenSpan:hover {
+	visibility: visible;
+}
+
+
+
+div#compclass {
+    position: fixed;
+    /* center the element */
+    right: 0;
+    left: 0;
+    margin-right: 5cm;
+    margin-left: 5cm;
+}
+
+.tbutton {
+	background: transparent;
+	border: none;
+	font-size: 20px;
+	/*color: darkblue;*/
+}
+
+.dropdown_container {
+	width:200px;
+}
+
+/*body {
+	background: url(pics/2144tran.jpg);
+	background-position: center;
+  background-repeat:no-repeat;
+	background-attachment: fixed;
+}*/
+
+.blueBackground {
+	background: url(pics/2144tran.jpg) no-repeat center center fixed;
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 background-size: cover;
+}
+
+.loginBackground {
+	background: url(pics/9.jpg) no-repeat center center fixed;
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 background-size: cover;
+	 min-height: 800px;
+}
+
+
+/* Modal stuff! */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: black;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 0px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.spanClose {
+    color: white;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.spanClose:hover,
+.spanClose:focus {
+    color: lightgrey;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*table {
+	background-color: white;
+}*/
+
+#leftBoxDiv {
+	text-align: left;
+	display: inline-block;
+	width: 50%;
+}
+
+#rightBoxDiv {
+	text-align:center;
+	display: inline-block;
+	width: 49%;
+}
+
+label {
+	display:block;
+	text-align:right;
+	width:200px;
+}
+
+
+/*
+.Alttbody {
+    height: 300px;
+    overflow: auto;
+}
+
+
+.Altthead > tr{
+    display:block;
+	}
+
+.Alttbody{
+    display:block;
+	}*/
+
+
+	.header-fixed {
+    width: 100%
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+    display: block;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.header-fixed > tbody {
+    overflow-y: auto;
+    height: 300px;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    width: 14%;
+    float: left;
+}
+
+
+.loginLogo {
+   background-image: url('pics/logo_large.png');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: left bottom;
+}

@@ -1,0 +1,97 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+			<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="font-family: 'Tauri', sans-serif;">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">HOME</a></li>
+				<li class="active"><a href="#/classes"  data-toggle="tab" aria-expanded="true">CLASSES</a></li>
+				<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">PROFESSORS</a></li>
+				<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">MY REVIEWS</a></li>
+        <li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">MY CLASSES</a></li>
+				<li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+</div>
+
+
+<div class="blueBackground minpageheight" style="font-family: 'Tauri', sans-serif;">
+<div ng-controller="ReviewCtrl as ctrl">
+<div style="width:75%;margin:10px auto;">
+	<br />
+	<br />
+<h1 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;" align="center">Add Review</h1>
+<div><h2 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;" align="center">{{ctrl.showClassName}} {{ctrl.showClassSection}} - {{ctrl.showClassFname}} {{ctrl.showClassLname}}</h2> </div>
+<!-- <div><h2 align="center">Professor: {{ctrl.showClassFname}} {{ctrl.showClassLname}}</h2></div> -->
+<form name="myForm">
+	<div class="form-group row">
+		<label for="review-profreview" class="col-xs-2 col-form-label">Professor Review</label>
+		 <div class="col-xs-10">
+		 	<textarea class="form-control" rows="6" style="resize:none" ng-model="profreview" id="profinputid" name="profreviewinput" required></textarea>
+				<span style="color:red" ng-show="myForm.profreviewinput.$dirty && myForm.profreviewinput.$invalid">
+					<span ng-show="myForm.profreviewinput.$error.required">Professor Review is required.</span>
+				</span>
+		</div>
+  	</div>
+	<div class="form-group row">
+		<label for="review-classreview" class="col-xs-2 col-form-label">Class Review</label>
+		 <div class="col-xs-10">
+		 	<textarea class="form-control" rows="6" style="resize:none" ng-model="classreview" id="classreviewid" name="classreviewinput" required></textarea>
+				<span style="color:red" ng-show="myForm.classreviewinput.$dirty && myForm.classreviewinput.$invalid">
+					<span ng-show="myForm.classreviewinput.$error.required">Class Review is required.</span>
+				</span>
+		</div>
+  	</div>
+	<div class="form-group row">
+		<label for="review-year" class="col-xs-2 col-form-label">Year</label>
+		 <div class="col-xs-10">
+		 	<input class="form-control" type="number" ng-model="year" id="yearid" name="yearinput" ng-min="1980" ng-max="2016" ng-minlength="4" ng-maxlength="4" required>
+				<span style="color:red" ng-show="myForm.yearinput.$dirty && myForm.yearinput.$invalid">
+					<span ng-show="myForm.yearinput.$error.required">Year is required.</span>
+				</span>
+		</div>
+  	</div>
+		<div class="form-group row">
+			<label for="review-semester" class="col-xs-2 col-form-label">Semester</label>
+			<div class="col-xs-10">
+				<select ng-model="semester" class="dropdown_container" required>
+					 <option value="1">Spring</option>
+					 <option value="2">Summer</option>
+					 <option value="3">Fall</option>
+					 <option value="4">Winter</option>
+ 		    </select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="review-classrating" class="col-xs-2 col-form-label">Class Rating</label>
+			 <div class="col-xs-10">
+				<select ng-model="classrating" class="dropdown_container" required>
+					 <option ng-bind="ctrl.onestar" 	value="1"></option>
+					 <option ng-bind="ctrl.twostar" 	value="2"></option>
+					 <option ng-bind="ctrl.threestar" 	value="3"></option>
+					 <option ng-bind="ctrl.fourstar" 	value="4"></option>
+					 <option ng-bind="ctrl.fivestar" 	value="5"></option>
+ 		    </select>
+			</div>
+	  	</div>
+			<div class="form-group row">
+			<label for="review-profrating" class="col-xs-2 col-form-label">Prof Rating</label>
+				<div class="col-xs-10">
+				<select ng-model="profrating" class="dropdown_container" required>
+  					 <option ng-bind="ctrl.onestar" 	value="1"></option>
+  					 <option ng-bind="ctrl.twostar" 	value="2"></option>
+  					 <option ng-bind="ctrl.threestar" 	value="3"></option>
+  					 <option ng-bind="ctrl.fourstar" 	value="4"></option>
+  					 <option ng-bind="ctrl.fivestar" 	value="5"></option>
+   		    </select>
+				</div>
+		  	</div>
+			</form>
+<div style="width: 66%; margin: 0 auto;">
+	<button ng-disabled="myForm.$invalid && myForm.$error" type="button" class="btn btn-success" ng-click="ctrl.addReview(profreview,classreview,year,semester,classrating,profrating)">Add Review</button>
+	&nbsp;
+</div>
+</div>
+</div>
+</div>
