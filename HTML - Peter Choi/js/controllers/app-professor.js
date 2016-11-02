@@ -38,7 +38,8 @@ angular
                   sessionStorage.setItem("returnstate", "addprofessor")
                   $window.location.href = '/#/submittedprofessor';
                 }, function(err) {
-                  console.log("FAILURE: " + resp)
+                  console.log("FAILURE: " + err)
+                  $window.alert("Professor already exists! Please Try Again.");
                 });
             }
 

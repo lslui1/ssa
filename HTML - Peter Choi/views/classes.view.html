@@ -107,7 +107,8 @@
 				<img class="img-circle" src="/css/pics/thumbs_down2_small.jpg" />
 				</div>
 			</td>
-			<td ng-click="class.addToMySavedClasses(class.loginid, object.id);showAddBtn = true;"><button ng-show="!showAddBtn" class=" btn btn-success">Add Class</button></td>
+			<td ng-click="class.addToMySavedClasses(class.loginid, object.id);showAddBtn = true;"><button style="width:100px;" ng-show="!showAddBtn" class=" btn btn-success">Add Class</button>
+      <a style="width:100px;" ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)" href="#/addreview/" class=" btn btn-primary">Add Review</a></td>
 		</tr>
 		</tbody>
 	</table>
