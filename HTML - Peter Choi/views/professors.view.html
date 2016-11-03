@@ -53,9 +53,9 @@
 				</div>
 				<span ng-show="hoverNumber"><p ng-bind="person.aggregateProfRating"</p></span>
 			</td>
-			<td ng-show="person.aggregateProfRating > 0" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name)"><a href="#/professorreview/{{person.id}}">{{person.count}}</a></td>
+			<td ng-show="person.aggregateProfRating > 0" ng-click="professor.saveProfFnameLname(person.first_name, person.last_name, person.id)"><a href="#/professorreview/{{person.id}}">{{person.count}}</a></td>
 			<td ng-show="person.aggregateProfRating ==0"></td>
-			<td ng-show = "person.count > 4"> 
+			<td ng-show = "person.count > 4">
 			<div ng-mouseover = "hoverNumber2 = true" ng-mouseleave = "hoverNumber2 = false">
 			<span ng-show="!hoverNumber2">
 				<img class="circle-img" src="/css/pics/graphcropped.jpg" /></span>
@@ -74,7 +74,7 @@
     <span class="spanClose" ng-click ="professor.spanClick()">x</span>
 	<div id="chartContainer" style="height: 300px; width: 95%; border: 5px solid peru; background-image: url('http://img04.deviantart.net/dd7c/i/2015/010/0/3/chalkboard_texture_mc2015_by_mattiamc-d8dbnac.jpg')">
 	</div>
-	</div> 
+	</div>
 </div>
 </div>
 </div>

@@ -12,7 +12,7 @@ angular
               for (professors of self.professors) {
                 professors.fullnameofprof = professors.first_name + " " + professors.last_name;
               }
-              console.log(self.professors)
+              // console.log(self.professors)
         		},function(err) {
 
         		});
@@ -34,11 +34,11 @@ angular
                 data: myProfessor
               })
                 .then(function(resp) {
-                  console.log("SUCCESS: " + resp)
+                  // console.log("SUCCESS: " + resp)
                   sessionStorage.setItem("returnstate", "addprofessor")
                   $window.location.href = '/#/submittedprofessor';
                 }, function(err) {
-                  console.log("FAILURE: " + err)
+                  // console.log("FAILURE: " + err)
                   $window.alert("Professor already exists! Please Try Again.");
                 });
             }
@@ -120,7 +120,7 @@ self.buildArrays = function(professorId) {
           var year = dateIn.substring(0,4);
           var month = dateIn.substring(5,7) - 1;
           var day = dateIn.substring(8,10);
-          console.log(year + "is year" + month + "is month" + day + "is day");
+          // console.log(year + "is year" + month + "is month" + day + "is day");
           profRatingAvg.push({x: new Date(year, month, day), y: prAvg, lineColor: "DeepSkyBlue", markerColor: "DeepSkyBlue", markerSize: 1});
           classRatingAvg.push({x: new Date(year, month, day), y: crAvg, lineColor: "Tomato", markerColor: "Tomato", markerSize: 1});
           profRatingArray.push({x: new Date(year, month, day), y: resp[i].professor_rating, lineColor: "DeepSkyBlue", markerColor: "DeepSkyBlue"});
@@ -134,11 +134,11 @@ self.buildArrays = function(professorId) {
 //Functions for pop-up modal
 
 self.buildModal = function() {
-  console.log("a")
+  // console.log("a")
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
-  console.log("g")
+  // console.log("g")
     modal.style.display = "block";
 }
 
@@ -153,8 +153,8 @@ self.spanClick = function() {
 }
 
 function buildChart(classRatingArray, profRatingArray, classRatingAvg, profRatingAvg) {
-console.log("inbuildchart")
-console.log(classRatingArray)
+// console.log("inbuildchart")
+// console.log(classRatingArray)
    var chart = new CanvasJS.Chart("chartContainer",
   {
     backgroundColor: "transparent",

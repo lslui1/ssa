@@ -6,14 +6,16 @@ angular
 
     var self = this;
 
+    self.globalusername = sessionStorage.globalusername;
+
   self.loggingOut = function() {
     var r = confirm("Are you sure you want to log out?");
     if(r==true) {
-      console.log("confirmed logout")
+      // console.log("confirmed logout")
       sessionStorage.clear();
         $window.location.href = '#/';
     } else {
-      console.log("canceled logout")
+      // console.log("canceled logout")
     }
 
 }

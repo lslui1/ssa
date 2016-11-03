@@ -12,9 +12,9 @@ angular
     var login = {};
     // login.id = 1000;
     login.user_name = username;
-    console.log(username)
+    // console.log(username)
     login.password = pass;
-    console.log(pass)
+    // console.log(pass)
     // console.log(login)
     $http({
         method: "POST",
@@ -22,10 +22,11 @@ angular
         data: login
       })
   			.then(function(resp) {
-  				console.log("SUCCESS: " + resp)
+  				// console.log("SUCCESS: " + resp)
           if(resp.data > 3) {
             sessionStorage.setItem("globaluserid", resp.data);
-            console.log(sessionStorage.getItem("globaluserid"));
+            sessionStorage.setItem("globalusername", username);
+            // console.log(sessionStorage.getItem("globaluserid"));
             $window.location.href = '/#/home';
           } else {
             $window.alert("Incorrect Login/Password");
@@ -36,11 +37,11 @@ angular
 
 
 self.addLogin = function() {
-   console.log("in addLogin")
+  //  console.log("in addLogin")
    var newLogin= {};
          newLogin.password = document.getElementById("password").value;
          newLogin.user_name = document.getElementById("username").value;
-         console.log(newLogin);
+        //  console.log(newLogin);
       $http({
        method: "POST",
        url: 'http://localhost:8080/insertlogin',

@@ -8,6 +8,8 @@ angular
   var self = this
 
 self.pathprofid = $routeParams.pathingprofId;
+// console.log("THIS IS THE ROUTE PARAMS")
+// console.log(self.pathprofid);
 
 self.loginid = sessionStorage.globaluserid;
 
@@ -42,7 +44,7 @@ $http.get('http://localhost:8080/savedclasses/' + self.loginid)
       .then(function(resp){
 
         self.myclasses = resp.data;
-        console.log(self.myclasses)
+        // console.log(self.myclasses)
       },function(err) {
 
       })};
@@ -62,11 +64,12 @@ $http.get('http://localhost:8080/savedclasses/' + self.loginid)
 
 
 if(self.pathprofid != undefined) {
+  // console.log("bye - 1    " + self.pathprofid)
             $http.get('http://localhost:8080/combinedclassbyprofessorid/' + self.pathprofid)
                       .then(function(resp){
                         self.profclasses = resp.data;
                       },function(err) {
-
+                        // console.log("error within bye - 1")
                       })};
 
 
@@ -75,8 +78,8 @@ if(self.pathprofid != undefined) {
                 $http.get('http://localhost:8080/ReviewsByProfessor/' + self.pathprofid)
                           .then(function(resp){
                             self.profreview = resp.data;
-                            console.log("hi")
-                            console.log(self.profreview)
+                            // console.log("hi")
+                            // console.log(self.profreview)
                           },function(err) {
 
                           })};
@@ -99,7 +102,8 @@ if(self.pathprofid != undefined) {
 
   			});
 
-
+if(self.profClassId != undefined) {
+  // console.log("hello" + self.profClassId)
         $http.get('http://localhost:8080/combinedclassbyprofessorid/' + self.profClassId)
         			.then(function(resp){
         				self.classes = resp.data;
@@ -114,8 +118,10 @@ if(self.pathprofid != undefined) {
                   });
 
         			},function(err) {
+                // console.log("error within hello console log")
 
-        			});
+        			})};
+
 
 
 
@@ -128,8 +134,8 @@ if(self.pathprofid != undefined) {
                     for (combinedclasses of self.combinedclasses) {
                       combinedclasses.fullProfName = combinedclasses.professor_fname + " " + combinedclasses.professor_lname;
                     }
-                    console.log("hi")
-                    console.log(self.combinedclasses)
+                    // console.log("hi")
+                    // console.log(self.combinedclasses)
               		},function(err) {
 
               		});
@@ -141,9 +147,9 @@ self.saveClassId = function(classId, className, classSection, classFname, classL
   sessionStorage.setItem("reviewClassSection", classSection)
   sessionStorage.setItem("reviewClassFname", classFname)
   sessionStorage.setItem("reviewClassLname", classLname)
-  console.log("testing function click")
-  console.log(classId)
-  console.log(sessionStorage.reviewClassId)
+  // console.log("testing function click")
+  // console.log(classId)
+  // console.log(sessionStorage.reviewClassId)
 }
 
 self.getClassIdForAlternativeClasses = function(classId, savedClassId) {
@@ -155,8 +161,8 @@ self.addToMySavedClasses = function(loginId, classId) {
   var addtheseclasses = {};
   addtheseclasses.login_id = loginId;
   addtheseclasses.class_id = classId;
-  console.log(addtheseclasses.login_id)
-  console.log(addtheseclasses.class_id)
+  // console.log(addtheseclasses.login_id)
+  // console.log(addtheseclasses.class_id)
 
   $http({
     method: 'POST',
@@ -164,16 +170,16 @@ self.addToMySavedClasses = function(loginId, classId) {
     data: addtheseclasses
   })
     .then(function(resp) {
-      console.log("SUCCESS: " + resp)
+      // console.log("SUCCESS: " + resp)
     }, function(err) {
-      console.log("FAILURE: " + resp)
+      // console.log("FAILURE: " + resp)
     });
 
 }
 
 
 self.deletesavedclass = function(savedclassid) {
-  console.log(savedclassid)
+  // console.log(savedclassid)
   $http.get('http://localhost:8080/deletesavedclass/' + savedclassid)
         .then(function(resp){
           $window.location.reload();
@@ -204,10 +210,10 @@ self.deletesavedclass = function(savedclassid) {
       data: myClass
     })
       .then(function(resp) {
-        console.log("SUCCESS: " + resp)
+        // console.log("SUCCESS: " + resp)
         $window.location.href = '/#/submittedclass';
       }, function(err) {
-        console.log("FAILURE: " + resp)
+        // console.log("FAILURE: " + resp)
       });
   }
 
@@ -232,7 +238,7 @@ self.deletesavedclass = function(savedclassid) {
   replacetheseclasses.login_id = loginId;
   replacetheseclasses.newclass_id = newClassId;
   replacetheseclasses.oldclass_id = self.useAlternativeSavedClassId;
-  console.log(replacetheseclasses)
+  // console.log(replacetheseclasses)
 
 
   self.deletesavedclass(replacetheseclasses.oldclass_id)
@@ -310,7 +316,7 @@ self.deletesavedclass = function(savedclassid) {
   newClass.professor_id = professorId;
   newClass.name = subject;
   newClass.section = section;
-  console.log(newClass)
+  // console.log(newClass)
   $.ajax({
     headers: {
     'Accept': 'application/json',
@@ -321,7 +327,7 @@ self.deletesavedclass = function(savedclassid) {
     data: JSON.stringify(newClass),
     dataType: 'text'
 }).then(function() {
-  console.log("hi")
+  // console.log("hi")
     sessionStorage.setItem("returnstate", "classes");
     $window.location.href = '/#/submittedclass';
 })

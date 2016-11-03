@@ -8,19 +8,19 @@ SubmittedCtrl.$inject = ['$window','$scope', '$location', '$timeout']
 
  $timeout(function() {
       if (sessionStorage.returnstate == 'classes') {
-          console.log("Going to " + sessionStorage.returnstate)
+          // console.log("Going to " + sessionStorage.returnstate)
         $window.location.href = '/#/classes';
       }
       if (sessionStorage.returnstate == 'editmyreview') {
-          console.log("Going to " + sessionStorage.returnstate)
+          // console.log("Going to " + sessionStorage.returnstate)
         $window.location.href = '/#/myreviews';
       }
       if (sessionStorage.returnstate == 'addreview') {
-          console.log("Going to " + sessionStorage.returnstate)
+          // console.log("Going to " + sessionStorage.returnstate)
         $window.location.href = '/#/myreviews';
       }
       if (sessionStorage.returnstate == 'addprofessor') {
-          console.log("Going to " + sessionStorage.returnstate)
+          // console.log("Going to " + sessionStorage.returnstate)
         $window.location.href = '/#/professors';
       }
    }, 3000);

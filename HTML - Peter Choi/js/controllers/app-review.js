@@ -46,7 +46,7 @@ if(self.loginId != undefined) {
             $http.get('http://localhost:8080/combinedreviewsbyloginid/' + self.loginId)
                 			.then(function(resp){
                   			self.mysavedreviews = resp.data;
-                        console.log(self.mysavedreviews)
+                        // console.log(self.mysavedreviews)
                   		},function(err) {
 
                   		})};
@@ -57,7 +57,7 @@ if(self.myReviewId != undefined) {
                       $http.get('http://localhost:8080/SingleReview/' + self.myReviewId)
                           			.then(function(resp){
                             			self.singlereview = resp.data;
-                                  console.log(self.singlereview)
+                                  // console.log(self.singlereview)
                             		},function(err) {
 
                             		})};
@@ -89,9 +89,9 @@ self.editMyReview = function(loginid, id, classid, classReview, profReview, year
   myReview.professor_rating = professorRating;
   myReview.review_date = null;
 
-  console.log("sdjkfjksdfj")
-  console.log(self.professor_rating)
-  console.log(myReview)
+  // console.log("sdjkfjksdfj")
+  // console.log(self.professor_rating)
+  // console.log(myReview)
 
   $http({
     method: 'PUT',
@@ -99,11 +99,11 @@ self.editMyReview = function(loginid, id, classid, classReview, profReview, year
     data: myReview
   })
     .then(function(resp) {
-      console.log("SUCCESS: " + resp)
+      // console.log("SUCCESS: " + resp)
       sessionStorage.setItem("returnstate", "editmyreview");
       $window.location.href = '/#/editsuccessful';
     }, function(err) {
-      console.log("FAILURE: " + err)
+      // console.log("FAILURE: " + err)
     });
 }
 
@@ -143,7 +143,7 @@ self.editMyReview = function(loginid, id, classid, classReview, profReview, year
               sessionStorage.setItem("Reviewclassrating", classRating);
               sessionStorage.setItem("Reviewprofrating", profRating);
 
-              console.log(myReview)
+              // console.log(myReview)
 
               $http({
                 method: 'POST',
@@ -151,11 +151,11 @@ self.editMyReview = function(loginid, id, classid, classReview, profReview, year
                 data: myReview
               })
                 .then(function(resp) {
-                  console.log("SUCCESS: " + resp)
+                  // console.log("SUCCESS: " + resp)
                   sessionStorage.setItem("returnstate", "addreview");
                   $window.location.href = '/#/submittedreview';
                 }, function(err) {
-                  console.log("FAILURE: " + resp)
+                  // console.log("FAILURE: " + resp)
                 });
             }
 
