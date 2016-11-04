@@ -464,7 +464,7 @@ background: url(pics/usethispicture.jpg) ;
 	opacity: 0.7;
 }
 #body.home .footer div ul li a span {
-	/* background: url(../images/icons.png) no-repeat 0 -152px; */
+	background: url(../images/icons.png) no-repeat 0 -152px;
 	display: block;
 	height: 72px;
 	left: 199px;
@@ -475,7 +475,7 @@ background: url(pics/usethispicture.jpg) ;
 	width: 62px;
 }
 #body.home .footer div ul li a:hover span {
-	/*  background: url(../images/icons.png) no-repeat 0 -226px; */
+	background: url(../images/icons.png) no-repeat 0 -226px;
 }
 #body.home .footer div ul li ul {
 	display: inline-block;
@@ -1368,7 +1368,7 @@ background: url(pics/usethispicture.jpg) ;
 	width: 380px;
 }
 #footer .connect div div a {
-	/*  background: url(../images/icons.png) no-repeat; */
+	background: url(../images/icons.png) no-repeat;
 	display: block;
 	float: left;
 	height: 36px;
