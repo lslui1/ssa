@@ -1,0 +1,129 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;font-family: 'Tauri', sans-serif;">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">HOME</a></li>
+		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">CLASSES</a></li>
+		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">PROFESSORS</a></li>
+		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">MY REVIEWS</a></li>
+		<li class="active"><a href="#/myclasses"  data-toggle="tab" aria-expanded="true">MY CLASSES</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+<div class="blueBackground minpageheight" style="font-family: 'Tauri', sans-serif;">
+
+<div ng-controller="ClassCtrl as class">
+	<br />
+	<br />
+	<br />
+	<div id="compclass">
+	<table class="table">
+		<thead>
+			<tr>
+				<td>
+					<p>Class Name</p>
+				</td>
+				<td>
+					<p>Section</p>
+				</td>
+				<td>
+					<p>Prof Name</p>
+				</td>
+								<td>
+					<p>Class Rating</p>
+				</td>
+								<td>
+					<p>Professor Rating</p>
+				</td>
+								<td>
+					<p># of Reviews</p>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="focusclass in class.alternativecompareclass">
+			<td ng-bind="focusclass.name"></td>
+			<td ng-bind="focusclass.section"></td>
+			<td ng-bind="focusclass.professor_fname + ' ' + focusclass.professor_lname"></td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="focusclass.aggregateClassRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="focusclass.aggregateClassRating"</p></span>
+			</td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="focusclass.aggregateProfessorRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="focusclass.aggregateProfessorRating"</p></span>
+			</td>
+			<td ng-bind="focusclass.aggregateCount"></td>
+		</tr>
+		</tbody>
+	</table>
+	</div>
+
+	<div align="center">
+	<br /><br /><br /><br /><br /><br />
+		<input ng-model="search" class="form-control" type="text" placeholder="Search Filter" maxlength="30" size="30" style="width: 300px;" />
+		<p ng-show="search">Filtering by {{search}}</p>
+	</div>
+	<h1 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;" align="center">RECOMMENDED ALTERNATIVES</h1>
+	<table class="table table-striped header-fixed">
+		<thead>
+			<tr>
+				<th>
+					<button class="tbutton">Class Name</button>
+				</th>
+				<th>
+					<button class="tbutton">Section</button>
+				</th>
+				<th>
+					<button class="tbutton">Prof First-Name</button>
+				</th>
+				<th>
+					<button class="tbutton">Class Rating</button>
+				</th>
+				<th>
+					<button class="tbutton">Professor Rating</button>
+				</th>
+								<th>
+					<button class="tbutton"># of Reviews</button>
+				</th>
+				<th>
+	<button class="tbutton">Functions</button>
+</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="altclass in class.alternativeclasses | filter:search">
+			<td class="tdheight" ng-bind="altclass.name"></td>
+			<td ng-bind="altclass.section"></td>
+			<td ng-bind="altclass.professor_fname + ' ' + altclass.professor_lname"></td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="altclass.aggregateClassRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="altclass.aggregateClassRating"</p></span>
+			</td>
+			<td>
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="altclass.aggregateProfessorRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="altclass.aggregateProfessorRating"</p></span>
+			</td>
+			<td ng-bind="altclass.aggregateCount"></td>
+			<td><button style="width:115px;" ng-click="class.addToMySavedClasses(class.loginid, altclass.id);showAltBtn = true;" ng-show="!showAltBtn" class="btn btn-success">Add Class</button>
+					<!-- <button ng-show="showAltBtn" class="tbutton"></button> -->
+			<button style="width:115px;" ng-click="class.replaceMySavedClass(class.loginid, altclass.id)" class="btn btn-primary">Replace Class</button></td>
+
+		</tr>
+		</tbody>
+	</table>
+</div>
+</div>

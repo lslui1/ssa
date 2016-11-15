@@ -1,0 +1,88 @@
+
+<div id="menu" ng-controller="LogoutCtrl as logout">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;font-family: 'Tauri', sans-serif;">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">HOME</a></li>
+		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">CLASSES</a></li>
+		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">PROFESSORS</a></li>
+		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">MY REVIEWS</a></li>
+		<li class="active"><a href="#/myclasses"  data-toggle="tab" aria-expanded="true">MY CLASSES</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+
+<div class="blueBackground minpageheight" style="font-family: 'Tauri', sans-serif;">
+<div style="width:75%;margin:10px auto;" ng-controller="ClassCtrl as class">
+	<br />
+		<br />
+			<br />
+
+	<div>
+		<input ng-model="search" style="width:300px" class="form-control" type="text" placeholder="Search Filter">
+		<p ng-show="search">Filtering by {{search}}</p>
+	</div>
+	<h1 style="font-family: 'Averia Serif Libre', cursive; color: #0047b3;"align="center">MY CLASSES</h1>
+	<table class="table">
+						<thead>
+			<tr>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortSubject()">Subject</button>
+				</th>
+				<th>
+        		<button class="btn tbutton">Section</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortName()">Professor Name</button>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sort1CR()">Class Rating</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sort1PR()">Professor Rating</button>
+				</th>
+				<th>
+				<button class="btn tbutton" ng-click="sortType = class.sortCount()"># of Reviews</button>
+				</th>
+				<th>
+				</th>
+				<th>
+				</th>
+				<th>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="object in class.myclasses | filter: search | orderBy:sortType">
+			<td class="tdheight" ng-bind="object.name"></td>
+			<td ng-bind="object.section"></td>
+			<td ng-bind="object.professor_fname + ' ' + object.professor_lname"></td>
+			<td
+				<div ng-mouseover="hoverNumber = true" ng-mouseleave="hoverNumber = false">
+				<div star-rating rating-value="object.aggregateClassRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber"><p ng-bind="object.aggregateClassRating"</p></span>
+			</td>
+			<td
+				<div ng-mouseover="hoverNumber2 = true" ng-mouseleave="hoverNumber2 = false">
+				<div star-rating rating-value="object.aggregateProfessorRating" max=5 ></div>
+				</div>
+				<span ng-show="hoverNumber2"><p ng-bind="object.aggregateProfessorRating"</p></span>
+			</td>
+			<td><a href="#/review/{{object.id}}" ng-bind="object.aggregateCount" ng-click="class.saveClassId(object.id, object.name, object.section, object.professor_fname, object.professor_lname)"></a></td>
+			<td>
+				<a style="width:174px;"  class="btn btn-success" href="#/addreview/" ng-click="class.saveClassProfNames(object.id,object.name, object.section, object.professor_fname, object.professor_lname)">Add Review</a>
+			<button style="width:174px;" class="btn btn-danger" ng-click="class.deletesavedclass(object.savedClassId)">Remove Class</button>
+		  <a style="width:174px;" ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)" href="#/alternativeclasses/" class="btn btn-default">{{object.alternativeCount + ' - '}}Recommendations</a>
+			</td>
+			<!-- <td ng-show="object.alternativeCount > 0" ng-click="class.getClassIdForAlternativeClasses(object.id, object.savedClassId)"> <a href="#/alternativeclasses/" class="btn btn-default">{{object.alternativeCount + ' - '}}Alternative Classes</a></td> -->
+			<!-- <td ng-show="object.alternativeCount > 0" ng-bind="object.alternativeCount"></td> -->
+		</tr>
+		</tbody>
+	</table>
+</div>
+</div>

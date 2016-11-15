@@ -1,0 +1,80 @@
+
+<div id="menu" ng-controller="LogoutCtrl as logout">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;font-family: 'Tauri', sans-serif;">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">HOME</a></li>
+		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">CLASSES</a></li>
+		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">PROFESSORS</a></li>
+		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">MY REVIEWS</a></li>
+		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">MY CLASSES</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<div class="blueBackground minpageheight" style="font-family: 'Tauri', sans-serif;">
+<div ng-controller="SubmittedCtrl as ctrl">
+<div style="width:50%;margin:10px auto;">
+<br /><br /><br />
+<h1 style="font-family: 'Tauri', sans-serif;">Review submitted!</h1>
+<br /><br /><br />
+<p>You will be redirected in 3 seconds ...</p>
+
+</div>
+</div>
+</div>
+<!-- <div ng-controller="SubmittedCtrl as ctrl">
+<div style="width:50%;margin:10px auto;">
+<h1>Submitted Page</h1>
+<p>This is the submitted class page</p>
+<table class="table">
+	<thead>
+		<tr>
+			<td>
+			<p>Class Review</p>
+			</td>
+			<td>
+			<p>Professor Review</p>
+			</td>
+			<td>
+			<p>User Id</p>
+			</td>
+			<td>
+			<p>Class Id</p>
+			</td>
+			<td>
+			<p>Review Date</p>
+			</td>
+			<td>
+			<p>Year</p>
+			</td>
+			<td>
+			<p>Semester</p>
+			</td>
+			<td>
+			<p>Class Rating</p>
+			</td>
+			<td>
+			<p>Professor Rating</p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td ng-bind="ctrl.Reviewclassreview"></td>
+		<td ng-bind="ctrl.Reviewprofessorreview"></td>
+		<td ng-bind="ctrl.ReviewloginId"></td>
+		<td ng-bind="ctrl.Reviewingclassid"></td>
+		<td>{{date | date:'yyyy-MM-dd'}}</td>
+		<td ng-bind="ctrl.Reviewyear"></td>
+		<td ng-bind="ctrl.Reviewsemester"></td>
+		<td ng-bind="ctrl.Reviewclassrating"></td>
+		<td ng-bind="ctrl.Reviewprofessorrating"></td>
+	</tr>
+	</tbody>
+</table>
+</div>
+</div> -->

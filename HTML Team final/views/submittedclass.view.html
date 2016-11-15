@@ -1,0 +1,119 @@
+
+<div id="menu" ng-controller="LogoutCtrl as logout">
+    <ul class="nav nav-tabs navbar-default navbar-fixed-top nav-justified" style="position:fixed;font-family: 'Tauri', sans-serif;">
+      <li></li>
+      <li></li>
+      <li></li>
+        <li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">HOME</a></li>
+        <li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">CLASSES</a></li>
+        <li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">PROFESSORS</a></li>
+        <li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">MY REVIEWS</a></li>
+        <li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">MY CLASSES</a></li>
+        <li class="" ng-click="logout.loggingOut()"><a href=""  data-toggle="tab" aria-expanded="false">LOG OUT</a></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+
+
+</div>
+<div class="blueBackground minpageheight" style="font-family: 'Tauri', sans-serif;">
+<div ng-controller="SubmittedCtrl as ctrl">
+<div style="width:50%;margin:10px auto;">
+<br /><br /><br />
+<h1 style="font-family: 'Tauri', sans-serif;">Class submitted!</h1>
+<br /><br /><br />
+<p>You will be redirected in 3 seconds ...</p>
+
+</div>
+</div>
+</div>
+
+
+<!--
+
+<p>You will be redirected in 3 seconds ...</p>
+<script>
+   var timer = setTimeout(function() {
+        window.location.href = '/#/classes';
+        console.log("works?");
+   }, 3000);
+</script>
+
+-->
+
+<!--
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+            <p>Class Name</p>
+            </td>
+            <td>
+            <p>Section</p>
+            </td>
+            <td>
+            <p>Prof ID</p>
+            </td>
+            <td>
+            <p>University ID</p>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td ng-bind="ctrl.Classsubject"></td>
+        <td ng-bind="ctrl.Classsubjectsection"></td>
+        <td ng-bind="ctrl.Classsubjectprofessor_id"></td>
+        <td ng-bind="ctrl.Classsubjectuniversity_id"></td>
+    </tr>
+    </tbody>
+</table>
+-->
+
+
+
+
+<!-- <div id="menu" ng-controller="LogoutCtrl as logout">
+	<ul class="nav nav-tabs navbar-default navbar-fixed-top" style="position:fixed; background:white;">
+		<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
+		<li class=""><a href="#/classes"  data-toggle="tab" aria-expanded="false">Classes</a></li>
+		<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
+		<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">My Reviews</a></li>
+		<li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
+		<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+	</ul>
+</div>
+<div ng-controller="SubmittedCtrl as ctrl">
+<div style="width:50%;margin:10px auto;">
+<h1>Submitted Page</h1>
+<p>This is the submitted class page</p>
+<table class="table">
+	<thead>
+		<tr>
+			<td>
+			<p>Class Name</p>
+			</td>
+			<td>
+			<p>Section</p>
+			</td>
+			<td>
+			<p>Prof ID</p>
+			</td>
+			<td>
+			<p>University ID</p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td ng-bind="ctrl.Classsubject"></td>
+		<td ng-bind="ctrl.Classsubjectsection"></td>
+		<td ng-bind="ctrl.Classsubjectprofessor_id"></td>
+		<td ng-bind="ctrl.Classsubjectuniversity_id"></td>
+	</tr>
+	</tbody>
+</table>
+</div>
+</div> -->

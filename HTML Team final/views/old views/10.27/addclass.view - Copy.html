@@ -1,0 +1,160 @@
+<div id="menu" ng-controller="LogoutCtrl as logout">
+			<ul class="nav nav-tabs">
+				<li class=""><a href="#/home"  data-toggle="tab" aria-expanded="false">Home</a></li>
+				<li class="active"><a href="#/classes"  data-toggle="tab" aria-expanded="true">Classes</a></li>
+				<li class=""><a href="#/professors"  data-toggle="tab" aria-expanded="false">Professors</a></li>
+				<li class=""><a href="#/myreviews"  data-toggle="tab" aria-expanded="false">My Reviews</a></li>
+        <li class=""><a href="#/myclasses"  data-toggle="tab" aria-expanded="false">My Classes</a></li>
+				<li class="" ng-click="logout.loggingOut()"><a href="#/"  data-toggle="tab" aria-expanded="false">Log Out</a></li>
+			</ul>
+</div>
+<div ng-controller="ClassCtrl as ctrl">
+<div style="width:50%; float:left;">
+<h1>Add a Class</h1>
+<form name="myForm">
+	<div class="form-group row">
+		<label for="major-description" class="col-xs-2 col-form-label">Search for Professor</label>
+		 <div class="col-xs-10">
+			<input class="form-control" type="text" ng-model="professor_name" id="professor_name" name="professor_name"  ng-click = "ctrl.enableInput()">
+		</div>
+		</div>
+		<div class="form-group row">
+			<label for="major-description" class="col-xs-2 col-form-label">Professor First Name</label>
+			 <div class="col-xs-10">
+				<input class="form-control" type="text" ng-model="ctrl.professor_fname" id="professor_fname" name="professor_fname" disabled required>
+			</div>
+			</div>
+			<div class="form-group row">
+				<label for="major-description" class="col-xs-2 col-form-label">Professor Last Name</label>
+				 <div class="col-xs-10">
+					<input class="form-control" type="text" ng-model="ctrl.professor_lname" id="professor_lname" name="professor_lname" disabled required>
+					<span style="color:red" ng-show="myForm.professor_lname.$dirty && myForm.professor_lname.$invalid">
+						<span ng-show="myForm.professor_lname.$error.required">PROF L NAME</span>
+					</span>
+				</div>
+				</div>
+	<div class="form-group row">
+		<label for="major-description" class="col-xs-2 col-form-label">Subject</label>
+		 <div class="col-xs-10">
+		 	<input class="form-control" type="text" ng-model="subject" id="subject" name="subject" required>
+				<span style="color:red" ng-show="myForm.subject.$dirty && myForm.subject.$invalid">
+					<span ng-show="myForm.subject.$error.required">Subject is required - Alpha Only</span>
+				</span>
+		</div>
+  	</div>
+	<div class="form-group row">
+		<label for="major-reqsat" class="col-xs-2 col-form-label">Section</label>
+		 <div class="col-xs-10">
+		 	<input class="form-control" type="text" ng-model="section" id="section" name="section" required>
+				<span style="color:red" ng-show="myForm.section.$dirty && myForm.section.$invalid">
+					<span ng-show="myForm.section.$error.required">Section is required</span>
+				</span>
+		</div>
+  	</div>
+	</form>
+
+
+<button class="btn btn-success" id="addClass" ng-Click="ctrl.addClassOrProf()" ng-disabled="myForm.$invalid && myForm.$error">Add Class</button>
+<button id="cantFindProfessor" ng-click="ctrl.cantFindProfessor()">Can't Find Professor</button>
+
+
+
+
+
+</div>
+
+<div style="width: 30%; float: right" ng-show="ctrl.showProfessorTable">
+			<table class = "profTable" name ="profTable">
+			<tr style="font-weight: bold">
+			<td width = 100px ng-show = "beenClicked">Professor Name</td>
+			</tr>
+
+			<tr ng-repeat="professor in ctrl.professors | filter : professor_name | orderBy: 'last_name'" ng-dblclick = "ctrl.populate(professor.first_name, professor.last_name)" >
+			<td width = 100px>{{professor.fullName}}</td>
+			</tr>
+		</table>
+		<p />
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<form class="form-horizontal" ng-controller="ClassCtrl as ctrl">
+  <fieldset>
+    <legend>Class & Professor</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Checkbox
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="textArea" style="margin: 0px -0.5px 0px 0px; width: 425px; height: 138px;"></textarea>
+        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Radios</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            Option one is this
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Selects</label>
+      <div class="col-lg-10">
+        <select class="form-control" id="select">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <br>
+        <select multiple="" class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>

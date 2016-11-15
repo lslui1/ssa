@@ -1,0 +1,138 @@
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+ul.rating {
+    display: inline-block;
+}
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.rating .filled {
+    color: red;
+}
+
+.rating .filled {
+    color: red;
+}
+
+
+.img-circle {
+    border-radius: 50%;
+}
+
+/* CSS for graph icon on professors.view page */
+.circle-img {
+    border-radius: 50%;
+    width:85px;
+    height:85px;
+    opacity:0.2;
+
+}
+
+.circle2-img {
+    border-radius: 50%;
+    width:85px;
+    height:85px;
+    opacity:0.8;
+
+}
+
+.circle-img:hover {
+	background-color: yellow;
+}
+
+/* End of graph icon CSS */
+
+.tdheight {
+	height: 100px;
+}
+
+.bottomAltClasses {
+  position: absolute;
+    top: 50px;
+    left: 175px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+}
+
+.minpageheight {
+  min-height: 650px;
+}
+
+
+#headerImage {
+background: url(pics/usethispicture.jpg) ;
+	margin: 0;
+	min-height: 60px;
+	padding: 0;
+	width: 1750px;
+}
+
+
+#header div ul li a:hover {
+	background-color:  •#A2AB58  ;
+	color: •#A2AB58;
+}
+#header div ul li.selected a {
+	background-color: •#A2AB58;
+	color: #a3a3a3;
+}
+#header div ul li.menu {
+	position: relative;
+}
+#header div ul li.menu ul {
+	display: block;
+	left: -99999px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 60px;
+	width: 142px;
+	z-index: 50;
+}
+#header div ul li.menu:hover ul.primary {
+	left: 31px;
+}
+#header div ul li.menu ul.primary.selected {
+	left: 31px;
+}
+#header div ul li.menu:hover ul.secondary {
+	left: -20px;
+}
+#header div ul li.menu ul.secondary.selected {
+	left: -20px;
+}
+#header div ul li.menu ul li {
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+#header div ul li.menu ul li a {
+	background-color: •#FFFFFF;
+	color: #ffffff;
+	display: block;
+	font-family: Arial;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 60px;
+	margin: 0;
+	min-height: 60px;
+	padding: 0 10px;
+	text-align: center;
+	text-transform: uppercase;
+	width: auto;
+}
+#header div ul li.menu ul.primary.selected li a, #header div ul li.menu ul.secondary.selected li a {
+	background-color: white;
+	color: #a3a3a3;
+}
